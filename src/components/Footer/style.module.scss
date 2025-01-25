@@ -1,13 +1,14 @@
-@import "../../constants/constants.module.scss";
+@use '../../constants/constants.module.scss' as c;
 
 .footer {
     width: 100%;
     height: 127px;
     display: flex;
     justify-content: center;
-    background-color: #FFF;
+    background-color: #fff;
 
     & .container {
+        flex-grow: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;

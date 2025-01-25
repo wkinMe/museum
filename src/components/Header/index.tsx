@@ -1,7 +1,7 @@
 import style from './style.module.scss';
 
 import favoriteIcon from '../../assets/favorite.svg';
-import museumLogo from '../../assets/meseum_logo.svg';
+import museumLogo from '../../assets/museum_ligth_logo.svg';
 
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ export default function Header() {
                     <ul className={style.navMenu}>
                         <li className={style.navMenuItem}>
                             <img src={favoriteIcon} alt='' />
-                            <Link to='/favorite'></Link>
+                            <Link to='/favorite' className={style.navMenuItemLink}>Favorite</Link>
                         </li>
                     </ul>
                 </nav>
