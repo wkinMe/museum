@@ -4,13 +4,14 @@ import searchIcon from '../../assets/search.svg';
 
 import Subtitle from '../../components/Subtitle';
 import Gallery from '../../components/Gallery';
+import Title from '../../components/Title';
 
 export default function Home() {
     return (
         <div className={style.container}>
-            <h1>
+            <Title>
                 let's find some <span>art</span> here!
-            </h1>
+            </Title>
             <form>
                 <input type='search' />
                 <img src={searchIcon} alt='' />
