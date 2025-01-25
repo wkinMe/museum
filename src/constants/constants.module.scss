@@ -1,11 +1,13 @@
 // sizes
 .container {
     max-width: 1280px;
+    margin: 0 auto;
 }
 
 // colors
 $primary: #393939;
-$secondary: #f17900;
+$dark-secondary: #f17900;
+$light-secondary: #e0a449;
 $bg: #fafafa;
 
 // font

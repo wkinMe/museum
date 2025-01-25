@@ -1,0 +1,70 @@
+@use '../../constants/constants.module.scss' as *;
+
+.card {
+    min-width: 387px;
+    height: 514px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    & > img {
+        z-index: -1;
+        width: 100%;
+        min-height: 444px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    &Info {
+        align-self: end;
+        border: 1px solid #f0f1f1;
+        background-color: #fff;
+        font-family: 'Lexend Deca';
+        box-sizing: border-box;
+        max-width: 334px;
+        padding: 17px 24px;
+        height: 132px;
+
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2fr 1fr;
+
+        &Main {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            .artName {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @include font(17px, 500, 26px, $primary);
+            }
+
+            .artistName {
+                @include font(15px, 400, 26px, $dark-secondary);
+            }
+
+            .public {
+                margin-top: 8px;
+                @include font(15px, 700, 26px, $primary);
+            }
+        }
+
+        .favorite {
+            cursor: pointer;
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 59px;
+            height: 59px;
+            background-color: #f9f9f9;
+
+            &Active {
+                background-color: rgba(251, 215, 178, 0.3);
+            }
+        }
+    }
+}
