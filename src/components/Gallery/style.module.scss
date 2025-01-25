@@ -8,28 +8,3 @@
     overflow: hidden;
 }
 
-.pagination {
-    &Buttons {
-        display: flex;
-        justify-self: end;
-        gap: 10px;
-        margin-bottom: 120px;
-
-        button {
-            border-radius: 4px;
-            background-color: #fff;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            height: 30px;
-            width: 30px;
-
-            @include font(18px, 300, 24px, $primary);
-        }
-
-        .active {
-            background-color: $dark-secondary;
-            @include font(18px, 600, 23px, #fff);
-        }
-    }
-}
