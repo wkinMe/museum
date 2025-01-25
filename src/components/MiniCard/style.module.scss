@@ -1,0 +1,41 @@
+@use '../../constants/constants.module.scss' as *;
+
+.miniCard {
+    max-width: 416px;
+    height: 130px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f0f1f1;
+    gap: 16px;
+    font-family: 'Inter';
+
+    & > img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .info {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .artName {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @include font(17px, 500, 26px, $primary);
+        }
+
+        .artistName {
+            @include font(15px, 400, 26px, $dark-secondary);
+        }
+
+        .public {
+            margin-top: 8px;
+            @include font(15px, 700, 26px, $primary);
+        }
+    }
+}

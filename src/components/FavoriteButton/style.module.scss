@@ -1,0 +1,15 @@
+.favorite {
+    cursor: pointer;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 59px;
+    height: 59px;
+    background-color: #f9f9f9;
+
+    &Active {
+        background-color: rgba(251, 215, 178, 0.3);
+    }
+}

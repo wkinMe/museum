@@ -1,0 +1,16 @@
+@use '../../constants/constants.module.scss' as *;
+
+.title {
+    box-sizing: border-box;
+    max-width: 684px;
+    @include font(64px, 700, 80px, $primary);
+    margin-top: 152px;
+    margin: 152px auto 0 auto;
+    text-transform: capitalize;
+    font-family: 'Lexend Deca';
+    text-align: center;
+
+    span {
+        color: $dark-secondary;
+    }
+}
