@@ -1,5 +1,7 @@
 // sizes
-$container_width: 1280px;
+.container {
+    max-width: 1280px;
+}
 
 // colors
 $primary: #393939;
