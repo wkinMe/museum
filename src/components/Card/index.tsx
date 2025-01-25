@@ -1,5 +1,6 @@
 import style from './style.module.scss';
-import favoriteIcon from '../../assets/favorite.svg';
+
+import Favorite from '../../components/FavoriteButton';
 
 interface CardProps {
     img: string;
@@ -25,11 +26,7 @@ export default function Card({
                     <span className={style.artistName}>{artistName}</span>
                     <span className={style.public}>{isPublic && 'Public'}</span>
                 </div>
-                <div
-                    className={`${style.favorite} ${isFavorite ? style.favoriteActive : ''}`}
-                >
-                    <img src={favoriteIcon} alt='' />
-                </div>
+                <Favorite isFavorite={isFavorite} />
             </div>
         </div>
     );
