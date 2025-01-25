@@ -5,6 +5,7 @@ import searchIcon from '../../assets/search.svg';
 import Subtitle from '../../components/Subtitle';
 import Gallery from '../../components/Gallery';
 import Title from '../../components/Title';
+import CardGrid from '../../components/CardGrid';
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
                 />
                 <Gallery />
             </div>
+            <CardGrid />
         </div>
     );
 }
