@@ -5,3 +5,11 @@ $container_width: 1280px;
 $primary: #393939;
 $secondary: #f17900;
 $bg: #fafafa;
+
+// font
+@mixin font($size, $weigth, $lh, $color) {
+    font-size: $size;
+    font-weight: $weigth;
+    line-height: $lh;
+    color: $color;
+}
