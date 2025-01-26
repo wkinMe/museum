@@ -24,7 +24,7 @@ export default function Home() {
                 />
                 <Gallery />
             </div>
-            <CardGrid />
+            <CardGrid items={new Array(9).fill(null)} />
         </div>
     );
 }

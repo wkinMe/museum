@@ -3,9 +3,11 @@ import MiniCard from '../MiniCard';
 
 import style from './style.module.scss';
 
-export default function CardGrid() {
-    const items = new Array(9).fill(null);
+interface CardGridSubtitleProps {
+    items: unknown[];
+}
 
+export default function CardGrid({ items }: CardGridSubtitleProps) {
     return (
         <div className={style.cardGrid}>
             {items.map((_, ind) => {
