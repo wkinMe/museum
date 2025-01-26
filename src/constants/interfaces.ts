@@ -1,23 +1,18 @@
-export interface ArtItem {
-    id: number;
-    title: string;
-    date_start: number;
-    date_end: number;
-    artist_title: string;
-    is_public_domain: boolean;
-    credit_line: string;
+export interface ArtItem
+    extends Omit<ArtItemResponse, 'artist_display' | 'image_id'> {
     artist_nationality: string;
-    dimensions: string;
+    image_url: string;
 }
 
-export interface BriefArtItemData {
+export interface ArtItemResponse extends BaseArtItem {
+    image_id: string;
+}
+
+interface BaseArtItem {
     id: number;
     title: string;
     artist_title: string;
     is_public_domain: boolean;
-}
-
-export interface ArtItemResponse extends BriefArtItemData {
     date_start: number;
     date_end: number;
     credit_line: string;
@@ -26,5 +21,5 @@ export interface ArtItemResponse extends BriefArtItemData {
 }
 
 export interface ArtBriefDataCollection {
-    items: BriefArtItemData[];
+    items: ArtItem[];
 }

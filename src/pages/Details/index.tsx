@@ -9,12 +9,6 @@ import { useEffect, useState } from 'react';
 import { ArtItem } from '../../constants/interfaces';
 import { getArtYears } from '../../utils/getArtYears';
 
-// interface DeatilsProps {
-//     artName: string;
-//     artistName: string;
-//     artYears: string;
-// }
-
 export default function Details() {
     const { id } = useParams() as { id: string };
     const [art, setArt] = useState({} as ArtItem);
@@ -29,7 +23,7 @@ export default function Details() {
         <div className={style.container}>
             <div className={style.details}>
                 <div className={style.detailsImg}>
-                    <img src={testImg} alt='' />
+                    <img src={art.image_url} alt='' />
                     <FavoriteButton isFavorite={false} />
                 </div>
                 <div className={style.detailsInfo}>

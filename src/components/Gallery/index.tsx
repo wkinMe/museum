@@ -1,7 +1,6 @@
 import style from './style.module.scss';
 
 import Card from '../../components/Card';
-import testImg from '../../assets/image 1.png';
 import PaginationButtons from '../PaginationButtons';
 import { ArtBriefDataCollection } from '../../constants/interfaces';
 
@@ -13,7 +12,7 @@ export default function Gallery({ items }: ArtBriefDataCollection) {
                     return (
                         <Card
                             id={i.id}
-                            img={testImg}
+                            img={i.image_url}
                             artName={i.title}
                             artistName={i.artist_title}
                             isFavorite={false}

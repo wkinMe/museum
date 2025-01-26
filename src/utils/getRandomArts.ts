@@ -1,5 +1,6 @@
 import { BASE_URL } from '../constants/constants';
 import { ArtItem } from '../constants/interfaces';
+import { getArtById } from './getArtById';
 
 export const getRandomArts = async (count: number) => {
     const artsArr: ArtItem[] = [];
@@ -7,19 +8,16 @@ export const getRandomArts = async (count: number) => {
 
     // ids initialize
     const data = await fetch(
-        `${BASE_URL}?page=${Math.floor(Math.random() * 10)}&limit=${count}&fields=id`,
+        `${BASE_URL}?page=${Math.floor(Math.random() * 10)}&limit=50&fields=id`,
     )
         .then((res) => res.json())
         .then((res) => res.data);
     data.map((i: { id: number }) => ids.push(i.id));
 
-    for (const id of ids) {
+    for (let i = 0; i < count; i++) {
         try {
-            const response = await fetch(
-                `${BASE_URL}/${id}?fields=id,title,artist_title,is_public_domain`,
-            );
-            const data = await response.json().then((res) => res.data);
-            artsArr.push(data);
+            const artItem = await getArtById(ids[i]);
+            artsArr.push(artItem);
         } catch (e: unknown) {
             console.error(e);
         }

@@ -7,11 +7,11 @@ import Gallery from '../../components/Gallery';
 import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
 import { getRandomArts } from '../../utils/getRandomArts';
-import { BriefArtItemData } from '../../constants/interfaces';
+import { ArtItem } from '../../constants/interfaces';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-    const [arts, setArts] = useState<BriefArtItemData[]>([]);
+    const [arts, setArts] = useState<ArtItem[]>([]);
     useEffect(() => {
         (async function () {
             setArts(await getRandomArts(9));

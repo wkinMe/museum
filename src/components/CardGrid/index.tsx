@@ -1,4 +1,3 @@
-import testImg from '../../assets/image 1.png';
 import { ArtBriefDataCollection } from '../../constants/interfaces';
 import MiniCard from '../MiniCard';
 
@@ -11,7 +10,7 @@ export default function CardGrid({ items }: ArtBriefDataCollection) {
                 return (
                     <MiniCard
                         id={i.id}
-                        img={testImg}
+                        img={i.image_url}
                         artName={i.title}
                         artistName={i.artist_title}
                         isFavorite={true}

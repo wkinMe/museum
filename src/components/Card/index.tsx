@@ -4,7 +4,7 @@ import FavoriteButton from '../../components/FavoriteButton';
 import { Link } from 'react-router';
 
 export interface CardInfo {
-    id: number;
+    id: number,
     img: string;
     artName: string;
     artistName: string;

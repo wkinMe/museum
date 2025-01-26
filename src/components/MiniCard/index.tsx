@@ -12,6 +12,8 @@ export default function MiniCard({
     isPublic,
     isFavorite,
 }: CardInfo) {
+    console.log(id, img);
+
     return (
         <Link to={`details/${id}`} className={style.miniCard}>
             <img src={img} alt='' />
