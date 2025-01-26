@@ -2,12 +2,14 @@ import style from './style.module.scss';
 
 import Card from '../../components/Card';
 import testImg from '../../assets/image 1.png';
-import { IMG_COUNT } from '../../constants/constants';
 import PaginationButtons from '../PaginationButtons';
+import { ArtItem } from '../../utils/getRandomArts';
 
-export default function Gallery() {
-    const items = new Array(IMG_COUNT).fill(null);
+interface GalleryProps {
+    items: ArtItem[];
+}
 
+export default function Gallery({ items }: GalleryProps) {
     return (
         <>
             <div className={style.gallery}>
@@ -15,10 +17,10 @@ export default function Gallery() {
                     return (
                         <Card
                             img={testImg}
-                            artName='Charles V, bust length seltiqinselfinqsflni'
-                            artistName='Giovanni Britto'
+                            artName={i.title}
+                            artistName={i.artist_title}
                             isFavorite={ind % 2 == 0}
-                            isPublic={true}
+                            isPublic={i.is_public_domain}
                             key={ind}
                         />
                     );

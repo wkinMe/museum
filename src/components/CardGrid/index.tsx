@@ -1,23 +1,24 @@
 import testImg from '../../assets/image 1.png';
+import { ArtItem } from '../../utils/getRandomArts';
 import MiniCard from '../MiniCard';
 
 import style from './style.module.scss';
 
 interface CardGridSubtitleProps {
-    items: unknown[];
+    items: ArtItem[];
 }
 
 export default function CardGrid({ items }: CardGridSubtitleProps) {
     return (
         <div className={style.cardGrid}>
-            {items.map((_, ind) => {
+            {items.map((i, ind) => {
                 return (
                     <MiniCard
                         img={testImg}
-                        artName='Charles V, bust length seltiqinselfinqsflni'
-                        artistName='Giovanni Britto'
+                        artName={i.title}
+                        artistName={i.artist_title}
                         isFavorite={ind % 2 == 0}
-                        isPublic={true}
+                        isPublic={i.is_public_domain}
                         key={ind}
                     />
                 );

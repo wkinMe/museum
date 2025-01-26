@@ -6,8 +6,17 @@ import Subtitle from '../../components/Subtitle';
 import Gallery from '../../components/Gallery';
 import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
+import { ArtItem, getRandomArts } from '../../utils/getRandomArts';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+    const [arts, setArts] = useState<ArtItem[]>([]);
+    useEffect(() => {
+        (async function () {
+            setArts(await getRandomArts(9));
+        })();
+    }, []);
+
     return (
         <div className={style.container}>
             <Title>
@@ -22,9 +31,10 @@ export default function Home() {
                     subtitle='Topics for you'
                     title='Our special gallery'
                 />
-                <Gallery />
+                <Gallery items={arts} />
             </div>
-            <CardGrid items={new Array(9).fill(null)} />
+            <Subtitle title='Other works for you' subtitle='Here some more' />
+            <CardGrid items={arts} />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 @use '../../constants/constants.module.scss' as *;
 
 .miniCard {
+    text-decoration: none;
     max-width: 416px;
     height: 130px;
     padding: 0 13px;

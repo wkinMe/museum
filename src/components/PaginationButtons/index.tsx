@@ -40,6 +40,7 @@ export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
                     <button
                         className={`${style.paginationButton} ${currentPage == ind + 1 ? style.active : ''}`}
                         onClick={handlePageClick}
+                        key={ind}
                     >
                         {ind + 1}
                     </button>

@@ -2,6 +2,7 @@ import { CardInfo } from '../Card';
 import style from './style.module.scss';
 
 import FavoriteButton from '../FavoriteButton';
+import { Link } from 'react-router-dom';
 
 export default function MiniCard({
     img,
@@ -11,7 +12,7 @@ export default function MiniCard({
     isFavorite,
 }: CardInfo) {
     return (
-        <div className={style.miniCard}>
+        <Link to='details/1' className={style.miniCard}>
             <img src={img} alt='' />
             <div className={style.info}>
                 <span className={style.artName}>{artName}</span>
@@ -19,6 +20,6 @@ export default function MiniCard({
                 <span className={style.public}>{isPublic && 'Public'}</span>
             </div>
             <FavoriteButton isFavorite={isFavorite} />
-        </div>
+        </Link>
     );
 }

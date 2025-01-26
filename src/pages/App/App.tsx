@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router';
 import './App.css';
 
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Favorite from './pages/Favorite/indes';
-import Details from './pages/Details';
+import Layout from '../../components/Layout';
+import Home from '../Home';
+import Favorite from '../Favorite/indes';
+import Details from '../Details';
 
 function App() {
     return (
