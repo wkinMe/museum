@@ -1,0 +1,11 @@
+@use '../../constants/constants.module.scss' as *;
+
+.artOverviewItem {
+    margin-top: 16px;
+
+    @include font(16px, 400, 20px, $dark-secondary);
+
+    .value {
+        color: $primary;
+    }
+}

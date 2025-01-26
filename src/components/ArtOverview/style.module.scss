@@ -1,0 +1,11 @@
+@use '../../constants/constants.module.scss' as *;
+
+.artOverview {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        @include font(32px, 400, 40px, $primary);
+        margin-bottom: 32px;
+    }
+}

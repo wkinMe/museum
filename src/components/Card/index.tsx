@@ -1,6 +1,7 @@
 import style from './style.module.scss';
 
 import FavoriteButton from '../../components/FavoriteButton';
+import { Link } from 'react-router';
 
 export interface CardInfo {
     img: string;
@@ -18,7 +19,7 @@ export default function Card({
     isFavorite,
 }: CardInfo) {
     return (
-        <div className={style.card}>
+        <Link to='details/1' className={style.card}>
             <img src={img} alt='' />
             <div className={style.cardInfo}>
                 <div className={style.cardInfoMain}>
@@ -28,6 +29,6 @@ export default function Card({
                 </div>
                 <FavoriteButton isFavorite={isFavorite} />
             </div>
-        </div>
+        </Link>
     );
 }

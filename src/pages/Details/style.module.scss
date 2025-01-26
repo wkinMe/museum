@@ -1,0 +1,49 @@
+@use '../../constants/constants.module.scss' as *;
+
+.details {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    font-family: 'Lexend Deca';
+    display: flex;
+    justify-content: space-between;
+
+    &Img {
+        box-sizing: border-box;
+        width: 497px;
+        height: 570px;
+        display: grid;
+        position: relative;
+        padding-top: 16px;
+        padding-right: 16px;
+
+        & > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            z-index: -1;
+        }
+    }
+
+    &Info {
+        display: grid;
+        grid-template-rows: repeat(3, auto) 1fr;
+        flex-direction: column;
+        max-width: 640px;
+
+        .artName {
+            @include font(32px, 400, 40px, $primary);
+        }
+
+        .artistName {
+            margin-top: 32px;
+            @include font(25px, 400, 30px, $dark-secondary);
+        }
+
+        .artYears {
+            margin-top: 16px;
+            @include font(16px, 700, 20px, $primary);
+        }
+    }
+}
