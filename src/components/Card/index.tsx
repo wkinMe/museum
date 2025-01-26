@@ -4,6 +4,7 @@ import FavoriteButton from '../../components/FavoriteButton';
 import { Link } from 'react-router';
 
 export interface CardInfo {
+    id: number;
     img: string;
     artName: string;
     artistName: string;
@@ -12,6 +13,7 @@ export interface CardInfo {
 }
 
 export default function Card({
+    id,
     img,
     artName,
     artistName,
@@ -19,7 +21,7 @@ export default function Card({
     isFavorite,
 }: CardInfo) {
     return (
-        <Link to='details/1' className={style.card}>
+        <Link to={`details/${id}`} className={style.card}>
             <img src={img} alt='' />
             <div className={style.cardInfo}>
                 <div className={style.cardInfoMain}>

@@ -5,6 +5,7 @@ import FavoriteButton from '../FavoriteButton';
 import { Link } from 'react-router-dom';
 
 export default function MiniCard({
+    id,
     img,
     artName,
     artistName,
@@ -12,7 +13,7 @@ export default function MiniCard({
     isFavorite,
 }: CardInfo) {
     return (
-        <Link to='details/1' className={style.miniCard}>
+        <Link to={`details/${id}`} className={style.miniCard}>
             <img src={img} alt='' />
             <div className={style.info}>
                 <span className={style.artName}>{artName}</span>

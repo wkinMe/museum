@@ -6,11 +6,12 @@ import Subtitle from '../../components/Subtitle';
 import Gallery from '../../components/Gallery';
 import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
-import { ArtItem, getRandomArts } from '../../utils/getRandomArts';
+import { getRandomArts } from '../../utils/getRandomArts';
+import { BriefArtItemData } from '../../constants/interfaces';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-    const [arts, setArts] = useState<ArtItem[]>([]);
+    const [arts, setArts] = useState<BriefArtItemData[]>([]);
     useEffect(() => {
         (async function () {
             setArts(await getRandomArts(9));

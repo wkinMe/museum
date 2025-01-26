@@ -3,25 +3,22 @@ import style from './style.module.scss';
 import Card from '../../components/Card';
 import testImg from '../../assets/image 1.png';
 import PaginationButtons from '../PaginationButtons';
-import { ArtItem } from '../../utils/getRandomArts';
+import { ArtBriefDataCollection } from '../../constants/interfaces';
 
-interface GalleryProps {
-    items: ArtItem[];
-}
-
-export default function Gallery({ items }: GalleryProps) {
+export default function Gallery({ items }: ArtBriefDataCollection) {
     return (
         <>
             <div className={style.gallery}>
-                {items.map((i, ind) => {
+                {items.map((i) => {
                     return (
                         <Card
+                            id={i.id}
                             img={testImg}
                             artName={i.title}
                             artistName={i.artist_title}
-                            isFavorite={ind % 2 == 0}
+                            isFavorite={false}
                             isPublic={i.is_public_domain}
-                            key={ind}
+                            key={i.id}
                         />
                     );
                 })}
