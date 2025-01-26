@@ -9,3 +9,11 @@
         margin-bottom: 32px;
     }
 }
+
+@media (max-width: 1160px) {
+    .artOverview {
+        h3 {
+            display: none;
+        }
+    }
+}
