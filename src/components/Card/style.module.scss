@@ -2,7 +2,6 @@
 
 .card {
     min-width: 387px;
-    height: 514px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -10,7 +9,6 @@
     & > img {
         z-index: -1;
         width: 100%;
-        min-height: 444px;
         position: absolute;
         left: 0;
         top: 0;
@@ -50,5 +48,12 @@
                 @include font(15px, 700, 26px, $primary);
             }
         }
+    }
+}
+
+@media (max-width: 1300px) {
+    .card {
+        min-width: 30vw;
+        height: 40vw;
     }
 }
