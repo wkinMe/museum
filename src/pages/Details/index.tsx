@@ -1,6 +1,5 @@
 import style from './style.module.scss';
 
-import testImg from '../../assets/image 1.png';
 import FavoriteButton from '../../components/FavoriteButton';
 import ArtOverview from '../../components/ArtOverview';
 import { useParams } from 'react-router-dom';
