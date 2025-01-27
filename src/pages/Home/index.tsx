@@ -7,7 +7,7 @@ import CardGrid from '../../components/CardGrid';
 import { getRandomArts } from '../../utils/getRandomArts';
 import { ArtItem } from '../../constants/interfaces';
 import { useEffect, useState } from 'react';
-import SearchForm from '../../components/SerachForm';
+import SearchForm from '../../components/SearchForm';
 import PaginationButtons from '../../components/PaginationButtons';
 import { serachByParams } from '../../utils/searchByParams';
 

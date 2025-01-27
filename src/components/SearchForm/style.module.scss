@@ -34,4 +34,11 @@ form {
         border: none;
         justify-self: end;
     }
+
+    .error {
+        margin-top: 15px;
+        margin-left: 5px;
+        font-family: 'Lexend Deca';
+        @include font(24px, 200, 20px, rgb(247, 77, 77));
+    }
 }
