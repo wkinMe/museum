@@ -7,6 +7,7 @@ import Favorite from '../Favorite/indes';
 import Details from '../Details';
 
 function App() {
+    sessionStorage.setItem('favorite', '[]');
     return (
         <>
             <Routes>

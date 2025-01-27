@@ -6,6 +6,8 @@ import Subtitle from '../../components/Subtitle';
 import CardGrid from '../../components/CardGrid';
 
 export default function Favorite() {
+    const favorites = JSON.parse(sessionStorage.getItem('favorites')!);
+
     return (
         <div className={style.container}>
             <Title>
@@ -19,7 +21,7 @@ export default function Favorite() {
                 <span>favorite</span>
             </Title>
             <Subtitle title='Your favorite list' subtitle='Saved by you' />
-            <CardGrid items={new Array(18).fill(null)} />
+            <CardGrid items={favorites} />
         </div>
     );
 }

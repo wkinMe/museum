@@ -19,7 +19,3 @@ interface BaseArtItem {
     artist_display: string;
     dimensions: string;
 }
-
-export interface ArtBriefDataCollection {
-    items: ArtItem[];
-}

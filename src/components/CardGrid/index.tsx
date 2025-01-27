@@ -1,23 +1,13 @@
-import { ArtBriefDataCollection } from '../../constants/interfaces';
-import MiniCard from '../MiniCard';
+import Card from '../Card';
+import { ArtCollection } from '../Gallery';
 
 import style from './style.module.scss';
 
-export default function CardGrid({ items }: ArtBriefDataCollection) {
+export default function CardGrid({ items }: ArtCollection) {
     return (
         <div className={style.cardGrid}>
             {items.map((i) => {
-                return (
-                    <MiniCard
-                        id={i.id}
-                        img={i.image_url}
-                        artName={i.title}
-                        artistName={i.artist_title}
-                        isFavorite={true}
-                        isPublic={i.is_public_domain}
-                        key={i.id}
-                    />
-                );
+                return <Card size='small' art={i} />;
             })}
         </div>
     );
