@@ -7,10 +7,12 @@ import { getArtById } from '../../utils/getArtById';
 import { useEffect, useState } from 'react';
 import { ArtItem } from '../../constants/interfaces';
 import { getArtYears } from '../../utils/getArtYears';
+import { checkIsFavorite } from '../../utils/checkIsFavorite';
 
 export default function Details() {
     const { id } = useParams() as { id: string };
     const [art, setArt] = useState({} as ArtItem);
+    const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
 
     useEffect(() => {
         (async function () {
@@ -23,7 +25,11 @@ export default function Details() {
             <div className={style.details}>
                 <div className={style.detailsImg}>
                     <img src={art.image_url} alt='' />
-                    <FavoriteButton art={art} isFavorite={false} />
+                    <FavoriteButton
+                        onClick={() => setIsFavorite(!isFavorite)}
+                        art={art}
+                        isFavorite={isFavorite}
+                    />
                 </div>
                 <div className={style.detailsInfo}>
                     <span className={style.artName}>{art.title}</span>
