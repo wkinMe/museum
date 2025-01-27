@@ -6,7 +6,7 @@ import Subtitle from '../../components/Subtitle';
 import CardGrid from '../../components/CardGrid';
 
 export default function Favorite() {
-    const favorites = JSON.parse(sessionStorage.getItem('favorites')!);
+    const favorites = JSON.parse(sessionStorage.getItem('favorite')!);
 
     return (
         <div className={style.container}>

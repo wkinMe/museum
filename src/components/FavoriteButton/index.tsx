@@ -8,13 +8,17 @@ import { addFavorite } from '../../utils/addFavorite';
 interface FavoriteButtonProps {
     isFavorite: boolean;
     art: ArtItem;
+    onClick: () => void;
 }
 
 export default function FavoriteButton({
     art,
     isFavorite,
+    onClick,
 }: FavoriteButtonProps) {
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        onClick();
+        e.preventDefault();
         if (isFavorite) {
             removeFavorite(art);
         } else {

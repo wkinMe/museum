@@ -4,6 +4,7 @@ import FavoriteButton from '../../components/FavoriteButton';
 import { Link } from 'react-router';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
 import { ArtItem } from '../../constants/interfaces';
+import { useState } from 'react';
 
 interface CardProps {
     art: ArtItem;
@@ -11,6 +12,7 @@ interface CardProps {
 }
 
 export default function Card({ art, size }: CardProps) {
+    const [isFavorite, setIsFavorite] = useState<boolean>(checkIsFavorite(art));
     const {
         artist_title: artistName,
         is_public_domain: isPublic,
@@ -18,12 +20,11 @@ export default function Card({ art, size }: CardProps) {
         id,
         title: artName,
     } = art;
-    const isFavorite = checkIsFavorite(art);
 
     const styleName = size == 'large' ? style.card : style.miniCard;
 
     return (
-        <Link to={`details/${id}`} className={styleName}>
+        <Link to={`../details/${id}`} className={styleName}>
             <img src={img} alt='' />
             <div className={style.info}>
                 <div className={style.infoMain}>
@@ -31,8 +32,11 @@ export default function Card({ art, size }: CardProps) {
                     <span className={style.artistName}>{artistName}</span>
                     <span className={style.public}>{isPublic && 'Public'}</span>
                 </div>
-
-                <FavoriteButton art={art} isFavorite={isFavorite} />
+                <FavoriteButton
+                    art={art}
+                    isFavorite={isFavorite}
+                    onClick={() => setIsFavorite(!isFavorite)}
+                />
             </div>
         </Link>
     );

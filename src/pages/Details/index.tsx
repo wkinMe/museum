@@ -23,7 +23,7 @@ export default function Details() {
             <div className={style.details}>
                 <div className={style.detailsImg}>
                     <img src={art.image_url} alt='' />
-                    <FavoriteButton isFavorite={false} />
+                    <FavoriteButton art={art} isFavorite={false} />
                 </div>
                 <div className={style.detailsInfo}>
                     <span className={style.artName}>{art.title}</span>
