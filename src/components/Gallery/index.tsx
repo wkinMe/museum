@@ -1,7 +1,6 @@
 import style from './style.module.scss';
 
 import Card from '../../components/Card';
-import PaginationButtons from '../PaginationButtons';
 import { ArtBriefDataCollection } from '../../constants/interfaces';
 
 export default function Gallery({ items }: ArtBriefDataCollection) {
@@ -22,7 +21,6 @@ export default function Gallery({ items }: ArtBriefDataCollection) {
                     );
                 })}
             </div>
-            <PaginationButtons onClick={(pageNumber) => pageNumber} />
         </>
     );
 }

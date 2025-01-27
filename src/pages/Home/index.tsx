@@ -8,12 +8,20 @@ import { getRandomArts } from '../../utils/getRandomArts';
 import { ArtItem } from '../../constants/interfaces';
 import { useEffect, useState } from 'react';
 import SearchForm from '../../components/SerachForm';
+import PaginationButtons from '../../components/PaginationButtons';
+import { serachByParams } from '../../utils/searchByParams';
 
 export default function Home() {
+    const [searchedArts, setSearchedArts] = useState<ArtItem[]>([]);
     const [arts, setArts] = useState<ArtItem[]>([]);
+
+    const [searchString, setSearchString] = useState('');
+
     useEffect(() => {
         (async function () {
-            setArts(await getRandomArts(9));
+            const arts = await getRandomArts(9);
+            setArts(arts);
+            setSearchedArts(arts);
         })();
     }, []);
 
@@ -23,8 +31,9 @@ export default function Home() {
                 let's find some <span>art</span> here!
             </Title>
             <SearchForm
-                onClick={(arts: ArtItem[]) => {
-                    setArts(arts);
+                onClick={(arts: ArtItem[], searchString: string) => {
+                    setSearchString(searchString);
+                    setSearchedArts(arts);
                 }}
             />
             <div className={style.specialGallery}>
@@ -32,7 +41,17 @@ export default function Home() {
                     subtitle='Topics for you'
                     title='Our special gallery'
                 />
-                <Gallery items={arts} />
+                <Gallery items={searchedArts} />
+                <PaginationButtons
+                    pageCount={10}
+                    onClick={(page: number) => {
+                        (async function () {
+                            setSearchedArts(
+                                await serachByParams(searchString, page, 3),
+                            );
+                        })();
+                    }}
+                />
             </div>
             <Subtitle title='Other works for you' subtitle='Here some more' />
             <CardGrid items={arts} />

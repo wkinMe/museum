@@ -6,7 +6,7 @@ import { serachByParams } from '../../utils/searchByParams';
 import { ArtItem } from '../../constants/interfaces';
 
 interface SearchFormProps {
-    onClick: (arts: ArtItem[]) => void;
+    onClick: (arts: ArtItem[], searchString: string) => void;
 }
 
 export default function SearchForm({ onClick }: SearchFormProps) {
@@ -16,7 +16,7 @@ export default function SearchForm({ onClick }: SearchFormProps) {
             onSubmit={async (values, { setSubmitting }) => {
                 const data = await serachByParams(values.search);
                 if (data) {
-                    onClick(data);
+                    onClick(data, values.search);
                     setSubmitting(false);
                 }
             }}

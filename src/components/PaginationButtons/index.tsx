@@ -1,21 +1,32 @@
 import { useState } from 'react';
 import style from './style.module.scss';
-import { PAGE_SIZE } from '../../constants/constants';
 
 import arrow from '../../assets/arrow.svg';
 
 interface PaginationButtonsProps {
-    onClick: (pageNumber: number) => void;
+    pageCount: number;
+    onClick: (page: number) => void;
 }
 
-export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
+export default function PaginationButtons({
+    pageCount,
+    onClick,
+}: PaginationButtonsProps) {
     const [currentPage, setCurrentPage] = useState(1);
+    const [prevPage, setPrevPage] = useState(currentPage);
+    if (prevPage !== currentPage) {
+        onClick(currentPage);
+        setPrevPage(currentPage);
+    }
 
-    const pageSize = 3;
-    const pages = new Array(Math.ceil(PAGE_SIZE / pageSize)).fill(null);
+    if (currentPage !== prevPage) {
+        setPrevPage(currentPage);
+        setCurrentPage(currentPage);
+    }
+
+    const pages = new Array(Math.ceil(pageCount)).fill(null);
 
     const handlePageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        onClick(currentPage);
         setCurrentPage(Number(e.currentTarget.textContent));
     };
 
@@ -24,7 +35,9 @@ export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
             {currentPage > 1 && (
                 <button
                     className={style.paginationButtonAddition}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    onClick={() => {
+                        setCurrentPage(currentPage - 1);
+                    }}
                 >
                     <img
                         src={arrow}
@@ -49,7 +62,9 @@ export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
             {currentPage < pages.length && (
                 <button
                     className={style.paginationButtonAddition}
-                    onClick={() => setCurrentPage(currentPage + 1)}
+                    onClick={() => {
+                        setCurrentPage(currentPage + 1);
+                    }}
                 >
                     <img src={arrow} alt='Next' />
                 </button>
