@@ -1,0 +1,37 @@
+@use '../../constants/constants.module.scss' as *;
+
+form {
+    margin: 0 auto;
+    position: relative;
+    border-radius: 16px;
+    max-width: 762px;
+    margin-top: 72px;
+    height: 64px;
+    display: grid;
+    align-items: center;
+
+    input {
+        font-family: 'Inter';
+        @include font(14px, 400, 17px, $primary);
+        box-sizing: border-box;
+        padding-left: 16px;
+        height: 100%;
+        border: none;
+        outline: none;
+        background-color: rgba(57, 57, 57, 0.05);
+        position: absolute;
+        width: 100%;
+        border-radius: inherit;
+    }
+
+    button {
+        cursor: pointer;
+        width: 64px;
+        height: 64px;
+        z-index: 1;
+        background-color: inherit;
+        outline: none;
+        border: none;
+        justify-self: end;
+    }
+}

@@ -1,4 +1,4 @@
-import { BASE_URL } from '../constants/constants';
+import { BASE_URL, PAGE_SIZE } from '../constants/constants';
 import { ArtItem } from '../constants/interfaces';
 import { getArtById } from './getArtById';
 
@@ -8,7 +8,7 @@ export const getRandomArts = async (count: number) => {
 
     // ids initialize
     const data = await fetch(
-        `${BASE_URL}?page=${Math.floor(Math.random() * 10)}&limit=50&fields=id`,
+        `${BASE_URL}?page=${Math.floor(Math.random() * 100 + 1)}&limit=${PAGE_SIZE}&fields=id`,
     )
         .then((res) => res.json())
         .then((res) => res.data);

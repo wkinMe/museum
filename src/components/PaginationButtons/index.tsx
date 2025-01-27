@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from './style.module.scss';
-import { IMG_COUNT } from '../../constants/constants';
+import { PAGE_SIZE } from '../../constants/constants';
 
 import arrow from '../../assets/arrow.svg';
 
@@ -12,7 +12,7 @@ export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const pageSize = 3;
-    const pages = new Array(Math.ceil(IMG_COUNT / pageSize)).fill(null);
+    const pages = new Array(Math.ceil(PAGE_SIZE / pageSize)).fill(null);
 
     const handlePageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         onClick(currentPage);
