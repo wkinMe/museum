@@ -26,6 +26,11 @@ export default function Details() {
                 <div className={style.detailsImg}>
                     <img src={art.image_url} alt='' />
                     <FavoriteButton
+                        style={{
+                            position: 'absolute',
+                            top: '16px',
+                            right: '16px',
+                        }}
                         onClick={() => setIsFavorite(!isFavorite)}
                         art={art}
                         isFavorite={isFavorite}
