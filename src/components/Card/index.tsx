@@ -26,25 +26,14 @@ export default function Card({ art, size }: CardProps) {
         <Link to={`details/${id}`} className={styleName}>
             <img src={img} alt='' />
             <div className={style.info}>
-                {size == 'large' ? (
-                    <div className={style.infoMain}>
-                        <span className={style.artName}>{artName}</span>
-                        <span className={style.artistName}>{artistName}</span>
-                        <span className={style.public}>
-                            {isPublic && 'Public'}
-                        </span>
-                    </div>
-                ) : (
-                    <>
-                        <span className={style.artName}>{artName}</span>
-                        <span className={style.artistName}>{artistName}</span>
-                        <span className={style.public}>
-                            {isPublic && 'Public'}
-                        </span>
-                    </>
-                )}
+                <div className={style.infoMain}>
+                    <span className={style.artName}>{artName}</span>
+                    <span className={style.artistName}>{artistName}</span>
+                    <span className={style.public}>{isPublic && 'Public'}</span>
+                </div>
+
+                <FavoriteButton art={art} isFavorite={isFavorite} />
             </div>
-            <FavoriteButton art={art} isFavorite={isFavorite} />
         </Link>
     );
 }
