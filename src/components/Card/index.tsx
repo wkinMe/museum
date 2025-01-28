@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
 import { ArtItem } from '../../constants/interfaces';
 import { useState } from 'react';
+import Loader from '../Loader';
 
 interface CardProps {
     art: ArtItem;
@@ -13,6 +14,8 @@ interface CardProps {
 
 export default function Card({ art, size }: CardProps) {
     const [isFavorite, setIsFavorite] = useState<boolean>(checkIsFavorite(art));
+    const [imageLoaded, setImagesLoaded] = useState(false);
+
     const {
         artist_title: artistName,
         is_public_domain: isPublic,
@@ -21,23 +24,36 @@ export default function Card({ art, size }: CardProps) {
         title: artName,
     } = art;
 
-    const styleName = size == 'large' ? style.card : style.miniCard;
+    const styleName = size === 'large' ? style.card : style.miniCard;
 
     return (
-        <Link to={`../details/${id}`} className={styleName}>
-            <img src={img} alt='' />
-            <div className={style.info}>
-                <div className={style.infoMain}>
-                    <span className={style.artName}>{artName}</span>
-                    <span className={style.artistName}>{artistName}</span>
-                    <span className={style.public}>{isPublic && 'Public'}</span>
-                </div>
-                <FavoriteButton
-                    art={art}
-                    isFavorite={isFavorite}
-                    onClick={() => setIsFavorite(!isFavorite)}
+        <div className={style.wrapper}>
+            {!imageLoaded && <Loader size={size} />}
+            <Link
+                to={`../details/${id}`}
+                className={`${styleName} ${!imageLoaded ? style.hidden : ''}`}
+            >
+                <img
+                    onLoad={() => setImagesLoaded(true)}
+                    src={img}
+                    alt={artName}
+                    className={style.image}
                 />
-            </div>
-        </Link>
+                <div className={style.info}>
+                    <div className={style.infoMain}>
+                        <span className={style.artName}>{artName}</span>
+                        <span className={style.artistName}>{artistName}</span>
+                        <span className={style.public}>
+                            {isPublic && 'Public'}
+                        </span>
+                    </div>
+                    <FavoriteButton
+                        art={art}
+                        isFavorite={isFavorite}
+                        onClick={() => setIsFavorite(!isFavorite)}
+                    />
+                </div>
+            </Link>
+        </div>
     );
 }

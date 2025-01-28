@@ -11,8 +11,6 @@ export const serachByParams = async (
         `${BASE_URL}/search?q=${searchString}&fields=id,${FIELDS}&page=${page}&limit=${limit}`,
     );
     const data = await response.json().then((res) => res.data);
-    console.log(data);
-
     const arts = data.map((i: ArtItemResponse) => makeData(i));
     return arts;
 };

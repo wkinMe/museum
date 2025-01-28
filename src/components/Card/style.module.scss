@@ -2,7 +2,7 @@
 
 .card {
     text-decoration: none;
-    min-width: 387px;
+    max-width: 387px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -53,6 +53,14 @@
     }
 }
 
+.wrapper {
+    position: relative;
+
+    .hidden {
+        display: none;
+    }
+}
+
 .miniCard {
     text-decoration: none;
     max-width: 416px;
@@ -76,10 +84,8 @@
         justify-content: space-between;
         width: 100%;
         grid-template-columns: 2fr 1fr;
-        
 
         &Main {
-
             display: grid;
             grid-template-columns: 1fr;
 
@@ -104,7 +110,7 @@
 
 @media (max-width: 1300px) {
     .card {
-        min-width: 30vw;
+        max-width: 30vw;
         height: 40vw;
     }
 }

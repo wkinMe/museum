@@ -1,27 +1,15 @@
 import { BASE_URL } from '../constants/constants';
-import { ArtItem } from '../constants/interfaces';
+import { ArtItem, ArtItemResponse } from '../constants/interfaces';
 import { getArtById } from './getArtById';
 
-export const getRandomArts = async (count: number) => {
-    const artsArr: ArtItem[] = [];
-    const ids: number[] = [];
-
-    // ids initialize
-    const data = await fetch(
+export const getRandomArts = async (count: number): Promise<ArtItem[]> => {
+    const response = await fetch(
         `${BASE_URL}?page=${Math.floor(Math.random() * 100 + 1)}&limit=${count}&fields=id`,
-    )
-        .then((res) => res.json())
-        .then((res) => res.data);
-    data.map((i: { id: number }) => ids.push(i.id));
+    );
+    const res = await response.json();
 
-    for (let i = 0; i < count; i++) {
-        try {
-            const artItem = await getArtById(ids[i]);
-            artsArr.push(artItem);
-        } catch (e: unknown) {
-            console.error(e);
-        }
-    }
+    const promises = res.data.map((i: ArtItemResponse) => getArtById(i.id));
 
-    return artsArr;
+    const arts = await Promise.all(promises);
+    return arts;
 };

@@ -1,0 +1,29 @@
+@use '../../constants/constants.module.scss' as *;
+
+.spinner {
+    border-radius: 50%;
+    border: dashed 5px $primary;
+    position: absolute;
+    position: relative;
+    margin: auto;
+    animation: rotation 2s linear infinite;
+}
+
+.large {
+    width: 150px;
+    height: 150px;
+}
+
+.small {
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

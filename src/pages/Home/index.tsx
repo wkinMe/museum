@@ -6,24 +6,17 @@ import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
 import { getRandomArts } from '../../utils/getRandomArts';
 import { ArtItem } from '../../constants/interfaces';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import SearchForm from '../../components/SearchForm';
 import PaginationButtons from '../../components/PaginationButtons';
 import { serachByParams } from '../../utils/searchByParams';
+import Loader from '../../components/Loader';
 
 export default function Home() {
     const [searchedArts, setSearchedArts] = useState<ArtItem[]>([]);
-    const [arts, setArts] = useState<ArtItem[]>([]);
+    const [galleryCount, setGalleryCount] = useState(3);
 
     const [searchString, setSearchString] = useState('');
-
-    useEffect(() => {
-        (async function () {
-            const arts = await getRandomArts(9);
-            setArts(arts);
-            setSearchedArts(arts);
-        })();
-    }, []);
 
     return (
         <div className={style.container}>
@@ -41,7 +34,10 @@ export default function Home() {
                     subtitle='Topics for you'
                     title='Our special gallery'
                 />
-                <Gallery items={searchedArts} />
+                <Suspense fallback={<Loader size='large'></Loader>}>
+                    <Gallery cardPromise={getRandomArts(galleryCount)} />
+                </Suspense>
+
                 <PaginationButtons
                     pageCount={10}
                     onClick={(page: number) => {
@@ -54,7 +50,9 @@ export default function Home() {
                 />
             </div>
             <Subtitle title='Other works for you' subtitle='Here some more' />
-            <CardGrid items={arts} />
+            <Suspense fallback={<Loader size='large' />}>
+                <CardGrid cardPromise={getRandomArts(3)} />
+            </Suspense>
         </div>
     );
 }
