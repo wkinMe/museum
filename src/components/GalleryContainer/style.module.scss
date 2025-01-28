@@ -1,0 +1,10 @@
+.galleryContainer {
+    height: 514px;
+    width: 100%;
+}
+
+@media (max-width: 1300px) {
+    .galleryContainer {
+        height: 40vw;
+    }
+}
