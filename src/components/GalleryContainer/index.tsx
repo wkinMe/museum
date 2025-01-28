@@ -14,20 +14,21 @@ interface GalleryContainerProps {
 }
 
 const GalleryContainer = ({ galleryCount }: GalleryContainerProps) => {
-    const [searchPromise, setSearchPromise] = useState(
+    const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
         getRandomArts(galleryCount),
     );
+
     const searchString = useRef('');
+    const [pageCount, setPageCount] = useState(0);
 
     return (
         <div className={style.galleryContainer}>
             <SearchForm
                 onClick={(cardPromise: Promise<ArtItem[]>, search: string) => {
                     searchString.current = search;
-                    if (cardPromise) {
-                        setSearchPromise(cardPromise);
-                    } else {
-                        setSearchPromise(getRandomArts(galleryCount));
+                    setSearchPromise(cardPromise);
+                    if (pageCount === 0) {
+                        setPageCount(5);
                     }
                 }}
             />
@@ -42,7 +43,7 @@ const GalleryContainer = ({ galleryCount }: GalleryContainerProps) => {
                 <Gallery cardPromise={searchPromise} />
             </Suspense>
             <PaginationButtons
-                pageCount={5}
+                pageCount={pageCount}
                 onClick={(page: number) => {
                     if (searchString.current.length !== 0) {
                         setSearchPromise(

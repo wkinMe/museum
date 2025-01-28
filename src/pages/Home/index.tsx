@@ -10,7 +10,7 @@ import GalleryContainer from '../../components/GalleryContainer';
 
 export default function Home() {
     const [randomCount] = useState(12);
-    const galleryCount = 3;
+    const [galleryCount] = useState(3);
 
     return (
         <div className={style.container}>
@@ -23,6 +23,7 @@ export default function Home() {
                     title='Our special gallery'
                 />
                 <GalleryContainer galleryCount={galleryCount} />
+                
             </div>
             <Subtitle title='Other works for you' subtitle='Here some more' />
             <Suspense fallback={<Loader size='large' />}>
