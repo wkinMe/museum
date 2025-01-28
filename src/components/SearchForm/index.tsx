@@ -12,7 +12,7 @@ const SearchFormShema = z.object({
 });
 
 interface SearchFormProps {
-    onClick: (arts: ArtItem[], searchString: string) => void;
+    onClick: (artsPromise: Promise<ArtItem[]>) => void;
 }
 
 export default function SearchForm({ onClick }: SearchFormProps) {
@@ -20,9 +20,9 @@ export default function SearchForm({ onClick }: SearchFormProps) {
         <Formik
             initialValues={{ search: '' }}
             onSubmit={async (values, { setSubmitting }) => {
-                const data = await serachByParams(values.search);
-                if (data) {
-                    onClick(data, values.search);
+                const cardPromise = serachByParams(values.search);
+                if (cardPromise) {
+                    onClick(cardPromise);
                     setSubmitting(false);
                 }
             }}

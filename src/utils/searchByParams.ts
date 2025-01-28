@@ -1,6 +1,6 @@
-import { BASE_URL, FIELDS } from '../constants/constants';
+import { BASE_URL } from '../constants/constants';
 import { ArtItemResponse } from '../constants/interfaces';
-import { makeData } from './getArtById';
+import { getArtById } from './getArtById';
 
 export const serachByParams = async (
     searchString: string,
@@ -8,9 +8,13 @@ export const serachByParams = async (
     limit = 3,
 ) => {
     const response = await fetch(
-        `${BASE_URL}/search?q=${searchString}&fields=id,${FIELDS}&page=${page}&limit=${limit}`,
+        `${BASE_URL}/search?q=${searchString}&fields=id&page=${page}&limit=${limit}`,
     );
-    const data = await response.json().then((res) => res.data);
-    const arts = data.map((i: ArtItemResponse) => makeData(i));
+
+    const res = await response.json();
+
+    const promises = res.data.map((i: ArtItemResponse) => getArtById(i.id));
+
+    const arts = await Promise.all(promises);
     return arts;
 };
