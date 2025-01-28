@@ -5,3 +5,15 @@
 
     margin-bottom: 120px;
 }
+
+@media (max-width: 815px) {
+    .cardGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .cardGrid {
+        grid-template-columns: 1fr;
+    }
+}

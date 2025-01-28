@@ -8,9 +8,14 @@ import { ArtItem } from '../../constants/interfaces';
 export default function CardGrid({
     cardPromise,
 }: {
-    cardPromise: Promise<ArtItem[]>;
+    cardPromise?: Promise<ArtItem[]>;
 }) {
-    const cards = use(cardPromise);
+    let cards;
+    if (cardPromise) {
+        cards = use(cardPromise);
+    } else {
+        cards = JSON.parse(sessionStorage.getItem('favorite')!);
+    }
 
     return (
         <div className={style.cardGrid}>

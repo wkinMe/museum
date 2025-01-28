@@ -20,7 +20,10 @@ export default function ArtOverview({ artItem, ...props }: ArtOverviewProps) {
                 value={artItem.dimensions}
             />
             <ArtOverviewItem prop='Credit line' value={artItem.credit_line} />
-            <ArtOverviewItem prop='Repository' value={'null'} />
+            <ArtOverviewItem
+                prop=''
+                value={artItem.is_public_domain ? 'Public' : 'Not public'}
+            />
         </div>
     );
 }

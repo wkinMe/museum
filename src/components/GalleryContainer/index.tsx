@@ -8,6 +8,7 @@ import PaginationButtons from '../../components/PaginationButtons';
 import { ArtItem } from '../../constants/interfaces';
 
 import style from './style.module.scss';
+import Subtitle from '../Subtitle';
 
 interface GalleryContainerProps {
     galleryCount: number;
@@ -32,6 +33,7 @@ const GalleryContainer = ({ galleryCount }: GalleryContainerProps) => {
                     }
                 }}
             />
+            <Subtitle subtitle='Topics for you' title='Our special gallery' />
             <Suspense
                 fallback={
                     <Loader

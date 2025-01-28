@@ -5,7 +5,7 @@
     max-width: 387px;
     height: 514px;
     position: relative;
-    display: flex;
+    display: grid;
     justify-content: center;
 
     & > img {
@@ -55,6 +55,8 @@
 }
 
 .wrapper {
+    display: grid;
+    justify-content: center;
     position: relative;
 
     .hidden {
@@ -111,7 +113,21 @@
 
 @media (max-width: 1300px) {
     .card {
-        max-width: 30vw;
-        height: 40vw;
+        height: 60vw;
+    }
+}
+
+@media (max-width: 815px) {
+    .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .card {
+        height: 100vw;
+    }
+    .miniCard {
+        width: 400px;
     }
 }

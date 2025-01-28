@@ -55,6 +55,10 @@
         &Img {
             justify-self: center;
             display: block;
+
+            & > img {
+                width: 100%;
+            }
         }
 
         &Info {
@@ -64,6 +68,20 @@
 
         .artYears {
             margin-bottom: 32px;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        max-width: 100%;
+    }
+    .details {
+        &Img {
+            width: 100vw;
+            & > img {
+
+            }
         }
     }
 }

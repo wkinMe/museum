@@ -17,14 +17,7 @@ export default function Home() {
             <Title>
                 let's find some <span>art</span> here!
             </Title>
-            <div className={style.specialGallery}>
-                <Subtitle
-                    subtitle='Topics for you'
-                    title='Our special gallery'
-                />
-                <GalleryContainer galleryCount={galleryCount} />
-                
-            </div>
+            <GalleryContainer galleryCount={galleryCount} />
             <Subtitle title='Other works for you' subtitle='Here some more' />
             <Suspense fallback={<Loader size='large' />}>
                 <CardGrid cardPromise={getRandomArts(randomCount)} />
