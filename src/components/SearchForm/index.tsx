@@ -12,7 +12,7 @@ const SearchFormShema = z.object({
 });
 
 interface SearchFormProps {
-    onClick: (artsPromise: Promise<ArtItem[]>) => void;
+    onClick: (artsPromise: Promise<ArtItem[]>, search: string) => void;
 }
 
 export default function SearchForm({ onClick }: SearchFormProps) {
@@ -22,7 +22,7 @@ export default function SearchForm({ onClick }: SearchFormProps) {
             onSubmit={async (values, { setSubmitting }) => {
                 const cardPromise = serachByParams(values.search);
                 if (cardPromise) {
-                    onClick(cardPromise);
+                    onClick(cardPromise, values.search);
                     setSubmitting(false);
                 }
             }}

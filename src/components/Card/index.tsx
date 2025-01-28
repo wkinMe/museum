@@ -7,6 +7,8 @@ import { ArtItem } from '../../constants/interfaces';
 import { useState } from 'react';
 import Loader from '../Loader';
 
+import NotFoundImg from '../../assets/NotFoundImg.svg';
+
 interface CardProps {
     art: ArtItem;
     size: 'large' | 'small';
@@ -15,6 +17,7 @@ interface CardProps {
 export default function Card({ art, size }: CardProps) {
     const [isFavorite, setIsFavorite] = useState<boolean>(checkIsFavorite(art));
     const [imageLoaded, setImagesLoaded] = useState(false);
+    const [imgError, setImgError] = useState(false);
 
     const {
         artist_title: artistName,
@@ -35,7 +38,11 @@ export default function Card({ art, size }: CardProps) {
             >
                 <img
                     onLoad={() => setImagesLoaded(true)}
-                    src={img}
+                    onError={() => {
+                        setImagesLoaded(true);
+                        setImgError(true);
+                    }} // Устанавливаем ошибку загрузки
+                    src={!imgError ? img : NotFoundImg}
                     alt={artName}
                     className={style.image}
                 />

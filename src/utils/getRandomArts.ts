@@ -2,9 +2,12 @@ import { BASE_URL } from '../constants/constants';
 import { ArtItem, ArtItemResponse } from '../constants/interfaces';
 import { getArtById } from './getArtById';
 
-export const getRandomArts = async (count: number): Promise<ArtItem[]> => {
+export const getRandomArts = async (
+    count: number,
+    page = 1,
+): Promise<ArtItem[]> => {
     const response = await fetch(
-        `${BASE_URL}?page=${Math.floor(Math.random() * 100 + 1)}&limit=${count}&fields=id`,
+        `${BASE_URL}?page=${page})}&limit=${count}&fields=id`,
     );
     const res = await response.json();
 
