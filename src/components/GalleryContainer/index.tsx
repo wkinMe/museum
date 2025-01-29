@@ -13,7 +13,7 @@ import { useResize } from '../../hooks/useResize';
 
 const GalleryContainer = () => {
     const width = useResize();
-    const [galleryCount, setGalleryCount] = useState(() => {
+    const [galleryCount] = useState(() => {
         if (width > 815) {
             return 3;
         } else if (width < 815 && width > 550) {
@@ -26,14 +26,6 @@ const GalleryContainer = () => {
     const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
         getRandomArts(galleryCount!),
     );
-
-    if (width > 815 && galleryCount !== 3) {
-        setGalleryCount(3);
-    } else if (width < 815 && width > 550 && galleryCount !== 2) {
-        setGalleryCount(2);
-    } else if (width < 550 && galleryCount !== 1) {
-        setGalleryCount(1);
-    }
 
     const searchString = useRef('');
 

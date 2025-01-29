@@ -1,7 +1,7 @@
 .burger {
     z-index: 7;
     .button {
-        position: fixed;
+        position: absolute;
         right: 0;
         width: 50px;
         display: flex;

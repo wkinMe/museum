@@ -5,8 +5,6 @@ import Layout from '../../components/Layout';
 import Home from '../Home';
 import Favorite from '../Favorite/indes';
 import Details from '../Details';
-import { Suspense } from 'react';
-import Loader from '../../components/Loader';
 
 function App() {
     sessionStorage.setItem('favorite', '[]');
