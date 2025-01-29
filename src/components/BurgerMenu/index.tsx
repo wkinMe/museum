@@ -27,7 +27,11 @@ export default function BurgerMenu() {
                 <span></span>
                 <span></span>
             </div>
-            <NavLinks isBurger={true} isOpen={isModalOpen} />
+            <NavLinks
+                isBurger={true}
+                isOpen={isModalOpen}
+                onClick={() => toggleMenu()}
+            />
         </div>
     );
 }

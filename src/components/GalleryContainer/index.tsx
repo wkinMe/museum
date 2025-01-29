@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import Gallery from '../../components/Gallery';
 import Loader from '../../components/Loader';
 import { getRandomArts } from '../../utils/getRandomArts';
@@ -12,10 +12,20 @@ import Subtitle from '../Subtitle';
 import { useResize } from '../../hooks/useResize';
 
 const GalleryContainer = () => {
-    const [galleryCount, setGalleryCount] = useState(3);
-    const [pageCount, setPageCount] = useState(0);
-
     const width = useResize();
+    const [galleryCount, setGalleryCount] = useState(() => {
+        if (width > 815) {
+            return 3;
+        } else if (width < 815 && width > 550) {
+            return 2;
+        } else if (width < 550) {
+            return 1;
+        }
+    });
+    const [pageCount, setPageCount] = useState(0);
+    const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
+        getRandomArts(galleryCount!),
+    );
 
     if (width > 815 && galleryCount !== 3) {
         setGalleryCount(3);
@@ -24,9 +34,6 @@ const GalleryContainer = () => {
     } else if (width < 550 && galleryCount !== 1) {
         setGalleryCount(1);
     }
-    const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
-        getRandomArts(galleryCount),
-    );
 
     const searchString = useRef('');
 

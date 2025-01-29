@@ -5,7 +5,7 @@ import { ArtItem } from '../../constants/interfaces';
 
 import { ComponentPropsWithRef, use } from 'react';
 
-export interface ArtCollection extends ComponentPropsWithRef<"div">{
+export interface ArtCollection extends ComponentPropsWithRef<'div'> {
     cardPromise: Promise<ArtItem[]>;
 }
 

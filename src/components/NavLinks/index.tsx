@@ -8,9 +8,10 @@ import homeIcon from '../../assets/home.svg';
 interface NavLinksProps {
     isBurger: boolean;
     isOpen?: boolean;
+    onClick?: () => void;
 }
 
-export default function NavLinks({ isBurger, isOpen }: NavLinksProps) {
+export default function NavLinks({ isBurger, isOpen, onClick }: NavLinksProps) {
     const { pathname } = useLocation();
 
     return (
@@ -21,7 +22,7 @@ export default function NavLinks({ isBurger, isOpen }: NavLinksProps) {
                 {pathname !== '/' && (
                     <li className={style.menuItem}>
                         <img src={homeIcon} alt='' />
-                        <Link to='/' className={style.menuItemLink}>
+                        <Link to='/' className={style.menuItemLink} onClick={onClick}>
                             Home
                         </Link>
                     </li>
@@ -29,7 +30,7 @@ export default function NavLinks({ isBurger, isOpen }: NavLinksProps) {
 
                 <li className={style.menuItem}>
                     <img src={favoriteIcon} alt='' />
-                    <Link to='/favorite' className={style.menuItemLink}>
+                    <Link to='/favorite' className={style.menuItemLink} onClick={onClick}>
                         Favorite
                     </Link>
                 </li>
