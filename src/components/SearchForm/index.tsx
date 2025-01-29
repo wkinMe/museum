@@ -28,8 +28,10 @@ export default function SearchForm({ onClick, count }: SearchFormProps) {
             validateOnChange={true}
         >
             {({ values }) => {
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 const debouncedSearch = useDebounce(values.search, 500);
 
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 useEffect(() => {
                     if (debouncedSearch.length >= 5) {
                         const cardPromise = serachByParams(

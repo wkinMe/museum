@@ -31,7 +31,7 @@ export default function Card({ art, size }: CardProps) {
 
     return (
         <div className={style.wrapper}>
-            {!imageLoaded && <Loader size={size}/>}
+            {!imageLoaded && <Loader size={size} />}
             <Link
                 to={`../details/${id}`}
                 className={`${styleName} ${!imageLoaded ? style.hidden : ''}`}

@@ -1,6 +1,6 @@
 {
     "name": "museum",
-    "private": true,
+    "private": false,
     "version": "0.0.0",
     "homepage": "https://wkinme.github.io/museum/",
     "type": "module",
@@ -12,7 +12,8 @@
         "lint": "eslint . --fix --max-warnings=0",
         "format": "prettier . --write",
         "test": "vitest",
-        "coverage": "vitest run --coverage"
+        "coverage": "vitest run --coverage",
+        "deploy": "yarn build && gh-pages -d dist"
     },
     "dependencies": {
         "formik": "^2.4.6",
@@ -32,6 +33,7 @@
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-react-hooks": "^5.0.0",
         "eslint-plugin-react-refresh": "^0.4.16",
+        "gh-pages": "^6.3.0",
         "globals": "^15.14.0",
         "jsdom": "^26.0.0",
         "prettier": "^3.4.2",
