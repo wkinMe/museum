@@ -8,16 +8,15 @@ import Details from '../Details';
 
 function App() {
     sessionStorage.setItem('favorite', '[]');
+
     return (
-        <>
-            <Routes>
-                <Route path='/' element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path='favorite' element={<Favorite />} />
-                    <Route path='details/:id' element={<Details />} />
-                </Route>
-            </Routes>
-        </>
+        <Routes>
+            <Route path='/' element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path='favorite' element={<Favorite />} />
+                <Route path='details/:id' element={<Details />} />
+            </Route>
+        </Routes>
     );
 }
 

@@ -1,0 +1,42 @@
+@use '../../constants/constants.module.scss' as *;
+.nav {
+    .menu {
+        display: flex;
+        list-style-type: none;
+        gap: 24px;
+
+        &Item {
+            display: flex;
+            gap: 4px;
+
+            &Link {
+                text-decoration: none;
+                font-family: 'Inter';
+                @include font(18px, 400, 21.78px, #fff);
+            }
+        }
+    }
+
+    &.burger {
+        z-index: 7;
+        transform: translateX(100%);
+        padding-left: 10px;
+        padding-top: 20px;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: $primary;
+        transition: all 0.3s ease-in-out;
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &.active {
+        transform: translateX(0%);
+    }
+}

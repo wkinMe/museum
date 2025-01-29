@@ -1,13 +1,34 @@
 import { Outlet } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
+import { createContext, useRef, useState } from 'react';
+
+import style from './style.module.scss';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+
+export const MenuContext = createContext({
+    isModalOpen: false,
+    toggleMenu: () => {},
+});
 
 export default function Layout() {
+    const [isModalOpen, toggleMenu] = useState(false);
+
+
     return (
-        <>
-            <Header />
-            <Outlet />
-            <Footer />
-        </>
+        <MenuContext.Provider
+            value={{
+                isModalOpen,
+                toggleMenu: () => toggleMenu(!isModalOpen),
+            }}
+        >
+            {' '}
+            <>
+                <Header/>
+                <Outlet />
+                <Footer />
+                {isModalOpen && <div className={style.modal}></div>}
+            </>
+        </MenuContext.Provider>
     );
 }
