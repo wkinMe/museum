@@ -1,6 +1,6 @@
 {
     "name": "museum",
-    "private": false,
+    "private": true,
     "version": "0.0.0",
     "homepage": "https://wkinme.github.io/museum/",
     "type": "module",
