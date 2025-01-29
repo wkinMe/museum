@@ -4,21 +4,25 @@ import FavoriteButton from '../../components/FavoriteButton';
 import ArtOverview from '../../components/ArtOverview';
 import { useParams } from 'react-router-dom';
 import { getArtById } from '../../utils/getArtById';
-import { useEffect, useState } from 'react';
+import { useState, use, Suspense } from 'react';
 import { ArtItem } from '../../constants/interfaces';
 import { getArtYears } from '../../utils/getArtYears';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
+import Loader from '../../components/Loader';
 
-export default function Details() {
+export default function DetailsWrapper() {
     const { id } = useParams() as { id: string };
-    const [art, setArt] = useState({} as ArtItem);
-    const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
 
-    useEffect(() => {
-        (async function () {
-            setArt(await getArtById(Number(id)));
-        })();
-    }, []);
+    return (
+        <Suspense fallback={<Loader size='large' />}>
+            <Details promise={getArtById(Number(id))} />
+        </Suspense>
+    );
+}
+
+function Details({ promise }: { promise: Promise<ArtItem> }) {
+    const art = use(promise);
+    const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
 
     return (
         <div className={style.container}>
