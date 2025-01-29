@@ -1,9 +1,14 @@
 @use '../../constants/constants.module.scss' as *;
 
 .pagination {
+    display: flex;
+    justify-content: end;
+
     &Buttons {
+        max-width: 100%;
         margin-top: 24px;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 30px);
         justify-self: end;
         gap: 10px;
         margin-bottom: 120px;
@@ -24,5 +29,11 @@
             background-color: $dark-secondary;
             @include font(18px, 600, 23px, #fff);
         }
+    }
+}
+
+@media (max-width: 550px) {
+    .pagination {
+        justify-content: center;
     }
 }

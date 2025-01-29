@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Footer from '../Footer';
 import Header from '../Header';
-import { createContext, useRef, useState } from 'react';
+import { createContext, useState } from 'react';
 
 import style from './style.module.scss';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 export const MenuContext = createContext({
     isModalOpen: false,
@@ -13,7 +12,6 @@ export const MenuContext = createContext({
 
 export default function Layout() {
     const [isModalOpen, toggleMenu] = useState(false);
-
 
     return (
         <MenuContext.Provider
@@ -24,7 +22,7 @@ export default function Layout() {
         >
             {' '}
             <>
-                <Header/>
+                <Header />
                 <Outlet />
                 <Footer />
                 {isModalOpen && <div className={style.modal}></div>}

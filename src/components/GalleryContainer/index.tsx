@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
 import Gallery from '../../components/Gallery';
 import Loader from '../../components/Loader';
 import { getRandomArts } from '../../utils/getRandomArts';
@@ -9,18 +9,26 @@ import { ArtItem } from '../../constants/interfaces';
 
 import style from './style.module.scss';
 import Subtitle from '../Subtitle';
+import { useResize } from '../../hooks/useResize';
 
-interface GalleryContainerProps {
-    galleryCount: number;
-}
+const GalleryContainer = () => {
+    const [galleryCount, setGalleryCount] = useState(3);
+    const [pageCount, setPageCount] = useState(0);
 
-const GalleryContainer = ({ galleryCount }: GalleryContainerProps) => {
+    const width = useResize();
+
+    if (width > 815 && galleryCount !== 3) {
+        setGalleryCount(3);
+    } else if (width < 815 && width > 550 && galleryCount !== 2) {
+        setGalleryCount(2);
+    } else if (width < 550 && galleryCount !== 1) {
+        setGalleryCount(1);
+    }
     const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
         getRandomArts(galleryCount),
     );
 
     const searchString = useRef('');
-    const [pageCount, setPageCount] = useState(0);
 
     return (
         <div className={style.galleryContainer}>
@@ -29,9 +37,10 @@ const GalleryContainer = ({ galleryCount }: GalleryContainerProps) => {
                     searchString.current = search;
                     setSearchPromise(cardPromise);
                     if (pageCount === 0) {
-                        setPageCount(5);
+                        setPageCount(Math.ceil(10 / galleryCount));
                     }
                 }}
+                count={galleryCount}
             />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
             <Suspense

@@ -31,44 +31,46 @@ export default function PaginationButtons({
     };
 
     return (
-        <div className={style.paginationButtons}>
-            {currentPage > 1 && (
-                <button
-                    className={style.paginationButtonAddition}
-                    onClick={() => {
-                        setCurrentPage(currentPage - 1);
-                    }}
-                >
-                    <img
-                        src={arrow}
-                        style={{
-                            transform: `rotate(180deg)`,
-                        }}
-                        alt='Prev'
-                    />
-                </button>
-            )}
-            {pages.map((_, ind) => {
-                return (
+        <div className={style.pagination}>
+            <div className={style.paginationButtons}>
+                {currentPage > 1 && (
                     <button
-                        className={`${style.paginationButton} ${currentPage == ind + 1 ? style.active : ''}`}
-                        onClick={handlePageClick}
-                        key={ind}
+                        className={style.paginationButtonAddition}
+                        onClick={() => {
+                            setCurrentPage(currentPage - 1);
+                        }}
                     >
-                        {ind + 1}
+                        <img
+                            src={arrow}
+                            style={{
+                                transform: `rotate(180deg)`,
+                            }}
+                            alt='Prev'
+                        />
                     </button>
-                );
-            })}
-            {currentPage < pages.length && (
-                <button
-                    className={style.paginationButtonAddition}
-                    onClick={() => {
-                        setCurrentPage(currentPage + 1);
-                    }}
-                >
-                    <img src={arrow} alt='Next' />
-                </button>
-            )}
+                )}
+                {pages.map((_, ind) => {
+                    return (
+                        <button
+                            className={`${style.paginationButton} ${currentPage == ind + 1 ? style.active : ''}`}
+                            onClick={handlePageClick}
+                            key={ind}
+                        >
+                            {ind + 1}
+                        </button>
+                    );
+                })}
+                {currentPage < pages.length && (
+                    <button
+                        className={style.paginationButtonAddition}
+                        onClick={() => {
+                            setCurrentPage(currentPage + 1);
+                        }}
+                    >
+                        <img src={arrow} alt='Next' />
+                    </button>
+                )}
+            </div>
         </div>
     );
 }

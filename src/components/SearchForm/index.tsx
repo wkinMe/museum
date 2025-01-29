@@ -13,14 +13,15 @@ const SearchFormShema = z.object({
 
 interface SearchFormProps {
     onClick: (artsPromise: Promise<ArtItem[]>, search: string) => void;
+    count: number;
 }
 
-export default function SearchForm({ onClick }: SearchFormProps) {
+export default function SearchForm({ onClick, count }: SearchFormProps) {
     return (
         <Formik
             initialValues={{ search: '' }}
             onSubmit={async (values, { setSubmitting }) => {
-                const cardPromise = serachByParams(values.search);
+                const cardPromise = serachByParams(values.search, count);
                 if (cardPromise) {
                     onClick(cardPromise, values.search);
                     setSubmitting(false);

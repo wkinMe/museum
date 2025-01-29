@@ -1,6 +1,5 @@
-import { useContext, useRef, useState, RefObject } from 'react';
+import { useContext, useRef } from 'react';
 import style from './style.module.scss';
-import { Link } from 'react-router-dom';
 import NavLinks from '../NavLinks';
 import { MenuContext } from '../Layout';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
@@ -11,8 +10,6 @@ export default function BurgerMenu() {
     const node = useRef<HTMLDivElement>(null);
 
     useOnClickOutside(node, () => {
-        console.log('o');
-
         if (isModalOpen) {
             toggleMenu();
         }
