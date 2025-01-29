@@ -5,10 +5,10 @@ import { getArtById } from './getArtById';
 export const serachByParams = async (
     searchString: string,
     page = 1,
-    limit = 3,
+    limit: number,
 ) => {
     const response = await fetch(
-        `${BASE_URL}/search?q=${searchString}&fields=id&page=${page}&limit=${limit}`,
+        `${BASE_URL}/search?q=${searchString}&fields=id&page=${page}&limit=${limit ? limit : '10'}`,
     );
 
     const res = await response.json();
