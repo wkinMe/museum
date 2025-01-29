@@ -25,6 +25,7 @@ describe('Favorite interaction test', () => {
 
         let favorite = JSON.parse(sessionStorage.getItem('favorite')!);
         expect(favorite.length).toBe(limit);
+
         randomArts.map((i) => removeFavorite(i));
         favorite = JSON.parse(sessionStorage.getItem('favorite')!);
         expect(favorite.length).toBe(0);
