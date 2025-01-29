@@ -9,6 +9,7 @@ import { ArtItem } from '../../constants/interfaces';
 import { getArtYears } from '../../utils/getArtYears';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
 import Loader from '../../components/Loader';
+import LoadImage from '../../components/LoadImage';
 
 export default function DetailsWrapper() {
     const { id } = useParams() as { id: string };
@@ -28,7 +29,7 @@ function Details({ promise }: { promise: Promise<ArtItem> }) {
         <div className={style.container}>
             <div className={style.details}>
                 <div className={style.detailsImg}>
-                    <img src={art.image_url} alt='' />
+                    <LoadImage src={art.id} size={'large'} />
                     <FavoriteButton
                         style={{
                             position: 'absolute',

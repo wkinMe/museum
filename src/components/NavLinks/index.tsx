@@ -13,7 +13,7 @@ interface NavLinksProps {
 
 export default function NavLinks({ isBurger, isOpen, onClick }: NavLinksProps) {
     const { pathname } = useLocation();
-
+    
     return (
         <nav
             className={`${style.nav} ${isBurger ? style.burger : ''} ${isOpen ? style.active : ''}`}
