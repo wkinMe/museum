@@ -5,16 +5,17 @@ import { use } from 'react';
 import style from './style.module.scss';
 import { ArtItem } from '../../constants/interfaces';
 
-export default function CardGrid({
-    cardPromise,
-}: {
+interface CardGridProps {
     cardPromise?: Promise<ArtItem[]>;
-}) {
-    let cards;
+    items?: ArtItem[];
+}
+
+export default function CardGrid({ cardPromise, items }: CardGridProps) {
+    let cards: ArtItem[];
     if (cardPromise) {
         cards = use(cardPromise);
     } else {
-        cards = JSON.parse(sessionStorage.getItem('favorite')!);
+        cards = items!;
     }
 
     return (
