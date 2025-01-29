@@ -44,17 +44,17 @@ const GalleryContainer = () => {
                     searchString.current = search;
                     setSearchPromise(cardPromise);
                     if (pageCount === 0) {
-                        setPageCount(Math.ceil(10 / galleryCount));
+                        setPageCount(Math.ceil(10 / galleryCount!));
                     }
                 }}
-                count={galleryCount}
+                count={galleryCount!}
             />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
             <Suspense
                 fallback={
                     <Loader
                         size='large'
-                        style={{ height: '100%', width: '40%' }}
+                        style={{ height: '300px', width: '300px' }}
                     />
                 }
             >

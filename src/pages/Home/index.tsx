@@ -7,7 +7,6 @@ import { getRandomArts } from '../../utils/getRandomArts';
 import { Suspense, useState } from 'react';
 import Loader from '../../components/Loader';
 import GalleryContainer from '../../components/GalleryContainer';
-import { useResize } from '../../hooks/useResize';
 
 export default function Home() {
     const [randomCount] = useState(12);

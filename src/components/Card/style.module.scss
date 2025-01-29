@@ -55,8 +55,6 @@
 }
 
 .wrapper {
-    display: grid;
-    justify-content: center;
     position: relative;
 
     .hidden {
@@ -126,6 +124,10 @@
 @media (max-width: 550px) {
     .card {
         height: 100vw;
+    }
+    .wrapper {
+        display: grid;
+        justify-content: center;
     }
     .miniCard {
         width: 395px;
