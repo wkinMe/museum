@@ -19,7 +19,7 @@ export default function Home() {
             <GalleryContainer />
             <Subtitle title='Other works for you' subtitle='Here some more' />
             <Suspense fallback={<Loader size='large' />}>
-                <CardGrid cardPromise={getRandomArts(randomCount)} />
+                <CardGrid cardPromise={getRandomArts(randomCount, 2)} />
             </Suspense>
         </div>
     );
