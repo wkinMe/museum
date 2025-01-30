@@ -15,5 +15,5 @@
             "utils": ["/src/utils"]
         }
     },
-    "lib": ["ESNext", "dom", "dom.iterable"]
+    "lib": ["ESNext.Array", "DOM", "ESNext", "etc..."]
 }
