@@ -22,14 +22,14 @@ export default function DetailsWrapper() {
 }
 
 function Details({ promise }: { promise: Promise<ArtItem> }) {
-    const art = use(promise);
+    const art: ArtItem = use(promise);
     const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
 
     return (
         <div className={style.container}>
             <div className={style.details}>
                 <div className={style.detailsImg}>
-                    <LoadImage src={art.id} size={'large'} />
+                    <LoadImage src={art.image_url} size={'large'} />
                     <FavoriteButton
                         style={{
                             position: 'absolute',
