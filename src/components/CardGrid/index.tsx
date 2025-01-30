@@ -1,5 +1,7 @@
 import Card from '../Card';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-expect-error
 import { use } from 'react';
 
 import style from './style.module.scss';

@@ -8,7 +8,6 @@ import { ArtItem } from '../../constants/interfaces';
 import { useState } from 'react';
 import { sortByAlphabet } from '../../utils/sortByAlphabet';
 import { sortByStartDate } from '../../utils/sortByStartDates';
-import { log } from 'console';
 import { sortByEndDate } from '../../utils/sortByEndDate';
 
 export default function Favorite() {

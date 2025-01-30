@@ -4,6 +4,8 @@ import FavoriteButton from '../../components/FavoriteButton';
 import ArtOverview from '../../components/ArtOverview';
 import { useParams } from 'react-router-dom';
 import { getArtById } from '../../utils/getArtById';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-expect-error
 import { useState, use, Suspense } from 'react';
 import { ArtItem } from '../../constants/interfaces';
 import { getArtYears } from '../../utils/getArtYears';
