@@ -5,11 +5,36 @@ import favoriteIcon from '../../assets/favorite.svg';
 import Subtitle from '../../components/Subtitle';
 import CardGrid from '../../components/CardGrid';
 import { ArtItem } from '../../constants/interfaces';
+import { useState } from 'react';
+import { sortByAlphabet } from '../../utils/sortByAlphabet';
+import { sortByStartDate } from '../../utils/sortByStartDates';
+import { log } from 'console';
+import { sortByEndDate } from '../../utils/sortByEndDate';
 
 export default function Favorite() {
-    const favorites: ArtItem[] = JSON.parse(
-        sessionStorage.getItem('favorite')!,
+    const [sortType, setSortType] = useState('');
+
+    let sortFunction = (arts: ArtItem[]) => arts;
+
+    switch (sortType) {
+        case 'alphabet': {
+            sortFunction = sortByAlphabet;
+            break;
+        }
+        case 'dateStart': {
+            sortFunction = sortByStartDate;
+            break;
+        }
+        case 'dateEnd': {
+            sortFunction = sortByEndDate;
+            break;
+        }
+    }
+
+    const favorites: ArtItem[] = sortFunction(
+        JSON.parse(sessionStorage.getItem('favorite')!),
     );
+    console.log(favorites);
 
     return (
         <div className={style.container}>
@@ -25,10 +50,26 @@ export default function Favorite() {
                         />{' '}
                         <span>favorite</span>
                     </Title>
+
                     <Subtitle
                         title='Your favorite list'
                         subtitle='Saved by you'
                     />
+                    <div className={style.sortBlock}>
+                        <h1>Sorting</h1>
+                        <div className={style.selectWrapper}>
+                            <select
+                                value={sortType}
+                                onChange={(e) =>
+                                    setSortType(e.currentTarget.value)
+                                }
+                            >
+                                <option value='alphabet'>Alphabet</option>
+                                <option value='dateStart'>Start date</option>
+                                <option value='dateEnd'>End date</option>
+                            </select>
+                        </div>
+                    </div>
                     <CardGrid items={favorites} />
                 </>
             ) : (
