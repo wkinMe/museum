@@ -17,7 +17,7 @@ export default function CardGrid({ cardPromise, items }: CardGridProps) {
     } else {
         cards = items!;
     }
-
+    
     return (
         <div className={style.cardGrid}>
             {cards.map((i) => {

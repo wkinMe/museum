@@ -1,1 +1,13 @@
 @use '../../constants/constants.module.scss' as *;
+
+.noFavorites {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    @include font(32px, 600, 40px, $primary);
+}
+
+.container {
+    min-height: 68vh;
+}
