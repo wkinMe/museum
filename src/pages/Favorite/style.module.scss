@@ -1,1 +1,82 @@
 @use '../../constants/constants.module.scss' as *;
+
+.noFavorites {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    @include font(32px, 600, 40px, $primary);
+}
+
+.container {
+    min-height: 68vh;
+}
+
+.sortBlock {
+    margin-bottom: 50px;
+
+    h1 {
+        font-style: 'Lexend Deca';
+        @include font(32px, 400, 40px, $primary);
+    }
+
+    /* Базовый стиль для select */
+    select {
+        appearance: none; /* Убираем стандартный стиль браузера */
+        -webkit-appearance: none; /* Для Safari */
+        -moz-appearance: none; /* Для Firefox */
+        width: 200px; /* Ширина */
+        padding: 10px 15px; /* Внутренние отступы */
+        font-size: 16px; /* Размер шрифта */
+        color: #333; /* Цвет текста */
+        background-color: #f9f9f9; /* Цвет фона */
+        border: 2px solid #ccc; /* Граница */
+        border-radius: 8px; /* Скругление углов */
+        cursor: pointer; /* Курсор в виде указателя */
+        outline: none; /* Убираем обводку при фокусе */
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease; /* Плавные переходы */
+    }
+
+    /* Стиль при наведении */
+    select:hover {
+        border-color: #888; /* Изменение цвета границы */
+    }
+
+    /* Стиль при фокусе */
+    select:focus {
+        border-color: #007bff; /* Цвет границы при фокусе */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Тень при фокусе */
+    }
+
+    /* Стиль для стрелки */
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .select-wrapper::after {
+        content: '▼'; /* Стрелка вниз */
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none; /* Чтобы клик по стрелке не мешал работе select */
+        color: #666; /* Цвет стрелки */
+        font-size: 12px;
+    }
+
+    /* Стили для option */
+    select option {
+        padding: 10px; /* Внутренние отступы */
+        background-color: #fff; /* Цвет фона */
+        color: #333; /* Цвет текста */
+    }
+
+    /* Стиль для option при наведении */
+    select option:hover {
+        background-color: #007bff; /* Цвет фона при наведении */
+        color: #fff; /* Цвет текста при наведении */
+    }
+}

@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 import Gallery from '../../components/Gallery';
 import Loader from '../../components/Loader';
 import { getRandomArts } from '../../utils/getRandomArts';
@@ -13,7 +13,7 @@ import { useResize } from '../../hooks/useResize';
 
 const GalleryContainer = () => {
     const width = useResize();
-    const [galleryCount, setGalleryCount] = useState(() => {
+    const [galleryCount] = useState(() => {
         if (width > 815) {
             return 3;
         } else if (width < 815 && width > 550) {
@@ -21,56 +21,69 @@ const GalleryContainer = () => {
         } else if (width < 550) {
             return 1;
         }
+        return 1; // Значение по умолчанию
     });
     const [pageCount, setPageCount] = useState(0);
     const [searchPromise, setSearchPromise] = useState<Promise<ArtItem[]>>(
         getRandomArts(galleryCount!),
     );
-
-    if (width > 815 && galleryCount !== 3) {
-        setGalleryCount(3);
-    } else if (width < 815 && width > 550 && galleryCount !== 2) {
-        setGalleryCount(2);
-    } else if (width < 550 && galleryCount !== 1) {
-        setGalleryCount(1);
-    }
+    const [totalItems, setTotalItems] = useState(1); // Общее количество элементов
 
     const searchString = useRef('');
+
+    // Обновляем количество страниц при изменении общего количества элементов
+    useEffect(() => {
+        if (totalItems > 0 && galleryCount > 0) {
+            setPageCount(Math.ceil(totalItems / galleryCount));
+        } else if (totalItems == 0) {
+            setPageCount(0);
+        }
+    }, [totalItems, galleryCount]);
+
+    // Функция для обновления searchPromise и общего количества элементов
+    const updateSearchPromise = async (promise: Promise<ArtItem[]>) => {
+        const data = await promise;
+        setTotalItems(data.length); // Обновляем общее количество элементов
+        setSearchPromise(Promise.resolve(data)); // Обновляем searchPromise
+    };
 
     return (
         <div className={style.galleryContainer}>
             <SearchForm
                 onClick={(cardPromise: Promise<ArtItem[]>, search: string) => {
                     searchString.current = search;
-                    setSearchPromise(cardPromise);
-                    if (pageCount === 0) {
-                        setPageCount(Math.ceil(10 / galleryCount!));
-                    }
+                    updateSearchPromise(cardPromise); // Используем новую функцию
                 }}
-                count={galleryCount!}
+                count={10}
             />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
-            <Suspense
-                fallback={
-                    <Loader
-                        size='large'
-                        style={{ height: '300px', width: '300px' }}
-                    />
-                }
-            >
-                <Gallery cardPromise={searchPromise} />
-            </Suspense>
+            {totalItems ? (
+                <Suspense
+                    fallback={
+                        <Loader
+                            size='large'
+                            style={{ height: '300px', width: '300px' }}
+                        />
+                    }
+                >
+                    <Gallery cardPromise={searchPromise} />
+                </Suspense>
+            ) : (
+                <span className={style.noImages}>
+                    There is no images by your request
+                </span>
+            )}
+
             <PaginationButtons
                 pageCount={pageCount}
                 onClick={(page: number) => {
                     if (searchString.current.length !== 0) {
-                        setSearchPromise(
-                            serachByParams(
-                                searchString.current,
-                                page,
-                                galleryCount,
-                            ),
+                        const newPromise = serachByParams(
+                            searchString.current,
+                            page,
+                            galleryCount,
                         );
+                        setSearchPromise(newPromise); // Используем новую функцию
                     }
                 }}
             />

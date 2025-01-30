@@ -1,11 +1,8 @@
 import { BASE_URL, FIELDS } from '../constants/constants';
 import { correctArtData } from './correctArtData';
 
-export async function getArtById(id: number) {
-    const response = await fetch(`${BASE_URL}/${id}?${FIELDS}`);
-
-    const data = await response.json().then((res) => res.data);
-    const art = correctArtData(data);
-
-    return art;
+export function getArtById(id: number) {
+    return fetch(`${BASE_URL}/${id}?${FIELDS}`)
+        .then((response) => response.json())
+        .then((res) => correctArtData(res.data));
 }

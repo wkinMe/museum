@@ -1,3 +1,15 @@
+@use '../../constants/constants.module.scss' as *;
+
 .galleryContainer {
+    position: relative;
     width: 100%;
+
+    .noImages {
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        font-family: 'Lexend Deca';
+        @include font(32px, 500, 40px, $primary);
+    }
 }

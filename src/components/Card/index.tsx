@@ -5,9 +5,7 @@ import { Link } from 'react-router';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
 import { ArtItem } from '../../constants/interfaces';
 import { useState } from 'react';
-import Loader from '../Loader';
-
-import NotFoundImg from '../../assets/NotFoundImg.svg';
+import LoadImage from '../LoadImage';
 
 interface CardProps {
     art: ArtItem;
@@ -16,8 +14,6 @@ interface CardProps {
 
 export default function Card({ art, size }: CardProps) {
     const [isFavorite, setIsFavorite] = useState<boolean>(checkIsFavorite(art));
-    const [imageLoaded, setImagesLoaded] = useState(false);
-    const [imgError, setImgError] = useState(false);
 
     const {
         artist_title: artistName,
@@ -31,21 +27,8 @@ export default function Card({ art, size }: CardProps) {
 
     return (
         <div className={style.wrapper}>
-            {!imageLoaded && <Loader size={size} />}
-            <Link
-                to={`../details/${id}`}
-                className={`${styleName} ${!imageLoaded ? style.hidden : ''}`}
-            >
-                <img
-                    onLoad={() => setImagesLoaded(true)}
-                    onError={() => {
-                        setImagesLoaded(true);
-                        setImgError(true);
-                    }} // Устанавливаем ошибку загрузки
-                    src={!imgError ? img : NotFoundImg}
-                    alt={artName}
-                    className={style.image}
-                />
+            <Link to={`../details/${id}`} className={`${styleName}`}>
+                <LoadImage src={img} size={size} />
                 <div className={style.info}>
                     <div className={style.infoMain}>
                         <span className={style.artName}>{artName}</span>

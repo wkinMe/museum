@@ -37,6 +37,7 @@ export default function SearchForm({ onClick, count }: SearchFormProps) {
                         const cardPromise = serachByParams(
                             debouncedSearch,
                             count,
+                            0,
                         );
                         onClick(cardPromise, debouncedSearch);
                     }
