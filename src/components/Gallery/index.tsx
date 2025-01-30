@@ -1,10 +1,9 @@
 import style from './style.module.scss';
 
 import { ComponentPropsWithRef, use } from 'react';
-import { ArtItem } from '../../constants/interfaces';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 import Card from '../Card';
+import { ArtItem } from '../../constants/interfaces';
 
 export interface ArtCollection extends ComponentPropsWithRef<'div'> {
     cardPromise: Promise<ArtItem[]>;
