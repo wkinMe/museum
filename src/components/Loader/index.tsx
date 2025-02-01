@@ -9,6 +9,7 @@ export default function Loader({ size, ...props }: LoaderProps) {
     return (
         <div
             className={`${style.spinner} ${size == 'large' ? style.large : style.small}`}
+            data-testid='loader'
             {...props}
         ></div>
     );
