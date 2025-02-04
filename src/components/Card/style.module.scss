@@ -1,4 +1,13 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
+
+.wrapper {
+    position: relative;
+
+    .hidden {
+        display: none;
+    }
+}
 
 .card {
     text-decoration: none;
@@ -19,8 +28,8 @@
 
     .info {
         align-self: end;
-        border: 1px solid #f0f1f1;
-        background-color: #fff;
+        border: 1px solid rgba(240, 241, 241);
+        background-color: rgba(255, 255, 255);
         font-family: 'Lexend Deca';
         box-sizing: border-box;
         max-width: 334px;
@@ -34,31 +43,7 @@
         &Main {
             display: grid;
             grid-template-columns: 1fr;
-
-            .artName {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                @include font(17px, 500, 26px, $primary);
-            }
-
-            .artistName {
-                @include font(15px, 400, 26px, $dark-secondary);
-            }
-
-            .public {
-                margin-top: 8px;
-                @include font(15px, 700, 26px, $primary);
-            }
         }
-    }
-}
-
-.wrapper {
-    position: relative;
-
-    .hidden {
-        display: none;
     }
 }
 
@@ -89,24 +74,24 @@
         &Main {
             display: grid;
             grid-template-columns: 1fr;
-
-            .artName {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                @include font(17px, 500, 26px, $primary);
-            }
-
-            .artistName {
-                @include font(15px, 400, 26px, $dark-secondary);
-            }
-
-            .public {
-                margin-top: 8px;
-                @include font(15px, 700, 26px, $primary);
-            }
         }
     }
+}
+
+.artName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include font(17px, 500, 26px, $primary);
+}
+
+.artistName {
+    @include font(15px, $font-size-medium, 26px, $dark-secondary);
+}
+
+.public {
+    margin-top: 8px;
+    @include font(15px, $font-weight-medium, 26px, $primary);
 }
 
 @media (max-width: 1300px) {

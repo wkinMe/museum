@@ -1,0 +1,53 @@
+// sizes
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+// colors
+$primary: rgba(57, 57, 57);
+$dark-secondary: rgba(241, 121, 0);
+$light-secondary: rgba(224, 164, 73);
+$bg: rgba(250, 250, 250);
+$error: rgb(247, 77, 77);
+
+// fonts
+$font-size-large: 64px;
+$line-height-large: 80px;
+
+$font-size-medium: 32px;
+$line-height-medium: 40px;
+
+$font-size-small: 16px;
+$line-height-small: 20px;
+
+$font-weight-large: 700;
+$font-weight-medium: 400;
+
+@mixin text-large($color) {
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+    font-weight: $font-weight-large;
+    color: $color;
+}
+
+@mixin text-medium($color) {
+    font-size: $font-size-medium;
+    line-height: $line-height-medium;
+    font-weight: $font-weight-medium;
+    color: $color;
+}
+
+@mixin text-small($color) {
+    font-size: $font-size-small;
+    line-height: $line-height-small ;
+    font-weight: $font-weight-medium;
+    color: $color;
+}
+
+$primaryFont: 'Lexend Deca';
+$secondaryFont: 'Inter';
+
+//margin
+$sectionMargin: 120px;
+$base: 16px;

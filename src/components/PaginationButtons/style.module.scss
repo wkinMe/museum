@@ -1,4 +1,5 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
 
 .pagination {
     display: flex;
@@ -11,23 +12,23 @@
         grid-template-columns: repeat(auto-fit, 30px);
         justify-self: end;
         gap: 10px;
-        margin-bottom: 120px;
+        margin-bottom: $sectionMargin;
 
         button {
             border-radius: 4px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255);
             border: none;
             outline: none;
             cursor: pointer;
             height: 30px;
             width: 30px;
 
-            @include font(18px, 300, 24px, $primary);
+            @include text-medium($primary);
         }
 
         .active {
             background-color: $dark-secondary;
-            @include font(18px, 600, 23px, #fff);
+            @include font(18px, 600, 23px, rgba(255, 255, 255));
         }
     }
 }
