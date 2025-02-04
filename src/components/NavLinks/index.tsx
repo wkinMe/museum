@@ -31,7 +31,7 @@ export default function NavLinks({ isBurger, isOpen, onClick }: NavLinksProps) {
                 <li className={style.menuItem}>
                     <img src={favoriteIcon} alt='' />
                     <Link to='/favorite' className={style.menuItemLink} onClick={onClick} data-testid="favoriteLink">
-                        Favorite
+                        Your favorites
                     </Link>
                 </li>
             </ul>

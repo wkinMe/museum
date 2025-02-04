@@ -1,15 +1,15 @@
 import style from './style.module.scss';
 
 import { ComponentPropsWithRef, use } from 'react';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import Card from '../Card';
 
 export interface ArtCollection extends ComponentPropsWithRef<'div'> {
-    cardPromise: Promise<ArtItem[]>;
+    cardPromise: Promise<IArtItem[]>;
 }
 
 export default function Gallery({ cardPromise, ...props }: ArtCollection) {
-    const cards: ArtItem[] = use(cardPromise);
+    const cards: IArtItem[] = use(cardPromise);
     return (
         <>
             <div className={style.gallery} {...props}>

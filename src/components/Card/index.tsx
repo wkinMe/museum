@@ -3,12 +3,12 @@ import style from './style.module.scss';
 import FavoriteButton from '../../components/FavoriteButton';
 import { Link } from 'react-router';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import { useState } from 'react';
 import LoadImage from '../LoadImage';
 
 interface CardProps {
-    art: ArtItem;
+    art: IArtItem;
     size: 'large' | 'small';
 }
 

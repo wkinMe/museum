@@ -1,5 +1,5 @@
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '../types/IArtItem';
 
-export const sortByEndDate = (arts: ArtItem[]) => {
-    return arts.toSorted((a: ArtItem, b: ArtItem) => a.date_end - b.date_end);
+export const sortByEndDate = (arts: IArtItem[]) => {
+    return arts.toSorted((a: IArtItem, b: IArtItem) => a.date_end - b.date_end);
 };

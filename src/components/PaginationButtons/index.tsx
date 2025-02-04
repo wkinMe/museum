@@ -1,23 +1,26 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import style from './style.module.scss';
 
 import arrow from '../../assets/arrow.svg';
-import { GalleryContext } from '../GalleryContainer';
 
 interface PaginationButtonsProps {
     onClick: (page: number) => void;
+    pageCount: number;
 }
 
-export default function PaginationButtons({ onClick }: PaginationButtonsProps) {
-    const { page, setPage, pageCount } = useContext(GalleryContext);
+export default function PaginationButtons({
+    onClick,
+    pageCount,
+}: PaginationButtonsProps) {
+    const [page, setPage] = useState(1);
     const [prevPage, setPrevPage] = useState(page);
-    
+
     if (prevPage !== page) {
         onClick(page);
         setPrevPage(page);
     }
 
-    const pages = new Array(Math.ceil(pageCount)).fill(null);
+    const pages = new Array(pageCount).fill(null);
 
     const handlePageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         setPage(Number(e.currentTarget.textContent));

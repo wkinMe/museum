@@ -1,7 +1,7 @@
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '../types/IArtItem';
 
-export const sortByStartDate = (arts: ArtItem[]) => {
+export const sortByStartDate = (arts: IArtItem[]) => {
     return arts.toSorted(
-        (a: ArtItem, b: ArtItem) => a.date_start - b.date_start,
+        (a: IArtItem, b: IArtItem) => a.date_start - b.date_start,
     );
 };

@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { getRandomArts } from '../utils/getRandomArts';
 import { sortByAlphabet } from '../utils/sortByAlphabet';
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '../types/IArtItem';
 import { sortByEndDate } from '../utils/sortByEndDate';
 import { sortByStartDate } from '../utils/sortByStartDates';
 
@@ -9,7 +9,7 @@ describe('Sort tests', () => {
     test('Sort by alphabet', async () => {
         const randomArts = await getRandomArts(5, 12);
         const sortedArts = sortByAlphabet(randomArts);
-        const sortArts = randomArts.toSorted((a: ArtItem, b: ArtItem) =>
+        const sortArts = randomArts.toSorted((a: IArtItem, b: IArtItem) =>
             a.title.localeCompare(b.title),
         );
 
@@ -20,7 +20,7 @@ describe('Sort tests', () => {
         const randomArts = await getRandomArts(5, 12);
         const sortedArts = sortByStartDate(randomArts);
         const sortArts = randomArts.toSorted(
-            (a: ArtItem, b: ArtItem) => a.date_start - b.date_start,
+            (a: IArtItem, b: IArtItem) => a.date_start - b.date_start,
         );
 
         expect(sortArts).toEqual(sortedArts);
@@ -30,7 +30,7 @@ describe('Sort tests', () => {
         const randomArts = await getRandomArts(5, 12);
         const sortedArts = sortByEndDate(randomArts);
         const sortArts = randomArts.toSorted(
-            (a: ArtItem, b: ArtItem) => a.date_end - b.date_end,
+            (a: IArtItem, b: IArtItem) => a.date_end - b.date_end,
         );
 
         expect(sortArts).toEqual(sortedArts);

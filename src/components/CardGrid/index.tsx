@@ -3,15 +3,15 @@ import Card from '../Card';
 import { use } from 'react';
 
 import style from './style.module.scss';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 
 interface CardGridProps {
-    cardPromise?: Promise<ArtItem[]>;
-    items?: ArtItem[];
+    cardPromise?: Promise<IArtItem[]>;
+    items?: IArtItem[];
 }
 
 export default function CardGrid({ cardPromise, items }: CardGridProps) {
-    let cards: ArtItem[];
+    let cards: IArtItem[];
     if (cardPromise) {
         cards = use(cardPromise);
     } else {

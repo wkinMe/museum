@@ -4,7 +4,7 @@ import style from './style.module.scss';
 import favoriteIcon from '../../assets/favorite.svg';
 import Subtitle from '../../components/Subtitle';
 import CardGrid from '../../components/CardGrid';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import { useState } from 'react';
 import { sortByAlphabet } from '../../utils/sortByAlphabet';
 import { sortByStartDate } from '../../utils/sortByStartDates';
@@ -13,7 +13,7 @@ import { sortByEndDate } from '../../utils/sortByEndDate';
 export default function Favorite() {
     const [sortType, setSortType] = useState('');
 
-    let sortFunction = (arts: ArtItem[]) => arts;
+    let sortFunction = (arts: IArtItem[]) => arts;
 
     switch (sortType) {
         case 'alphabet': {
@@ -30,7 +30,7 @@ export default function Favorite() {
         }
     }
 
-    const favorites: ArtItem[] = sortFunction(
+    const favorites: IArtItem[] = sortFunction(
         JSON.parse(sessionStorage.getItem('favorite')!),
     );
     console.log(favorites);

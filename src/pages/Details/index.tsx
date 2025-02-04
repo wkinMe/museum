@@ -5,7 +5,7 @@ import ArtOverview from '../../components/ArtOverview';
 import { useParams } from 'react-router-dom';
 import { getArtById } from '../../utils/getArtById';
 import { useState, use, Suspense } from 'react';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import { getArtYears } from '../../utils/getArtYears';
 import { checkIsFavorite } from '../../utils/checkIsFavorite';
 import Loader from '../../components/Loader';
@@ -21,8 +21,8 @@ export default function DetailsWrapper() {
     );
 }
 
-function Details({ promise }: { promise: Promise<ArtItem> }) {
-    const art: ArtItem = use(promise);
+function Details({ promise }: { promise: Promise<IArtItem> }) {
+    const art: IArtItem = use(promise);
     const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
 
     return (

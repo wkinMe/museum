@@ -1,7 +1,7 @@
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '../types/IArtItem';
 
-export const removeFavorite = (art: ArtItem) => {
-    const prevFavorites: ArtItem[] = JSON.parse(
+export const removeFavorite = (art: IArtItem) => {
+    const prevFavorites: IArtItem[] = JSON.parse(
         sessionStorage.getItem('favorite')!,
     );
     const newFavorites = JSON.stringify(

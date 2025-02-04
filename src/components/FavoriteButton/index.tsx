@@ -2,13 +2,13 @@ import style from './style.module.scss';
 
 import favoriteIcon from '../../assets/favorite.svg';
 import { removeFavorite } from '../../utils/removeFavorite';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import { addFavorite } from '../../utils/addFavorite';
 import { ComponentPropsWithoutRef } from 'react';
 
 interface FavoriteButtonProps extends ComponentPropsWithoutRef<'div'> {
     isFavorite: boolean;
-    art: ArtItem;
+    art: IArtItem;
     onClick: () => void;
 }
 

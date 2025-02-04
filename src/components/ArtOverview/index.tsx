@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { ArtItem } from '../../constants/interfaces';
+import { IArtItem } from '../../types/IArtItem';
 import ArtOverviewItem from '../ArtOverviewItem';
 import style from './style.module.scss';
 
 interface ArtOverviewProps extends ComponentPropsWithoutRef<'div'> {
-    artItem: ArtItem;
+    artItem: IArtItem;
 }
 
 export default function ArtOverview({ artItem, ...props }: ArtOverviewProps) {
