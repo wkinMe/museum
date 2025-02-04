@@ -16,5 +16,6 @@ export const serachByParams = async (
     const promises = res.data.map((i: ArtItemResponse) => getArtById(i.id));
 
     const arts = await Promise.all(promises);
+
     return arts;
 };

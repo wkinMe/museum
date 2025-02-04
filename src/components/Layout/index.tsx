@@ -12,7 +12,7 @@ export const MenuContext = createContext({
 
 export default function Layout() {
     const [isModalOpen, toggleMenu] = useState(false);
-
+    
     return (
         <MenuContext.Provider
             value={{

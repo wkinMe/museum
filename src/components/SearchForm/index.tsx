@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import style from './style.module.scss';
 
 import searchIcon from '../../assets/search.svg';
-import { serachByParams } from '../../utils/searchByParams';
-import { ArtItem } from '../../constants/interfaces';
 import { z } from 'zod';
 import { withZodSchema } from 'formik-validator-zod';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -14,11 +12,10 @@ const SearchFormShema = z.object({
 });
 
 interface SearchFormProps {
-    onClick: (artsPromise: Promise<ArtItem[]>, search: string) => void;
-    count: number;
+    onClick: (search: string) => void;
 }
 
-export default function SearchForm({ onClick, count }: SearchFormProps) {
+export default function SearchForm({ onClick }: SearchFormProps) {
     return (
         <Formik
             initialValues={{ search: '' }}
@@ -32,12 +29,7 @@ export default function SearchForm({ onClick, count }: SearchFormProps) {
 
                 useEffect(() => {
                     if (debouncedSearch.length >= 5) {
-                        const cardPromise = serachByParams(
-                            debouncedSearch,
-                            count,
-                            0,
-                        );
-                        onClick(cardPromise, debouncedSearch);
+                        onClick(debouncedSearch);
                     }
                 }, [debouncedSearch]);
 

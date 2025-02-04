@@ -10,7 +10,6 @@ export interface ArtCollection extends ComponentPropsWithRef<'div'> {
 
 export default function Gallery({ cardPromise, ...props }: ArtCollection) {
     const cards: ArtItem[] = use(cardPromise);
-
     return (
         <>
             <div className={style.gallery} {...props}>
