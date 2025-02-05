@@ -2,8 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 import style from './style.module.scss';
 
-import favoriteIcon from '../../assets/favorite.svg';
-import homeIcon from '../../assets/home.svg';
+import favoriteIcon from '@assets/favorite.svg';
+import homeIcon from '@assets/home.svg';
+
 
 interface NavLinksProps {
     isBurger: boolean;

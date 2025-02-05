@@ -7,12 +7,14 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "assets/*": ["/src/assets"],
-            "components": ["'/src/components'"],
-            "constants": ["/src/constants"],
-            "hooks": ["/src/hooks"],
-            "pages": ["/src/pages"],
-            "utils": ["/src/utils"]
+            "@src/*": ["./src/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@components/*": ["./src/components/*"],
+            "@constants/*": ["./src/constants/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@pages/*": ["./src/pages/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@api/*": ["./src/api/*"]
         },
         "lib": ["dom", "esnext"],
         "jsx": "react-jsx",

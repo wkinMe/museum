@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import NotFoundImg from '../../assets/NotFoundImg.svg';
-import Loader from '../Loader';
+import NotFoundImg from '@assets/NotFoundImg.svg';
+import Loader from '@components/Loader';
 
 interface LoadImageProps {
     src: string;

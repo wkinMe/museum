@@ -1,18 +1,19 @@
 import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
-import Gallery from '../../components/Gallery';
-import Loader from '../../components/Loader';
-import { getRandomArts } from '../../api/getRandomArts';
-import { serachByParams } from '../../api/searchByParams';
-import SearchForm from '../../components/SearchForm';
-import PaginationButtons from '../../components/PaginationButtons';
-import { IArtItem } from '../../types/IArtItem';
+
+import { IArtItem } from '@src/types/IArtItem';
 
 import style from './style.module.scss';
-import Subtitle from '../Subtitle';
-import { useResize } from '../../hooks/useResize';
-import { ARTS_IN_GALLERY, GALLERY_SIZES } from '../../constants/constants';
-import { getArtsCount } from '../../api/getImagesCount';
-import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
+import { useResize } from '@hooks/useResize';
+import { ARTS_IN_GALLERY, GALLERY_SIZES } from '@constants/constants';
+import { getArtsFromQuery } from '@utils/getArtsFromQuery';
+import { getRandomArts } from '@api/getRandomArts';
+import { serachByParams } from '@api/searchByParams';
+import { getArtsCount } from '@api/getImagesCount';
+import SearchForm from '@components/SearchForm';
+import Subtitle from '@components/Subtitle';
+import Gallery from '@components/Gallery';
+import Loader from '@components/Loader';
+import PaginationButtons from '@components/PaginationButtons';
 
 const GalleryContainer = () => {
     const width = useResize();
@@ -89,13 +90,7 @@ const GalleryContainer = () => {
             <SearchForm onClick={handleSearch} />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
             {imgCount ? (
-                <Suspense
-                    fallback={
-                        <Loader
-                            size='large'
-                        />
-                    }
-                >
+                <Suspense fallback={<Loader size='large' />}>
                     <Gallery cardPromise={searchPromise} />
                 </Suspense>
             ) : (

@@ -1,4 +1,4 @@
-import { IArtItem } from '../types/IArtItem';
+import { IArtItem } from '@src/types/IArtItem';
 import {} from '../types/IArtItemResponse';
 
 export function correctArtData(data: IArtItemResponse): IArtItem {

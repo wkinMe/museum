@@ -1,4 +1,4 @@
-import { IArtItem } from '../types/IArtItem';
+import { IArtItem } from '@src/types/IArtItem';
 
 export const sortByStartDate = (arts: IArtItem[]) => {
     return arts.toSorted(

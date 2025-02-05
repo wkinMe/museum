@@ -1,5 +1,6 @@
+
+import ArtOverviewItem from '@components/ArtOverviewItem';
 import { IArtItem } from '../../types/IArtItem';
-import ArtOverviewItem from '../ArtOverviewItem';
 import style from './style.module.scss';
 
 interface ArtOverviewProps {

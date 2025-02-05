@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import style from './style.module.scss';
 
-import arrow from '../../assets/arrow.svg';
+import arrow from '@assets/arrow.svg';
 
 interface PaginationButtonsProps {
     onClick: (page: number) => void;

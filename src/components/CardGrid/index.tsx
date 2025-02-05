@@ -3,7 +3,7 @@ import Card from '../Card';
 import { use } from 'react';
 
 import style from './style.module.scss';
-import { IArtItem } from '../../types/IArtItem';
+import { IArtItem } from '@src/types/IArtItem';
 
 interface CardGridProps {
     cardPromise?: Promise<IArtItem[]>;

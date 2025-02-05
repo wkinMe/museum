@@ -1,22 +1,22 @@
 import style from './style.module.scss';
 
-import favoriteIcon from '../../assets/favorite.svg';
-import { removeFavorite } from '../../utils/removeFavorite';
-import { IArtItem } from '../../types/IArtItem';
-import { addFavorite } from '../../utils/addFavorite';
+import favoriteIcon from '@assets/favorite.svg';
+import { IArtItem } from '@src/types/IArtItem';
+import { addFavorite } from '@utils/addFavorite';
+import { removeFavorite } from '@utils/removeFavorite';
 
 interface FavoriteButtonProps {
     isFavorite: boolean;
     art: IArtItem;
     onClick: () => void;
-    isUp?: boolean
+    isUp?: boolean;
 }
 
 export default function FavoriteButton({
     art,
     isFavorite,
     onClick,
-    isUp
+    isUp,
 }: FavoriteButtonProps) {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         onClick();

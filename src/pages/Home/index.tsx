@@ -1,14 +1,15 @@
 import style from './style.module.scss';
 
-import Subtitle from '../../components/Subtitle';
-import Title from '../../components/Title';
-import CardGrid from '../../components/CardGrid';
-import { getRandomArts } from '../../api/getRandomArts';
 import { Suspense } from 'react';
-import Loader from '../../components/Loader';
-import GalleryContainer from '../../components/GalleryContainer';
-import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
-import { ARTS_IN_HOME_CARD_GRID } from '../../constants/constants';
+
+import Subtitle from '@components/Subtitle';
+import Title from '@components/Title';
+import GalleryContainer from '@components/GalleryContainer';
+import CardGrid from '@components/CardGrid';
+import Loader from '@components/Loader';
+import { getArtsFromQuery } from '@utils/getArtsFromQuery';
+import { ARTS_IN_HOME_CARD_GRID } from '@constants/constants';
+import { getRandomArts } from '@api/getRandomArts';
 
 export default function Home() {
     return (

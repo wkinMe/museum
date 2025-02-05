@@ -1,4 +1,4 @@
-import { IArtItem } from '../types/IArtItem';
+import { IArtItem } from '@src/types/IArtItem';
 
 export const addFavorite = (art: IArtItem) => {
     const prevFavorites = JSON.parse(sessionStorage.getItem('favorite')!);

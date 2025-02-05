@@ -1,14 +1,16 @@
-import Title from '../../components/Title';
 import style from './style.module.scss';
 
-import favoriteIcon from '../../assets/favorite.svg';
-import Subtitle from '../../components/Subtitle';
-import CardGrid from '../../components/CardGrid';
-import { IArtItem } from '../../types/IArtItem';
+
 import { useState } from 'react';
-import { sortByAlphabet } from '../../utils/sortByAlphabet';
-import { sortByStartDate } from '../../utils/sortByStartDates';
-import { sortByEndDate } from '../../utils/sortByEndDate';
+import { sortByAlphabet } from '@utils/sortByAlphabet';
+import { sortByStartDate } from '@utils/sortByStartDates';
+import { sortByEndDate } from '@utils/sortByEndDate';
+import Title from '@components/Title';
+import Subtitle from '@components/Subtitle';
+import CardGrid from '@components/CardGrid';
+import favoriteIcon from "@assets/favorite.svg"
+import { IArtItem } from '@src/types/IArtItem';
+
 
 export default function Favorite() {
     const [sortType, setSortType] = useState('');

@@ -1,11 +1,11 @@
 import style from './style.module.scss';
 
-import FavoriteButton from '../../components/FavoriteButton';
 import { Link } from 'react-router';
-import { checkIsFavorite } from '../../utils/checkIsFavorite';
-import { IArtItem } from '../../types/IArtItem';
+import { IArtItem } from '@src/types/IArtItem';
 import { useState } from 'react';
-import LoadImage from '../LoadImage';
+import { checkIsFavorite } from '@utils/checkIsFavorite';
+import LoadImage from '@components/LoadImage';
+import FavoriteButton from '@components/FavoriteButton';
 
 interface CardProps {
     art: IArtItem;
