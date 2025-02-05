@@ -1,9 +1,9 @@
-import { ComponentPropsWithoutRef, useState } from 'react';
+import { useState } from 'react';
 
 import NotFoundImg from '../../assets/NotFoundImg.svg';
 import Loader from '../Loader';
 
-interface LoadImageProps extends ComponentPropsWithoutRef<'img'> {
+interface LoadImageProps {
     src: string;
     size: 'large' | 'small';
 }

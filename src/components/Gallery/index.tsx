@@ -1,10 +1,10 @@
 import style from './style.module.scss';
 
-import { ComponentPropsWithRef, use } from 'react';
+import { use } from 'react';
 import { IArtItem } from '../../types/IArtItem';
 import Card from '../Card';
 
-export interface ArtCollection extends ComponentPropsWithRef<'div'> {
+export interface ArtCollection {
     cardPromise: Promise<IArtItem[]>;
 }
 

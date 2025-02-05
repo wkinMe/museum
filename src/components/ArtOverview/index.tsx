@@ -1,15 +1,14 @@
-import { ComponentPropsWithoutRef } from 'react';
 import { IArtItem } from '../../types/IArtItem';
 import ArtOverviewItem from '../ArtOverviewItem';
 import style from './style.module.scss';
 
-interface ArtOverviewProps extends ComponentPropsWithoutRef<'div'> {
+interface ArtOverviewProps {
     artItem: IArtItem;
 }
 
-export default function ArtOverview({ artItem, ...props }: ArtOverviewProps) {
+export default function ArtOverview({ artItem }: ArtOverviewProps) {
     return (
-        <div className={style.artOverview} {...props}>
+        <div className={style.artOverview}>
             <h3>Overview</h3>
             <ArtOverviewItem
                 prop='Artist nationality'

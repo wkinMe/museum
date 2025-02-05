@@ -4,21 +4,20 @@ import favoriteIcon from '../../assets/favorite.svg';
 import { removeFavorite } from '../../utils/removeFavorite';
 import { IArtItem } from '../../types/IArtItem';
 import { addFavorite } from '../../utils/addFavorite';
-import { ComponentPropsWithoutRef } from 'react';
 
-interface FavoriteButtonProps extends ComponentPropsWithoutRef<'div'> {
+interface FavoriteButtonProps {
     isFavorite: boolean;
     art: IArtItem;
     onClick: () => void;
+    isUp?: boolean
 }
 
 export default function FavoriteButton({
     art,
     isFavorite,
     onClick,
-    ...props
+    isUp
 }: FavoriteButtonProps) {
-    
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         onClick();
         e.preventDefault();
@@ -31,9 +30,8 @@ export default function FavoriteButton({
 
     return (
         <div
-            {...props}
             onClick={handleClick}
-            className={`${style.favorite} ${isFavorite ? style.favoriteActive : ''}`}
+            className={`${style.favorite} ${isFavorite ? style.favoriteActive : ''} ${isUp ? style.up : ''}`}
         >
             <img src={favoriteIcon} alt='' />
         </div>

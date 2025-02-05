@@ -33,6 +33,10 @@
     }
 }
 
+.rotated {
+    transform: rotate(180deg);
+}
+
 @media (max-width: 550px) {
     .pagination {
         justify-content: center;

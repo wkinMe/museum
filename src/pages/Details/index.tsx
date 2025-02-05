@@ -31,14 +31,10 @@ function Details({ promise }: { promise: Promise<IArtItem> }) {
                 <div className={style.detailsImg}>
                     <LoadImage src={art.image_url} size={'large'} />
                     <FavoriteButton
-                        style={{
-                            position: 'absolute',
-                            top: '16px',
-                            right: '16px',
-                        }}
                         onClick={() => setIsFavorite(!isFavorite)}
                         art={art}
                         isFavorite={isFavorite}
+                        isUp={true}
                     />
                 </div>
                 <div className={style.detailsInfo}>
@@ -49,7 +45,6 @@ function Details({ promise }: { promise: Promise<IArtItem> }) {
                     </span>
                     <ArtOverview
                         artItem={art}
-                        style={{ alignSelf: 'flex-end' }}
                     />
                 </div>
             </div>

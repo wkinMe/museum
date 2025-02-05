@@ -42,9 +42,7 @@ export default function PaginationButtons({
                         >
                             <img
                                 src={arrow}
-                                style={{
-                                    transform: `rotate(180deg)`,
-                                }}
+                                className={style.rotated}
                                 alt='Prev'
                             />
                         </button>

@@ -93,7 +93,6 @@ const GalleryContainer = () => {
                     fallback={
                         <Loader
                             size='large'
-                            style={{ height: '300px', width: '300px' }}
                         />
                     }
                 >

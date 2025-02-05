@@ -45,7 +45,6 @@ export default function Favorite() {
                         here are your
                         <br />
                         <img
-                            style={{ width: '32px', height: '42px' }}
                             src={favoriteIcon}
                             alt=''
                         />{' '}
