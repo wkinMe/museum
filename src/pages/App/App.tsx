@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import { lazy } from 'react';
+import NotFound from '../NotFound';
 
 const Layout = lazy(() => import('../../components/Layout'));
 const Home = lazy(() => import('../Home'));
@@ -19,6 +20,7 @@ function App() {
                     <Route path='favorite' element={<Favorite />} />
                     <Route path='details/:id' element={<Details />} />
                 </Route>
+                <Route path='*' element={<NotFound />}></Route>
             </Routes>
         </>
     );
