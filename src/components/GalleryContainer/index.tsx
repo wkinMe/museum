@@ -13,7 +13,6 @@ import { useResize } from '../../hooks/useResize';
 import { ARTS_IN_GALLERY, GALLERY_SIZES } from '../../constants/constants';
 import { getArtsCount } from '../../utils/getImagesCount';
 import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
-import { log } from 'console';
 
 const GalleryContainer = () => {
     const width = useResize();
@@ -31,13 +30,13 @@ const GalleryContainer = () => {
 
     const [pageCount, setPageCount] = useState(0);
 
-    const promise = useCallback(
+    const initialPromise = useCallback(
         async () => await getArtsFromQuery(getRandomArts(imgCount)),
         [imgCount],
     );
 
     const [searchPromise, setSearchPromise] =
-        useState<Promise<IArtItem[]>>(promise);
+        useState<Promise<IArtItem[]>>(initialPromise);
 
     useEffect(() => {
         if (width > 815 && imgCount !== GALLERY_SIZES.LARGE) {
@@ -53,7 +52,6 @@ const GalleryContainer = () => {
         }
     }, [width]);
 
-    // Обновляем количество страниц при изменении общего количества элементов
     useEffect(() => {
         if (imgCount > 0 && pageCount !== 0) {
             setPageCount(Math.ceil(ARTS_IN_GALLERY / imgCount));
@@ -74,10 +72,8 @@ const GalleryContainer = () => {
                     );
                     const artsCount = await getArtsCount(search);
                     const pages = Math.ceil(artsCount / imgCount);
-                    
-                    if (pageCount !== pages) {
-                        console.log(pages);
 
+                    if (pageCount !== pages) {
                         setPageCount(pages);
                     }
                 }}

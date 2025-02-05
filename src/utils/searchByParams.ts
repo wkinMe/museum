@@ -1,6 +1,4 @@
 import { BASE_URL } from '../constants/constants';
-import { IArtItemResponse } from '../types/IArtItemResponse';
-import { getArtById } from './getArtById';
 
 export const serachByParams = async (
     searchString: string,

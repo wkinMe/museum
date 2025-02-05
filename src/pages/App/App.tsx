@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Layout from '../../components/Layout';
-import Home from '../Home';
-import Favorite from '../Favorite/indes';
-import Details from '../Details';
+import { lazy } from 'react';
+
+const Layout = lazy(() => import('../../components/Layout'));
+const Home = lazy(() => import('../Home'));
+const Favorite = lazy(() => import('../Favorite'));
+const Details = lazy(() => import('../Details'));
 
 function App() {
     sessionStorage.setItem('favorite', '[]');
