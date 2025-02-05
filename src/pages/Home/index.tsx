@@ -4,14 +4,13 @@ import Subtitle from '../../components/Subtitle';
 import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
 import { getRandomArts } from '../../api/getRandomArts';
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
 import Loader from '../../components/Loader';
 import GalleryContainer from '../../components/GalleryContainer';
 import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
+import { ARTS_IN_HOME_CARD_GRID } from '../../constants/constants';
 
 export default function Home() {
-    const [randomCount] = useState(12);
-
     return (
         <section className={style.container}>
             <Title>
@@ -21,7 +20,9 @@ export default function Home() {
             <Subtitle title='Other works for you' subtitle='Here some more' />
             <Suspense fallback={<Loader size='large' />}>
                 <CardGrid
-                    cardPromise={getArtsFromQuery(getRandomArts(randomCount))}
+                    cardPromise={getArtsFromQuery(
+                        getRandomArts(ARTS_IN_HOME_CARD_GRID),
+                    )}
                 />
             </Suspense>
         </section>
