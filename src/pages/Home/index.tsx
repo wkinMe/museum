@@ -13,7 +13,7 @@ export default function Home() {
     const [randomCount] = useState(12);
 
     return (
-        <div className={style.container}>
+        <section className={style.container}>
             <Title>
                 let's find some <span>art</span> here!
             </Title>
@@ -24,6 +24,6 @@ export default function Home() {
                     cardPromise={getArtsFromQuery(getRandomArts(randomCount))}
                 />
             </Suspense>
-        </div>
+        </section>
     );
 }

@@ -38,7 +38,7 @@ export default function Favorite() {
         setSortType(e.currentTarget.value);
 
     return (
-        <div className={style.container}>
+        <section className={style.container}>
             {favorites.length ? (
                 <>
                     <Title>
@@ -72,6 +72,6 @@ export default function Favorite() {
                     You haven't added to favorites yet
                 </span>
             )}
-        </div>
+        </section>
     );
 }

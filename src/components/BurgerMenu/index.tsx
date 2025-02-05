@@ -45,7 +45,7 @@ export default function BurgerMenu() {
     };
 
     return (
-        <div className={style.burger} ref={node}>
+        <aside className={style.burger} ref={node}>
             <div
                 className={`${style.button} ${isModalOpen ? style.active : ''}`}
                 onClick={handleClick}
@@ -59,6 +59,6 @@ export default function BurgerMenu() {
                 isOpen={isModalOpen}
                 onClick={handleClick}
             />
-        </div>
+        </aside>
     );
 }

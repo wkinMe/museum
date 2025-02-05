@@ -27,7 +27,7 @@ function Details({ promise }: { promise: Promise<IArtItem> }) {
 
     return (
         <div className={style.container}>
-            <div className={style.details}>
+            <section className={style.details}>
                 <div className={style.detailsImg}>
                     <LoadImage src={art.image_url} size={'large'} />
                     <FavoriteButton
@@ -47,7 +47,7 @@ function Details({ promise }: { promise: Promise<IArtItem> }) {
                         artItem={art}
                     />
                 </div>
-            </div>
+            </section>
         </div>
     );
 }
