@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useEffect } from 'react';
+import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import Gallery from '../../components/Gallery';
 import Loader from '../../components/Loader';
 import { getRandomArts } from '../../utils/getRandomArts';
@@ -12,6 +12,8 @@ import Subtitle from '../Subtitle';
 import { useResize } from '../../hooks/useResize';
 import { ARTS_IN_GALLERY, GALLERY_SIZES } from '../../constants/constants';
 import { getArtsCount } from '../../utils/getImagesCount';
+import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
+import { log } from 'console';
 
 const GalleryContainer = () => {
     const width = useResize();
@@ -29,13 +31,13 @@ const GalleryContainer = () => {
 
     const [pageCount, setPageCount] = useState(0);
 
-    const [searchPromise, setSearchPromise] = useState<Promise<IArtItem[]>>(
-        Promise.resolve([]),
+    const promise = useCallback(
+        async () => await getArtsFromQuery(getRandomArts(imgCount)),
+        [imgCount],
     );
 
-    useEffect(() => {
-        setSearchPromise(getRandomArts(imgCount));
-    }, []);
+    const [searchPromise, setSearchPromise] =
+        useState<Promise<IArtItem[]>>(promise);
 
     useEffect(() => {
         if (width > 815 && imgCount !== GALLERY_SIZES.LARGE) {
@@ -65,11 +67,18 @@ const GalleryContainer = () => {
             <SearchForm
                 onClick={async (search: string) => {
                     searchString.current = search;
-                    setSearchPromise(serachByParams(search, page, imgCount));
+                    setSearchPromise(
+                        getArtsFromQuery(
+                            serachByParams(search, page, imgCount),
+                        ),
+                    );
                     const artsCount = await getArtsCount(search);
-                    const artsPerPage = Math.ceil(artsCount / imgCount);
-                    if (pageCount !== artsPerPage) {
-                        setPageCount(artsPerPage);
+                    const pages = Math.ceil(artsCount / imgCount);
+                    
+                    if (pageCount !== pages) {
+                        console.log(pages);
+
+                        setPageCount(pages);
                     }
                 }}
             />
@@ -96,10 +105,12 @@ const GalleryContainer = () => {
                 onClick={(page: number) => {
                     if (searchString.current.length !== 0) {
                         setSearchPromise(
-                            serachByParams(
-                                searchString.current,
-                                page,
-                                imgCount,
+                            getArtsFromQuery(
+                                serachByParams(
+                                    searchString.current,
+                                    page,
+                                    imgCount,
+                                ),
                             ),
                         );
                         setPage(page);

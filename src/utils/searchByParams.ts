@@ -11,11 +11,5 @@ export const serachByParams = async (
         `${BASE_URL}/search?q=${searchString}&fields=id&page=${page}&limit=${limit}`,
     );
 
-    const res = await response.json();
-
-    const promises = res.data.map((i: IArtItemResponse) => getArtById(i.id));
-
-    const arts = await Promise.all(promises);
-
-    return arts;
+    return response;
 };
