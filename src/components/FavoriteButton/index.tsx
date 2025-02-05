@@ -18,6 +18,7 @@ export default function FavoriteButton({
     onClick,
     ...props
 }: FavoriteButtonProps) {
+    
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         onClick();
         e.preventDefault();

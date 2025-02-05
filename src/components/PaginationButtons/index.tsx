@@ -26,6 +26,11 @@ export default function PaginationButtons({
         setPage(Number(e.currentTarget.textContent));
     };
 
+    const handleSideBtn = (inc: boolean) => {
+        let count = inc ? 1 : -1;
+        setPage(page + count);
+    };
+
     return (
         pageCount > 1 && (
             <div className={style.pagination}>
@@ -33,9 +38,7 @@ export default function PaginationButtons({
                     {page > 1 && (
                         <button
                             className={style.paginationButtonAddition}
-                            onClick={() => {
-                                setPage(page - 1);
-                            }}
+                            onClick={() => handleSideBtn(true)}
                         >
                             <img
                                 src={arrow}
@@ -60,9 +63,7 @@ export default function PaginationButtons({
                     {page < pages.length && (
                         <button
                             className={style.paginationButtonAddition}
-                            onClick={() => {
-                                setPage(page + 1);
-                            }}
+                            onClick={() => handleSideBtn(false)}
                         >
                             <img src={arrow} alt='Next' />
                         </button>

@@ -60,24 +60,33 @@ const GalleryContainer = () => {
         }
     }, [imgCount]);
 
+    const handleSearch = async (search: string) => {
+        searchString.current = search;
+        setSearchPromise(
+            getArtsFromQuery(serachByParams(search, page, imgCount)),
+        );
+        const artsCount = await getArtsCount(search);
+        const pages = Math.ceil(artsCount / imgCount);
+
+        if (pageCount !== pages) {
+            setPageCount(pages);
+        }
+    };
+
+    const handlePaginate = (page: number) => {
+        if (searchString.current.length !== 0) {
+            setSearchPromise(
+                getArtsFromQuery(
+                    serachByParams(searchString.current, page, imgCount),
+                ),
+            );
+            setPage(page);
+        }
+    };
+
     return (
         <div className={style.galleryContainer}>
-            <SearchForm
-                onClick={async (search: string) => {
-                    searchString.current = search;
-                    setSearchPromise(
-                        getArtsFromQuery(
-                            serachByParams(search, page, imgCount),
-                        ),
-                    );
-                    const artsCount = await getArtsCount(search);
-                    const pages = Math.ceil(artsCount / imgCount);
-
-                    if (pageCount !== pages) {
-                        setPageCount(pages);
-                    }
-                }}
-            />
+            <SearchForm onClick={handleSearch} />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
             {imgCount ? (
                 <Suspense
@@ -95,24 +104,8 @@ const GalleryContainer = () => {
                     There is no images by your request
                 </span>
             )}
-
-            <PaginationButtons
-                pageCount={pageCount}
-                onClick={(page: number) => {
-                    if (searchString.current.length !== 0) {
-                        setSearchPromise(
-                            getArtsFromQuery(
-                                serachByParams(
-                                    searchString.current,
-                                    page,
-                                    imgCount,
-                                ),
-                            ),
-                        );
-                        setPage(page);
-                    }
-                }}
-            />
+            
+            <PaginationButtons pageCount={pageCount} onClick={handlePaginate} />
         </div>
     );
 };

@@ -33,7 +33,9 @@ export default function Favorite() {
     const favorites: IArtItem[] = sortFunction(
         JSON.parse(sessionStorage.getItem('favorite')!),
     );
-    console.log(favorites);
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+        setSortType(e.currentTarget.value);
 
     return (
         <div className={style.container}>
@@ -57,12 +59,7 @@ export default function Favorite() {
                     <div className={style.sortBlock}>
                         <h1>Sorting</h1>
                         <div className={style.selectWrapper}>
-                            <select
-                                value={sortType}
-                                onChange={(e) =>
-                                    setSortType(e.currentTarget.value)
-                                }
-                            >
+                            <select value={sortType} onChange={handleChange}>
                                 <option value='alphabet'>Alphabet</option>
                                 <option value='dateStart'>Start date</option>
                                 <option value='dateEnd'>End date</option>

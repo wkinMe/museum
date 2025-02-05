@@ -11,7 +11,7 @@ import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
 
 export default function Home() {
     const [randomCount] = useState(12);
-
+    
     return (
         <div className={style.container}>
             <Title>

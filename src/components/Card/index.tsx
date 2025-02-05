@@ -25,6 +25,10 @@ export default function Card({ art, size }: CardProps) {
 
     const styleName = size === 'large' ? style.card : style.miniCard;
 
+    const handleFavoriteBtnClick = () => {
+        setIsFavorite(!isFavorite);
+    };
+
     return (
         <div className={style.wrapper}>
             <Link to={`../details/${id}`} className={`${styleName}`}>
@@ -40,7 +44,7 @@ export default function Card({ art, size }: CardProps) {
                     <FavoriteButton
                         art={art}
                         isFavorite={isFavorite}
-                        onClick={() => setIsFavorite(!isFavorite)}
+                        onClick={handleFavoriteBtnClick}
                     />
                 </div>
             </Link>

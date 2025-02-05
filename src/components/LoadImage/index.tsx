@@ -12,15 +12,21 @@ export default function LoadImage({ src, size, ...props }: LoadImageProps) {
     const [imageLoaded, setImagesLoaded] = useState(false);
     const [imgError, setImgError] = useState(false);
 
+    const handleLoad = () => {
+        setImagesLoaded(true);
+    };
+
+    const handleError = () => {
+        setImagesLoaded(true);
+        setImgError(true);
+    };
+
     return (
         <>
             {!imageLoaded && <Loader size={size} />}
             <img
-                onLoad={() => setImagesLoaded(true)}
-                onError={() => {
-                    setImagesLoaded(true);
-                    setImgError(true);
-                }}
+                onLoad={handleLoad}
+                onError={handleError}
                 src={!imgError ? src : NotFoundImg}
                 {...props}
             />
