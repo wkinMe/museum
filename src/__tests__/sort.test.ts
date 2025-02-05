@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { getRandomArts } from '../utils/getRandomArts';
+import { getRandomArts } from '../api/getRandomArts';
 import { sortByAlphabet } from '../utils/sortByAlphabet';
 import { IArtItem } from '../types/IArtItem';
 import { sortByEndDate } from '../utils/sortByEndDate';

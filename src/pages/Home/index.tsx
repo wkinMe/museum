@@ -3,7 +3,7 @@ import style from './style.module.scss';
 import Subtitle from '../../components/Subtitle';
 import Title from '../../components/Title';
 import CardGrid from '../../components/CardGrid';
-import { getRandomArts } from '../../utils/getRandomArts';
+import { getRandomArts } from '../../api/getRandomArts';
 import { Suspense, useState } from 'react';
 import Loader from '../../components/Loader';
 import GalleryContainer from '../../components/GalleryContainer';
@@ -11,7 +11,7 @@ import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
 
 export default function Home() {
     const [randomCount] = useState(12);
-    
+
     return (
         <div className={style.container}>
             <Title>

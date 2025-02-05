@@ -3,7 +3,7 @@ import style from './style.module.scss';
 import FavoriteButton from '../../components/FavoriteButton';
 import ArtOverview from '../../components/ArtOverview';
 import { useParams } from 'react-router-dom';
-import { getArtById } from '../../utils/getArtById';
+import { getArtById } from '../../api/getArtById';
 import { useState, use, Suspense } from 'react';
 import { IArtItem } from '../../types/IArtItem';
 import { getArtYears } from '../../utils/getArtYears';

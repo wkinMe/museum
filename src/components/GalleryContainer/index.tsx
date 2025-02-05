@@ -1,8 +1,8 @@
 import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import Gallery from '../../components/Gallery';
 import Loader from '../../components/Loader';
-import { getRandomArts } from '../../utils/getRandomArts';
-import { serachByParams } from '../../utils/searchByParams';
+import { getRandomArts } from '../../api/getRandomArts';
+import { serachByParams } from '../../api/searchByParams';
 import SearchForm from '../../components/SearchForm';
 import PaginationButtons from '../../components/PaginationButtons';
 import { IArtItem } from '../../types/IArtItem';
@@ -11,7 +11,7 @@ import style from './style.module.scss';
 import Subtitle from '../Subtitle';
 import { useResize } from '../../hooks/useResize';
 import { ARTS_IN_GALLERY, GALLERY_SIZES } from '../../constants/constants';
-import { getArtsCount } from '../../utils/getImagesCount';
+import { getArtsCount } from '../../api/getImagesCount';
 import { getArtsFromQuery } from '../../utils/getArtsFromQuery';
 
 const GalleryContainer = () => {
@@ -104,7 +104,7 @@ const GalleryContainer = () => {
                     There is no images by your request
                 </span>
             )}
-            
+
             <PaginationButtons pageCount={pageCount} onClick={handlePaginate} />
         </div>
     );
