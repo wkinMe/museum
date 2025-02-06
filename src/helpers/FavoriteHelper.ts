@@ -23,7 +23,7 @@ class FavoriteHelper {
 
     public addToFavorites(item: IFavoriteItem): void {
         const favorites = this.getFavorites();
-        if (!favorites.includes(item)) {
+        if (!favorites.find((fav) => fav.id == item.id)) {
             favorites.push(item);
             sessionStorage.setItem(this.storageKey, JSON.stringify(favorites));
         }
