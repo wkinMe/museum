@@ -42,7 +42,7 @@ export default function Card({ art, size }: CardProps) {
                         </span>
                     </div>
                     <FavoriteButton
-                        art={art}
+                        artId={art.id}
                         isFavorite={isFavorite}
                         onClick={handleFavoriteBtnClick}
                     />
