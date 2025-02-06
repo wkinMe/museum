@@ -5,12 +5,11 @@ import { useParams } from 'react-router-dom';
 import { Suspense, use, useState } from 'react';
 import { getArtById } from '@api/getArtById';
 import { IArtItem } from '@src/types/IArtItem';
-import { checkIsFavorite } from '@utils/checkIsFavorite';
 import LoadImage from '@components/LoadImage';
 import FavoriteButton from '@components/FavoriteButton';
 import { getArtYears } from '@utils/getArtYears';
 import ArtOverview from '@components/ArtOverview';
-
+import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 
 export default function DetailsWrapper() {
     const { id } = useParams() as { id: string };
@@ -24,29 +23,30 @@ export default function DetailsWrapper() {
 
 function Details({ promise }: { promise: Promise<IArtItem> }) {
     const art: IArtItem = use(promise);
-    const [isFavorite, setIsFavorite] = useState(checkIsFavorite(art));
+    const { id, title, artist_title, date_start, date_end, image_url } = art;
+    const [isFavorite, setIsFavorite] = useState(
+        favoriteHelper.isFavorite(art),
+    );
 
     return (
         <div className={style.container}>
             <section className={style.details}>
                 <div className={style.detailsImg}>
-                    <LoadImage src={art.image_url} size={'large'} />
+                    <LoadImage src={image_url} size={'large'} />
                     <FavoriteButton
                         onClick={() => setIsFavorite(!isFavorite)}
-                        art={art}
+                        artId={id}
                         isFavorite={isFavorite}
                         isUp={true}
                     />
                 </div>
                 <div className={style.detailsInfo}>
-                    <span className={style.artName}>{art.title}</span>
-                    <span className={style.artistName}>{art.artist_title}</span>
+                    <span className={style.artName}>{title}</span>
+                    <span className={style.artistName}>{artist_title}</span>
                     <span className={style.artYears}>
-                        {getArtYears(art.date_start, art.date_end)}
+                        {getArtYears(date_start, date_end)}
                     </span>
-                    <ArtOverview
-                        artItem={art}
-                    />
+                    <ArtOverview {...art} />
                 </div>
             </section>
         </div>

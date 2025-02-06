@@ -15,7 +15,7 @@ import Gallery from '@components/Gallery';
 import Loader from '@components/Loader';
 import PaginationButtons from '@components/PaginationButtons';
 
-const GalleryContainer = () => {
+export default function GalleryContainer() {
     const width = useResize();
 
     const searchString = useRef('');
@@ -102,6 +102,4 @@ const GalleryContainer = () => {
             <PaginationButtons pageCount={pageCount} onClick={handlePaginate} />
         </div>
     );
-};
-
-export default GalleryContainer;
+}

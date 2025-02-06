@@ -23,7 +23,8 @@ class FavoriteHelper {
 
     public addToFavorites(item: IFavoriteItem): void {
         const favorites = this.getFavorites();
-        if (!favorites.find((fav) => fav.id == item.id)) {
+        const { id } = item;
+        if (!favorites.find((fav) => fav.id == id)) {
             favorites.push(item);
             sessionStorage.setItem(this.storageKey, JSON.stringify(favorites));
         }
@@ -31,8 +32,9 @@ class FavoriteHelper {
 
     public removeFromFavorites(item: IFavoriteItem): void {
         const favorites = this.getFavorites();
+        const { id } = item;
         const updatedFavorites = favorites.filter(
-            (favorite) => favorite !== item,
+            (favorite) => favorite.id !== id,
         );
         sessionStorage.setItem(
             this.storageKey,
@@ -52,7 +54,9 @@ class FavoriteHelper {
 
     public isFavorite(item: IFavoriteItem): boolean {
         const favorites = this.getFavorites();
-        return favorites.includes(item);
+        const { id } = item;
+
+        return !!favorites.find((fav) => fav.id == id);
     }
 }
 

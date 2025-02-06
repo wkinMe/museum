@@ -3,6 +3,7 @@ import './App.css';
 
 import { lazy } from 'react';
 import NotFound from '../NotFound';
+import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 
 const Layout = lazy(() => import('../../components/Layout'));
 const Home = lazy(() => import('../Home'));
@@ -10,8 +11,6 @@ const Favorite = lazy(() => import('../Favorite'));
 const Details = lazy(() => import('../Details'));
 
 function App() {
-    sessionStorage.setItem('favorite', '[]');
-
     return (
         <>
             <Routes>

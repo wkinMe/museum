@@ -14,7 +14,7 @@ export default function Gallery({ cardPromise }: ArtCollection) {
     return (
         <div className={style.gallery}>
             {cards.map((i) => {
-                return <Card key={i.id} size='large' art={i} />;
+                return <Card key={i.id} size='large' {...i} />;
             })}
         </div>
     );
