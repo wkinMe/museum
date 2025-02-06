@@ -1,5 +1,7 @@
 import { IArtItem } from '@src/types/IArtItem';
 
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
+import ErrorText from '@components/ErrorText';
 import Gallery from '@components/Gallery';
 import Loader from '@components/Loader';
 import PaginationButtons from '@components/PaginationButtons';
@@ -95,9 +97,13 @@ export default function GalleryContainer() {
             <SearchForm onClick={handleSearch} />
             <Subtitle subtitle='Topics for you' title='Our special gallery' />
             {imgCount ? (
-                <Suspense fallback={<Loader size='large' />}>
-                    <Gallery cardPromise={searchPromise} />
-                </Suspense>
+                <ErrorBoundary
+                    fallback={<ErrorText text='Gallery render error' />}
+                >
+                    <Suspense fallback={<Loader size='large' />}>
+                        <Gallery cardPromise={searchPromise} />
+                    </Suspense>
+                </ErrorBoundary>
             ) : (
                 <span className={style.noImages}>
                     There is no images by your request

@@ -1,5 +1,8 @@
 import { IArtItem } from '@src/types/IArtItem';
 
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
+import ErrorText from '@components/ErrorText';
+
 import { use } from 'react';
 
 import Card from '../Card';

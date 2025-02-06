@@ -1,10 +1,11 @@
+import CardGrid from '@src/components/CardGrid';
+import ErrorBoundary from '@src/components/ErrorBoundary/ErrorBoundary';
 import Loader from '@src/components/Loader';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 import { IArtItem } from '@src/types/IArtItem';
 
 import favoriteIcon from '@assets/favorite.svg';
 
-import CardGrid from '@components/CardGrid';
 import Subtitle from '@components/Subtitle';
 import Title from '@components/Title';
 
@@ -76,7 +77,9 @@ export default function Favorite() {
                             </select>
                         </div>
                     </div>
-                    <CardGrid items={favorites} />
+                    <ErrorBoundary fallback={'Card grid render error'}>
+                        <CardGrid items={favorites} />
+                    </ErrorBoundary>
                 </>
             ) : (
                 <span className={style.noFavorites}>

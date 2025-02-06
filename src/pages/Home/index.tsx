@@ -1,4 +1,7 @@
-import CardGrid from '@components/CardGrid';
+import CardGrid from '@src/components/CardGrid';
+
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
+import ErrorText from '@components/ErrorText';
 import GalleryContainer from '@components/GalleryContainer';
 import Loader from '@components/Loader';
 import Subtitle from '@components/Subtitle';
@@ -22,13 +25,17 @@ export default function Home() {
             </Title>
             <GalleryContainer />
             <Subtitle title='Other works for you' subtitle='Here some more' />
-            <Suspense fallback={<Loader size='large' />}>
-                <CardGrid
-                    cardPromise={getArtsFromQuery(
-                        getRandomArts(ARTS_IN_HOME_CARD_GRID),
-                    )}
-                />
-            </Suspense>
+            <ErrorBoundary
+                fallback={<ErrorText text='Card grid render error' />}
+            >
+                <Suspense fallback={<Loader size='large' />}>
+                    <CardGrid
+                        cardPromise={getArtsFromQuery(
+                            getRandomArts(ARTS_IN_HOME_CARD_GRID),
+                        )}
+                    />
+                </Suspense>
+            </ErrorBoundary>
         </section>
     );
 }

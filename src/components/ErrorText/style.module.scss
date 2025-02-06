@@ -1,0 +1,10 @@
+@use '../../constants/theme.module.scss' as *;
+
+.errorContainer {
+    font-family: 'Lexend Deca';
+    text-align: center;
+
+    h1 {
+        @include text-large($error);
+    }
+}
