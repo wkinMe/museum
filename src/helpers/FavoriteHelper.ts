@@ -1,5 +1,6 @@
-import { getArtById } from '@src/api/getArtById';
 import { IFavoriteItem } from '@src/types/IFavoriteItem';
+
+import { getArtById } from '@api/getArtById';
 
 class FavoriteHelper {
     private static instance: FavoriteHelper;

@@ -15,7 +15,7 @@ export default function Header() {
     const width = useResize();
     const { isModalOpen } = useContext(MenuContext);
     const { pathname } = useLocation();
-
+    
     return (
         <header className={style.header}>
             <div className={style.container}>

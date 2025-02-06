@@ -1,5 +1,3 @@
-import { favoriteHelper } from '@src/helpers/FavoriteHelper';
-
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 

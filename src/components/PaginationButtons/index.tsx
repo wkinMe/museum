@@ -29,7 +29,7 @@ export default function PaginationButtons({
 
     const handleSideBtn = (inc: boolean) => {
         let count = inc ? 1 : -1;
-        setPage(page + count);
+        setPage((prev) => prev + count);
     };
 
     return (

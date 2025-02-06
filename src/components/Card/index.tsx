@@ -32,7 +32,7 @@ export default function Card({
     const styleName = size === 'large' ? style.card : style.miniCard;
 
     const handleFavoriteBtnClick = () => {
-        setIsFavorite(!isFavorite);
+        setIsFavorite((prev) => !prev);
     };
 
     return (

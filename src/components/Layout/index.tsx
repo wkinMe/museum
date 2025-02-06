@@ -18,7 +18,7 @@ export default function Layout() {
         <MenuContext.Provider
             value={{
                 isModalOpen,
-                toggleMenu: () => toggleMenu(!isModalOpen),
+                toggleMenu: () => toggleMenu((prev) => !prev),
             }}
         >
             {' '}
