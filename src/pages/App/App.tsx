@@ -11,16 +11,31 @@ const Home = lazy(() => import('../Home'));
 const Favorite = lazy(() => import('../Favorite'));
 const Details = lazy(() => import('../Details'));
 
+// Создаем константу с путями и соответствующими компонентами
+const routes = [
+    { path: '/', element: <Home />, index: true },
+    { path: 'favorite', element: <Favorite /> },
+    { path: 'details/:id', element: <Details /> },
+    { path: '*', element: <NotFound /> },
+];
+
 function App() {
     return (
         <>
             <Routes>
                 <Route path='/' element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path='favorite' element={<Favorite />} />
-                    <Route path='details/:id' element={<Details />} />
+                    {routes.map((route, index) =>
+                        route.index ? (
+                            <Route key={index} index element={route.element} />
+                        ) : (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={route.element}
+                            />
+                        ),
+                    )}
                 </Route>
-                <Route path='*' element={<NotFound />}></Route>
             </Routes>
         </>
     );

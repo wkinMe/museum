@@ -12,13 +12,4 @@ export enum GALLERY_SIZES {
 
 export const ARTS_IN_HOME_CARD_GRID = 12;
 
-export const PATHS = {
-    '@src/*': ['./src/*'],
-    '@assets/*': ['./src/assets/*'],
-    '@components/*': ['./src/components/*'],
-    '@constants/*': ['./src/constants/*'],
-    '@hooks/*': ['./src/hooks/*'],
-    '@pages/*': ['./src/pages/*'],
-    '@utils/*': ['./src/utils/*'],
-    '@api/*': ['./src/api/*'],
-};
+export const URLS = ['/', '/favorite', '/details/:id'];
