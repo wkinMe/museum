@@ -20,9 +20,21 @@ export default function CardGrid({ cardPromise, items }: CardGridProps) {
 
     return (
         <div className={style.cardGrid} data-testid='cardGrid'>
-            {cards.map((i) => {
-                return <Card key={i.id} size='small' {...i} />;
-            })}
+            {cards.map(
+                ({ id, artist_title, is_public_domain, image_url, title }) => {
+                    return (
+                        <Card
+                            key={id}
+                            size='small'
+                            id={id}
+                            artist_title={artist_title}
+                            is_public_domain={is_public_domain}
+                            image_url={image_url}
+                            title={title}
+                        />
+                    );
+                },
+            )}
         </div>
     );
 }

@@ -44,7 +44,9 @@ class FavoriteHelper {
 
     public async getFavoriteArts() {
         const favorites = this.getFavorites();
-        const arts = await Promise.all(favorites.map((i) => getArtById(i.id)));
+        const arts = await Promise.all(
+            favorites.map(({ id }) => getArtById(id)),
+        );
         return arts;
     }
 
