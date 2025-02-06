@@ -135,6 +135,13 @@
   dependencies:
     "@babel/types" "^7.26.5"
 
+"@babel/parser@^7.26.7":
+  version "7.26.7"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.26.7.tgz#e114cd099e5f7d17b05368678da0fb9f69b3385c"
+  integrity sha512-kEvgGGgEjRUutvdVvZhbn/BxVt+5VSpwXz1j3WYXQbXDo8KzFOPNG2GQbdAiNq8g6wn1yKk7C/qrke03a84V+w==
+  dependencies:
+    "@babel/types" "^7.26.7"
+
 "@babel/plugin-transform-react-jsx-self@^7.25.9":
   version "7.25.9"
   resolved "https://registry.npmjs.org/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.25.9.tgz"
@@ -178,10 +185,31 @@
     debug "^4.3.1"
     globals "^11.1.0"
 
+"@babel/traverse@^7.26.7":
+  version "7.26.7"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.26.7.tgz#99a0a136f6a75e7fb8b0a1ace421e0b25994b8bb"
+  integrity sha512-1x1sgeyRLC3r5fQOM0/xtQKsYjyxmFjaOrLJNtZ81inNjyJHGIolTULPiSc/2qe1/qfpFLisLQYFnnZl7QoedA==
+  dependencies:
+    "@babel/code-frame" "^7.26.2"
+    "@babel/generator" "^7.26.5"
+    "@babel/parser" "^7.26.7"
+    "@babel/template" "^7.25.9"
+    "@babel/types" "^7.26.7"
+    debug "^4.3.1"
+    globals "^11.1.0"
+
 "@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.25.9", "@babel/types@^7.26.0", "@babel/types@^7.26.5":
   version "7.26.5"
   resolved "https://registry.npmjs.org/@babel/types/-/types-7.26.5.tgz"
   integrity sha512-L6mZmwFDK6Cjh1nRCLXpa6no13ZIioJDz7mdkzHv399pThrTa/k0nUlNaenOeh2kWu/iaOQYElEpKPUswUa9Vg==
+  dependencies:
+    "@babel/helper-string-parser" "^7.25.9"
+    "@babel/helper-validator-identifier" "^7.25.9"
+
+"@babel/types@^7.26.7":
+  version "7.26.7"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.26.7.tgz#5e2b89c0768e874d4d061961f3a5a153d71dc17a"
+  integrity sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==
   dependencies:
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
@@ -619,6 +647,18 @@
   version "14.6.1"
   resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.6.1.tgz#13e09a32d7a8b7060fe38304788ebf4197cd2149"
   integrity sha512-vq7fv0rnt+QTXgPxr5Hjc210p6YKq2kmdziLgnsZGgLJ9e6VAShx1pACLuRjd/AS/sr7phAR58OIIpf0LlmQNw==
+
+"@trivago/prettier-plugin-sort-imports@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/@trivago/prettier-plugin-sort-imports/-/prettier-plugin-sort-imports-5.2.2.tgz#38983f0b83490a0a7d974a6f1e409fb4bf678d02"
+  integrity sha512-fYDQA9e6yTNmA13TLVSA+WMQRc5Bn/c0EUBditUHNfMMxN7M82c38b1kEggVE3pLpZ0FwkwJkUEKMiOi52JXFA==
+  dependencies:
+    "@babel/generator" "^7.26.5"
+    "@babel/parser" "^7.26.7"
+    "@babel/traverse" "^7.26.7"
+    "@babel/types" "^7.26.7"
+    javascript-natural-sort "^0.7.1"
+    lodash "^4.17.21"
 
 "@types/aria-query@^5.0.1":
   version "5.0.4"
@@ -1522,6 +1562,11 @@ eslint-plugin-react@^7.37.4:
     string.prototype.matchall "^4.0.12"
     string.prototype.repeat "^1.0.0"
 
+eslint-plugin-simple-import-sort@^12.1.1:
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-12.1.1.tgz#e64bfdaf91c5b98a298619aa634a9f7aa43b709e"
+  integrity sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==
+
 eslint-scope@^8.2.0:
   version "8.2.0"
   resolved "https://registry.npmjs.org/eslint-scope/-/eslint-scope-8.2.0.tgz"
@@ -2165,6 +2210,11 @@ iterator.prototype@^1.1.4:
     get-proto "^1.0.0"
     has-symbols "^1.1.0"
     set-function-name "^2.0.2"
+
+javascript-natural-sort@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
+  integrity sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"

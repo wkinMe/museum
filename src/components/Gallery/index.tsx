@@ -1,8 +1,10 @@
-import style from './style.module.scss';
+import { IArtItem } from '@src/types/IArtItem';
+
+import Card from '@components/Card';
 
 import { use } from 'react';
-import { IArtItem } from '@src/types/IArtItem';
-import Card from '@components/Card';
+
+import style from './style.module.scss';
 
 export interface ArtCollection {
     cardPromise: Promise<IArtItem[]>;

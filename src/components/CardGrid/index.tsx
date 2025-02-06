@@ -1,9 +1,9 @@
-import Card from '../Card';
+import { IArtItem } from '@src/types/IArtItem';
 
 import { use } from 'react';
 
+import Card from '../Card';
 import style from './style.module.scss';
-import { IArtItem } from '@src/types/IArtItem';
 
 interface CardGridProps {
     cardPromise?: Promise<IArtItem[]>;

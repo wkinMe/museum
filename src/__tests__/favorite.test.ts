@@ -1,9 +1,10 @@
 import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest';
-import { addFavorite } from '../utils/addFavorite';
+
 import { getArtById } from '../api/getArtById';
 import { getRandomArts } from '../api/getRandomArts';
-import { removeFavorite } from '../utils/removeFavorite';
+import { addFavorite } from '../utils/addFavorite';
 import { checkIsFavorite } from '../utils/checkIsFavorite';
+import { removeFavorite } from '../utils/removeFavorite';
 
 describe('Favorite interaction test', () => {
     beforeAll(() => {

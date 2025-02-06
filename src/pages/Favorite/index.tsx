@@ -1,16 +1,20 @@
-import style from './style.module.scss';
+import Loader from '@src/components/Loader';
+import { favoriteHelper } from '@src/helpers/FavoriteHelper';
+import { IArtItem } from '@src/types/IArtItem';
+
+import favoriteIcon from '@assets/favorite.svg';
+
+import CardGrid from '@components/CardGrid';
+import Subtitle from '@components/Subtitle';
+import Title from '@components/Title';
+
+import { sortByAlphabet } from '@utils/sortByAlphabet';
+import { sortByEndDate } from '@utils/sortByEndDate';
+import { sortByStartDate } from '@utils/sortByStartDates';
 
 import { useEffect, useState } from 'react';
-import { sortByAlphabet } from '@utils/sortByAlphabet';
-import { sortByStartDate } from '@utils/sortByStartDates';
-import { sortByEndDate } from '@utils/sortByEndDate';
-import Title from '@components/Title';
-import Subtitle from '@components/Subtitle';
-import CardGrid from '@components/CardGrid';
-import favoriteIcon from '@assets/favorite.svg';
-import { IArtItem } from '@src/types/IArtItem';
-import { favoriteHelper } from '@src/helpers/FavoriteHelper';
-import Loader from '@src/components/Loader';
+
+import style from './style.module.scss';
 
 export default function Favorite() {
     const [sortType, setSortType] = useState('');

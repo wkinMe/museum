@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
+
+import { getArtById } from '../api/getArtById';
 import { getRandomArts } from '../api/getRandomArts';
 import { serachByParams } from '../api/searchByParams';
-import { getArtById } from '../api/getArtById';
 
 describe('Get arts test', () => {
     const limit = 5;

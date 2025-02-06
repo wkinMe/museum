@@ -1,9 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 
 import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import NotFound from '../NotFound';
-import { favoriteHelper } from '@src/helpers/FavoriteHelper';
+import './App.css';
 
 const Layout = lazy(() => import('../../components/Layout'));
 const Home = lazy(() => import('../Home'));

@@ -1,10 +1,12 @@
-import style from './style.module.scss';
-
-import { Link } from 'react-router';
-import { useState } from 'react';
-import LoadImage from '@components/LoadImage';
-import FavoriteButton from '@components/FavoriteButton';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
+
+import FavoriteButton from '@components/FavoriteButton';
+import LoadImage from '@components/LoadImage';
+
+import { useState } from 'react';
+import { Link } from 'react-router';
+
+import style from './style.module.scss';
 
 interface CardProps {
     artist_title: string;
@@ -16,8 +18,8 @@ interface CardProps {
 }
 
 export default function Card({
-    artist_title,   
-    is_public_domain,   
+    artist_title,
+    is_public_domain,
     image_url,
     id,
     title,
@@ -28,7 +30,7 @@ export default function Card({
     );
 
     const styleName = size === 'large' ? style.card : style.miniCard;
-    
+
     const handleFavoriteBtnClick = () => {
         setIsFavorite(!isFavorite);
     };

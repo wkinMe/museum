@@ -1,8 +1,11 @@
-import { useContext, useEffect, useRef } from 'react';
-import style from './style.module.scss';
 import { MenuContext } from '@components/Layout';
-import { useOnClickOutside } from '@hooks/useOnClickOutside';
 import NavLinks from '@components/NavLinks';
+
+import { useOnClickOutside } from '@hooks/useOnClickOutside';
+
+import { useContext, useEffect, useRef } from 'react';
+
+import style from './style.module.scss';
 
 export default function BurgerMenu() {
     const { isModalOpen, toggleMenu } = useContext(MenuContext);

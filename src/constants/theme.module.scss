@@ -40,7 +40,7 @@ $font-weight-medium: 400;
 
 @mixin text-small($color) {
     font-size: $font-size-small;
-    line-height: $line-height-small ;
+    line-height: $line-height-small;
     font-weight: $font-weight-medium;
     color: $color;
 }

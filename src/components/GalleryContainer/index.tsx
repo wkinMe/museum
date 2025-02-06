@@ -1,19 +1,24 @@
-import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
-
 import { IArtItem } from '@src/types/IArtItem';
 
-import style from './style.module.scss';
-import { useResize } from '@hooks/useResize';
-import { ARTS_IN_GALLERY, GALLERY_SIZES } from '@constants/constants';
-import { getArtsFromQuery } from '@utils/getArtsFromQuery';
-import { getRandomArts } from '@api/getRandomArts';
-import { serachByParams } from '@api/searchByParams';
-import { getArtsCount } from '@api/getImagesCount';
-import SearchForm from '@components/SearchForm';
-import Subtitle from '@components/Subtitle';
 import Gallery from '@components/Gallery';
 import Loader from '@components/Loader';
 import PaginationButtons from '@components/PaginationButtons';
+import SearchForm from '@components/SearchForm';
+import Subtitle from '@components/Subtitle';
+
+import { ARTS_IN_GALLERY, GALLERY_SIZES } from '@constants/constants';
+
+import { useResize } from '@hooks/useResize';
+
+import { getArtsFromQuery } from '@utils/getArtsFromQuery';
+
+import { getArtsCount } from '@api/getImagesCount';
+import { getRandomArts } from '@api/getRandomArts';
+import { serachByParams } from '@api/searchByParams';
+
+import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
+
+import style from './style.module.scss';
 
 export default function GalleryContainer() {
     const width = useResize();

@@ -1,6 +1,7 @@
-import style from './style.module.scss';
 import museumLogo from '@assets/meseum_dark_logo.svg';
 import modsenLogo from '@assets/modsen.png';
+
+import style from './style.module.scss';
 
 export default function Footer() {
     return (

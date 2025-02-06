@@ -1,5 +1,5 @@
-import { IArtItemResponse } from '../types/IArtItemResponse';
 import { getArtById } from '../api/getArtById';
+import { IArtItemResponse } from '../types/IArtItemResponse';
 
 export const getArtsFromQuery = async (response: Promise<Response>) => {
     const res = await response.then((res) => res.json());

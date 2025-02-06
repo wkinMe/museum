@@ -1,7 +1,8 @@
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
-import style from './style.module.scss';
 
 import favoriteIcon from '@assets/favorite.svg';
+
+import style from './style.module.scss';
 
 interface FavoriteButtonProps {
     isFavorite: boolean;

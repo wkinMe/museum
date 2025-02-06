@@ -1,15 +1,19 @@
-import Loader from '@components/Loader';
-import style from './style.module.scss';
-
-import { useParams } from 'react-router-dom';
-import { Suspense, use, useState } from 'react';
-import { getArtById } from '@api/getArtById';
-import { IArtItem } from '@src/types/IArtItem';
-import LoadImage from '@components/LoadImage';
-import FavoriteButton from '@components/FavoriteButton';
-import { getArtYears } from '@utils/getArtYears';
-import ArtOverview from '@components/ArtOverview';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
+import { IArtItem } from '@src/types/IArtItem';
+
+import ArtOverview from '@components/ArtOverview';
+import FavoriteButton from '@components/FavoriteButton';
+import LoadImage from '@components/LoadImage';
+import Loader from '@components/Loader';
+
+import { getArtYears } from '@utils/getArtYears';
+
+import { getArtById } from '@api/getArtById';
+
+import { Suspense, use, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import style from './style.module.scss';
 
 export default function DetailsWrapper() {
     const { id } = useParams() as { id: string };

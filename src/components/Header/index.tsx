@@ -1,12 +1,15 @@
-import { MenuContext } from '@components/Layout';
-import style from './style.module.scss';
 import museumLogo from '@assets/museum_ligth_logo.svg';
+
+import BurgerMenu from '@components/BurgerMenu';
+import { MenuContext } from '@components/Layout';
+import NavLinks from '@components/NavLinks';
+
 import { useResize } from '@hooks/useResize';
 
 import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import BurgerMenu from '@components/BurgerMenu';
-import NavLinks from '@components/NavLinks';
+
+import style from './style.module.scss';
 
 export default function Header() {
     const width = useResize();
