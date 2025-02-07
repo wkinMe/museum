@@ -1,4 +1,6 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
+
 .nav {
     .menu {
         display: flex;
@@ -11,8 +13,10 @@
 
             &Link {
                 text-decoration: none;
-                font-family: 'Inter';
-                @include font(18px, 400, 21.78px, #fff);
+                font-family: $secondaryFont;
+                display: inline-block;
+                text-wrap: nowrap;
+                @include font(19px, 400, 23px, rgba(255, 255, 255));
             }
         }
     }

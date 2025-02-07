@@ -1,7 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { getRandomArts } from '../utils/getRandomArts';
-import { serachByParams } from '../utils/searchByParams';
-import { getArtById } from '../utils/getArtById';
+
+import { getArtById } from '../api/getArtById';
+import { getRandomArts } from '../api/getRandomArts';
+import { serachByParams } from '../api/searchByParams';
 
 describe('Get arts test', () => {
     const limit = 5;

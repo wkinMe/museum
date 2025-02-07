@@ -1,12 +1,17 @@
-import style from './style.module.scss';
-import museumLogo from '../../assets/museum_ligth_logo.svg';
+import { BURGER_MENU_APPEAR_WIDTH } from '@src/constants/constants';
 
-import { useResize } from '../../hooks/useResize';
-import NavLinks from '../NavLinks';
-import BurgerMenu from '../BurgerMenu';
+import museumLogo from '@assets/museum_ligth_logo.svg';
+
+import BurgerMenu from '@components/BurgerMenu';
+import { MenuContext } from '@components/Layout';
+import NavLinks from '@components/NavLinks';
+
+import { useResize } from '@hooks/useResize';
+
 import { useContext } from 'react';
-import { MenuContext } from '../Layout';
 import { Link, useLocation } from 'react-router-dom';
+
+import style from './style.module.scss';
 
 export default function Header() {
     const width = useResize();
@@ -25,7 +30,7 @@ export default function Header() {
                     <img src={museumLogo} alt='Museum of Art' />
                 )}
 
-                {width < 600 ? (
+                {width < BURGER_MENU_APPEAR_WIDTH ? (
                     <BurgerMenu />
                 ) : (
                     <NavLinks isBurger={isModalOpen} />

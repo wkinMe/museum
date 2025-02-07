@@ -1,9 +1,9 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
 
 .artOverviewItem {
     margin-top: 16px;
 
-    @include font(16px, 400, 20px, $dark-secondary);
+    @include text-small($dark-secondary);
 
     .value {
         color: $primary;

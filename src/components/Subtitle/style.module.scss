@@ -1,16 +1,29 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
 
 .subtitle {
-    font-family: 'Lexend Deca';
+    font-family: $primaryFont;
     text-align: center;
-    margin-top: 120px;
+    margin-top: $sectionMargin;
     margin-bottom: 40px;
 
     h5 {
-        @include font(16px, 400, 20px, $light-secondary);
+        @include text-small($light-secondary);
     }
 
     h2 {
-        @include font(32px, 400, 40px, $primary);
+        @include text-medium($primary);
+    }
+}
+
+@media (max-width: $medium) {
+    .subtitle {
+        h5 {
+            @include font(14px, 400, 18px, $light-secondary);
+        }
+        h2 {
+            @include font(26px, 400, 26px, $primary);
+        }
     }
 }

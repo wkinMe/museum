@@ -1,19 +1,17 @@
-import Card from '../Card';
+import { IArtItem } from '@src/types/IArtItem';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-expect-error
 import { use } from 'react';
 
+import Card from '../Card';
 import style from './style.module.scss';
-import { ArtItem } from '../../constants/interfaces';
 
 interface CardGridProps {
-    cardPromise?: Promise<ArtItem[]>;
-    items?: ArtItem[];
+    cardPromise?: Promise<IArtItem[]>;
+    items?: IArtItem[];
 }
 
 export default function CardGrid({ cardPromise, items }: CardGridProps) {
-    let cards: ArtItem[];
+    let cards: IArtItem[];
     if (cardPromise) {
         cards = use(cardPromise);
     } else {
@@ -21,10 +19,22 @@ export default function CardGrid({ cardPromise, items }: CardGridProps) {
     }
 
     return (
-        <div className={style.cardGrid}>
-            {cards.map((i) => {
-                return <Card key={i.id} size='small' art={i} />;
-            })}
+        <div className={style.cardGrid} data-testid='cardGrid'>
+            {cards.map(
+                ({ id, artist_title, is_public_domain, image_url, title }) => {
+                    return (
+                        <Card
+                            key={id}
+                            size='small'
+                            id={id}
+                            artist_title={artist_title}
+                            is_public_domain={is_public_domain}
+                            image_url={image_url}
+                            title={title}
+                        />
+                    );
+                },
+            )}
         </div>
     );
 }

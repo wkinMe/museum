@@ -1,0 +1,19 @@
+@use '../../constants/theme.module.scss' as *;
+
+.notFound {
+    height: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: $primaryFont;
+
+    h1 {
+        @include text-large($primary);
+    }
+
+    .homeLink {
+        text-align: center;
+        @include text-medium($dark-secondary);
+    }
+}

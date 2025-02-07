@@ -1,26 +1,41 @@
+import CardGrid from '@src/components/CardGrid';
+
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
+import ErrorText from '@components/ErrorText';
+import GalleryContainer from '@components/GalleryContainer';
+import Loader from '@components/Loader';
+import Subtitle from '@components/Subtitle';
+import Title from '@components/Title';
+
+import { ARTS_IN_HOME_CARD_GRID } from '@constants/constants';
+
+import { getArtsFromQuery } from '@utils/getArtsFromQuery';
+
+import { getRandomArts } from '@api/getRandomArts';
+
+import { Suspense } from 'react';
+
 import style from './style.module.scss';
 
-import Subtitle from '../../components/Subtitle';
-import Title from '../../components/Title';
-import CardGrid from '../../components/CardGrid';
-import { getRandomArts } from '../../utils/getRandomArts';
-import { Suspense, useState } from 'react';
-import Loader from '../../components/Loader';
-import GalleryContainer from '../../components/GalleryContainer';
-
 export default function Home() {
-    const [randomCount] = useState(12);
-
     return (
-        <div className={style.container}>
+        <section className={style.container}>
             <Title>
                 let's find some <span>art</span> here!
             </Title>
             <GalleryContainer />
             <Subtitle title='Other works for you' subtitle='Here some more' />
-            <Suspense fallback={<Loader size='large' />}>
-                <CardGrid cardPromise={getRandomArts(randomCount, 2)} />
-            </Suspense>
-        </div>
+            <ErrorBoundary
+                fallback={<ErrorText text='Card grid render error' />}
+            >
+                <Suspense fallback={<Loader size='large' />}>
+                    <CardGrid
+                        cardPromise={getArtsFromQuery(
+                            getRandomArts(ARTS_IN_HOME_CARD_GRID),
+                        )}
+                    />
+                </Suspense>
+            </ErrorBoundary>
+        </section>
     );
 }

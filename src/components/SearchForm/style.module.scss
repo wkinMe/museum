@@ -1,24 +1,26 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
 
 form {
     margin: 0 auto;
     position: relative;
-    border-radius: 16px;
+    border-radius: $base;
     max-width: 762px;
     margin-top: 72px;
-    height: 64px;
+    height: 4 * $base;
     display: grid;
     align-items: center;
 
     input {
-        font-family: 'Inter';
-        @include font(14px, 400, 17px, $primary);
+        font-family: $secondaryFont;
+        @include text-small($primary);
         box-sizing: border-box;
         padding-left: 16px;
         height: 100%;
         border: none;
         outline: none;
-        background-color: rgba(57, 57, 57, 0.05);
+        background-color: rgba($primary, 0.05);
         position: absolute;
         width: 100%;
         border-radius: inherit;
@@ -38,7 +40,13 @@ form {
     .error {
         margin-top: 15px;
         margin-left: 5px;
-        font-family: 'Lexend Deca';
-        @include font(24px, 200, 20px, rgb(247, 77, 77));
+        font-family: $primaryFont;
+        @include text-medium($error);
+    }
+}
+
+@media (max-width: $small) {
+    form {
+        max-width: 370px;
     }
 }

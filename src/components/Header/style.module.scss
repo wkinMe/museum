@@ -1,13 +1,13 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
 
 .header {
     width: 100%;
     height: 127px;
     background: linear-gradient(
         90deg,
-        #343333 38.05%,
-        #484848 69.22%,
-        #282828 98.98%
+        rgba(52, 51, 51, 1) 38.05%,
+        rgba(72, 72, 72, 1) 69.22%,
+        rgba(40, 40, 40, 1) 98.98%
     );
 
     display: flex;

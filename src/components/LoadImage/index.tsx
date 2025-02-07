@@ -1,28 +1,34 @@
-import { ComponentPropsWithoutRef, useState } from 'react';
+import NotFoundImg from '@assets/NotFoundImg.svg';
 
-import NotFoundImg from '../../assets/NotFoundImg.svg';
-import Loader from '../Loader';
+import Loader from '@components/Loader';
 
-interface LoadImageProps extends ComponentPropsWithoutRef<'img'> {
+import { useState } from 'react';
+
+interface LoadImageProps {
     src: string;
     size: 'large' | 'small';
 }
 
-export default function LoadImage({ src, size, ...props }: LoadImageProps) {
+export default function LoadImage({ src, size }: LoadImageProps) {
     const [imageLoaded, setImagesLoaded] = useState(false);
     const [imgError, setImgError] = useState(false);
+
+    const handleLoad = () => {
+        setImagesLoaded(true);
+    };
+
+    const handleError = () => {
+        setImagesLoaded(true);
+        setImgError(true);
+    };
 
     return (
         <>
             {!imageLoaded && <Loader size={size} />}
             <img
-                onLoad={() => setImagesLoaded(true)}
-                onError={() => {
-                    setImagesLoaded(true);
-                    setImgError(true);
-                }}
+                onLoad={handleLoad}
+                onError={handleError}
                 src={!imgError ? src : NotFoundImg}
-                {...props}
             />
         </>
     );

@@ -1,7 +1,8 @@
-import { Outlet } from 'react-router-dom';
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '@components/Footer';
+import Header from '@components/Header';
+
 import { createContext, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import style from './style.module.scss';
 
@@ -17,7 +18,7 @@ export default function Layout() {
         <MenuContext.Provider
             value={{
                 isModalOpen,
-                toggleMenu: () => toggleMenu(!isModalOpen),
+                toggleMenu: () => toggleMenu((prev) => !prev),
             }}
         >
             {' '}

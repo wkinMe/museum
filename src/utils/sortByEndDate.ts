@@ -1,7 +1,5 @@
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '@src/types/IArtItem';
 
-export const sortByEndDate = (arts: ArtItem[]) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error
-    return arts.toSorted((a: ArtItem, b: ArtItem) => a.date_end - b.date_end);
+export const sortByEndDate = (arts: IArtItem[]): IArtItem[] => {
+    return arts.toSorted((a: IArtItem, b: IArtItem) => a.date_end - b.date_end);
 };

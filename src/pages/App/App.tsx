@@ -1,22 +1,41 @@
-import { Routes, Route } from 'react-router';
+import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import NotFound from '../NotFound';
 import './App.css';
 
-import Layout from '../../components/Layout';
-import Home from '../Home';
-import Favorite from '../Favorite/indes';
-import Details from '../Details';
+const Layout = lazy(() => import('../../components/Layout'));
+const Home = lazy(() => import('../Home'));
+const Favorite = lazy(() => import('../Favorite'));
+const Details = lazy(() => import('../Details'));
+
+// Создаем константу с путями и соответствующими компонентами
+const routes = [
+    { path: '/', element: <Home />, index: true },
+    { path: 'favorite', element: <Favorite /> },
+    { path: 'details/:id', element: <Details /> },
+    { path: '*', element: <NotFound /> },
+];
 
 function App() {
-    sessionStorage.setItem('favorite', '[]');
-
     return (
-        <Routes>
-            <Route path='/' element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path='favorite' element={<Favorite />} />
-                <Route path='details/:id' element={<Details />} />
-            </Route>
-        </Routes>
+        <>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    {routes.map((route, index) =>
+                        route.index ? (
+                            <Route key={index} index element={route.element} />
+                        ) : (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={route.element}
+                            />
+                        ),
+                    )}
+                </Route>
+            </Routes>
+        </>
     );
 }
 

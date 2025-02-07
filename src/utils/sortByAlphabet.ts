@@ -1,9 +1,7 @@
-import { ArtItem } from '../constants/interfaces';
+import { IArtItem } from '@src/types/IArtItem';
 
-export const sortByAlphabet = (arts: ArtItem[]) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error
-    return arts.toSorted((a: ArtItem, b: ArtItem) =>
+export const sortByAlphabet = (arts: IArtItem[]): IArtItem[] => {
+    return arts.toSorted((a: IArtItem, b: IArtItem) =>
         a.title.localeCompare(b.title),
     );
 };

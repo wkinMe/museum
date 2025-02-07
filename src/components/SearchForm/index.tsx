@@ -1,24 +1,23 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useEffect } from 'react';
-import style from './style.module.scss';
+import searchIcon from '@assets/search.svg';
 
-import searchIcon from '../../assets/search.svg';
-import { serachByParams } from '../../utils/searchByParams';
-import { ArtItem } from '../../constants/interfaces';
-import { z } from 'zod';
+import { useDebounce } from '@hooks/useDebounce';
+
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { withZodSchema } from 'formik-validator-zod';
-import { useDebounce } from '../../hooks/useDebounce';
+import { useEffect } from 'react';
+import { z } from 'zod';
+
+import style from './style.module.scss';
 
 const SearchFormShema = z.object({
     search: z.string().min(5, 'Search field must have at least 5 chars'),
 });
 
 interface SearchFormProps {
-    onClick: (artsPromise: Promise<ArtItem[]>, search: string) => void;
-    count: number;
+    onClick: (search: string) => void;
 }
 
-export default function SearchForm({ onClick, count }: SearchFormProps) {
+export default function SearchForm({ onClick }: SearchFormProps) {
     return (
         <Formik
             initialValues={{ search: '' }}
@@ -34,12 +33,7 @@ export default function SearchForm({ onClick, count }: SearchFormProps) {
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 useEffect(() => {
                     if (debouncedSearch.length >= 5) {
-                        const cardPromise = serachByParams(
-                            debouncedSearch,
-                            count,
-                            0,
-                        );
-                        onClick(cardPromise, debouncedSearch);
+                        onClick(debouncedSearch);
                     }
                 }, [debouncedSearch]);
 

@@ -1,16 +1,29 @@
-@use '../../constants/constants.module.scss' as *;
+@use '../../constants/theme.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
+@use '../../constants/mixins.module.scss' as *;
 
 .title {
     box-sizing: border-box;
     max-width: 684px;
-    @include font(64px, 700, 80px, $primary);
-    margin-top: 152px;
-    margin: 152px auto 0 auto;
+    @include text-large($primary);
+    margin: $sectionMargin auto 0 auto;
     text-transform: capitalize;
-    font-family: 'Lexend Deca';
+    font-family: $primaryFont;
     text-align: center;
 
     span {
         color: $dark-secondary;
+    }
+}
+
+@media (max-width: $medium) {
+    .title {
+        @include font(30px, 700, 30px, $primary);
+    }
+}
+
+@media (max-width: $small) {
+    .title {
+        @include font(25px, 700, 30px, $primary);
     }
 }
