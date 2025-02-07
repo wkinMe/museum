@@ -1,0 +1,72 @@
+@use "../../constants/theme.module.scss" as *;
+@use "../../constants/deviceSizes.module.scss" as *;
+
+.sortBlock {
+    margin-bottom: 50px;
+
+    h1 {
+        font-style: $primaryFont;
+        @include text-medium($primary);
+        margin-bottom: 5px;
+    }
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 200px;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #333;
+        background-color: #f9f9f9;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        cursor: pointer;
+        outline: none;
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    select:hover {
+        border-color: #888;
+    }
+
+    select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .select-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .select-wrapper::after {
+        content: '▼';
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #666;
+        font-size: 12px;
+    }
+
+    select option {
+        padding: 10px;
+        background-color: #fff;
+        color: #333;
+    }
+
+    select option:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+}
+
+@media (max-width: $medium) {
+    .sortBlock {
+        text-align: center;
+    }
+}

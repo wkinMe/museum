@@ -1,3 +1,5 @@
+@use "./deviceSizes.module.scss" as *;
+
 // sizes
 .container {
     max-width: 1280px;
@@ -51,3 +53,22 @@ $secondaryFont: 'Inter';
 //margin
 $sectionMargin: 120px;
 $base: 16px;
+
+@media (max-width: $large) {
+    .container {
+        max-width: 790px;
+    }
+}
+
+@media (max-width: $medium) {
+    .container {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: $small) {
+    .container {
+        max-width: 370px
+        ;
+    }
+}

@@ -1,5 +1,6 @@
 @use '../../constants/theme.module.scss' as *;
 @use '../../constants/mixins.module.scss' as *;
+@use "../../constants/deviceSizes.module.scss" as *;
 
 form {
     margin: 0 auto;
@@ -40,11 +41,12 @@ form {
         margin-top: 15px;
         margin-left: 5px;
         font-family: $primaryFont;
-        @include font(
-            $font-size-medium,
-            $font-weight-medium,
-            $line-height-medium,
-            $error
-        );
+        @include text-medium($error);
+    }
+}
+
+@media (max-width: $small) {
+    form {
+        max-width: 370px;
     }
 }

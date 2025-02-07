@@ -1,4 +1,5 @@
-@use '../../constants/theme.module.scss' as c;
+@use '../../constants/theme.module.scss' as *;
+@use "../../constants/deviceSizes.module.scss" as *;
 
 .footer {
     width: 100%;
@@ -12,5 +13,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+}
+
+@media (max-width: $small) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
     }
 }

@@ -1,18 +1,21 @@
+@use "../../constants/deviceSizes.module.scss" as *;
+
 .cardGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
     gap: 16px;
 
     margin-bottom: 120px;
 }
 
-@media (max-width: 815px) {
+@media (max-width: $large) {
     .cardGrid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: $medium) {
     .cardGrid {
         grid-template-columns: 1fr;
     }

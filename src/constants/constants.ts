@@ -11,5 +11,10 @@ export enum GALLERY_SIZES {
 }
 
 export const ARTS_IN_HOME_CARD_GRID = 12;
+export const BURGER_MENU_APPEAR_WIDTH = 820;
 
-export const URLS = ['/', '/favorite', '/details/:id'];
+export const SORTING_FAVORITE_TYPES = {
+    ALPHABET: 'Alphabet',
+    START_DATE: 'Start date',
+    END_DATE: 'End date',
+};

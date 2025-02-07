@@ -1,3 +1,5 @@
+import { BURGER_MENU_APPEAR_WIDTH } from '@src/constants/constants';
+
 import museumLogo from '@assets/museum_ligth_logo.svg';
 
 import BurgerMenu from '@components/BurgerMenu';
@@ -15,7 +17,7 @@ export default function Header() {
     const width = useResize();
     const { isModalOpen } = useContext(MenuContext);
     const { pathname } = useLocation();
-    
+
     return (
         <header className={style.header}>
             <div className={style.container}>
@@ -28,7 +30,7 @@ export default function Header() {
                     <img src={museumLogo} alt='Museum of Art' />
                 )}
 
-                {width < 600 ? (
+                {width < BURGER_MENU_APPEAR_WIDTH ? (
                     <BurgerMenu />
                 ) : (
                     <NavLinks isBurger={isModalOpen} />

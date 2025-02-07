@@ -1,5 +1,6 @@
 @use '../../constants/theme.module.scss' as *;
 @use '../../constants/mixins.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
 
 .wrapper {
     position: relative;
@@ -100,15 +101,9 @@
     }
 }
 
-@media (max-width: 815px) {
+@media (max-width: $medium) {
     .card {
         width: 100%;
-    }
-}
-
-@media (max-width: 550px) {
-    .card {
-        height: 100vw;
     }
     .wrapper {
         display: grid;
@@ -116,5 +111,11 @@
     }
     .miniCard {
         width: 395px;
+    }
+}
+
+@media (max-width: $small) {
+    .card {
+        height: 100vw;
     }
 }

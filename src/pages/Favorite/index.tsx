@@ -1,6 +1,8 @@
 import CardGrid from '@src/components/CardGrid';
 import ErrorBoundary from '@src/components/ErrorBoundary/ErrorBoundary';
 import Loader from '@src/components/Loader';
+import SortBlock from '@src/components/SortBlock';
+import { SORTING_FAVORITE_TYPES } from '@src/constants/constants';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 import { IArtItem } from '@src/types/IArtItem';
 
@@ -18,7 +20,6 @@ import { useEffect, useState } from 'react';
 import style from './style.module.scss';
 
 export default function Favorite() {
-    const [sortType, setSortType] = useState('');
     const [favorites, setFavorites] = useState<IArtItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,23 +32,23 @@ export default function Favorite() {
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedSortType = e.target.value;
-        setSortType(selectedSortType);
 
         let sortedFavorites = [...favorites];
         switch (selectedSortType) {
-            case 'alphabet': {
+            case SORTING_FAVORITE_TYPES.ALPHABET: {
                 sortedFavorites = sortByAlphabet(sortedFavorites);
                 break;
             }
-            case 'dateStart': {
+            case SORTING_FAVORITE_TYPES.START_DATE: {
                 sortedFavorites = sortByStartDate(sortedFavorites);
                 break;
             }
-            case 'dateEnd': {
+            case SORTING_FAVORITE_TYPES.END_DATE: {
                 sortedFavorites = sortByEndDate(sortedFavorites);
                 break;
             }
         }
+
         setFavorites(sortedFavorites);
     };
 
@@ -60,23 +61,17 @@ export default function Favorite() {
                     <Title>
                         here are your
                         <br />
-                        <img src={favoriteIcon} alt='' /> <span>favorite</span>
+                        <img src={favoriteIcon} alt='' className={style.favorite}/><span>favorite</span>
                     </Title>
 
                     <Subtitle
                         title='Your favorite list'
                         subtitle='Saved by you'
                     />
-                    <div className={style.sortBlock}>
-                        <h1>Sorting</h1>
-                        <div className={style.selectWrapper}>
-                            <select value={sortType} onChange={handleChange}>
-                                <option value='alphabet'>Alphabet</option>
-                                <option value='dateStart'>Start date</option>
-                                <option value='dateEnd'>End date</option>
-                            </select>
-                        </div>
-                    </div>
+                    <SortBlock
+                        options={Object.values(SORTING_FAVORITE_TYPES)}
+                        onChange={handleChange}
+                    />
                     <ErrorBoundary fallback={'Card grid render error'}>
                         <CardGrid items={favorites} />
                     </ErrorBoundary>

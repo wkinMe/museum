@@ -1,4 +1,6 @@
 @use '../../constants/theme.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
+@use "../../constants/mixins.module.scss" as *;
 
 .title {
     box-sizing: border-box;
@@ -11,5 +13,17 @@
 
     span {
         color: $dark-secondary;
+    }
+}
+
+@media (max-width: $medium) {
+    .title {
+        @include font(30px, 700, 30px, $primary);
+    }
+}
+
+@media (max-width: $small) {
+    .title {
+        @include font(25px, 700, 30px, $primary);
     }
 }
