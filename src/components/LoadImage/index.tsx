@@ -12,7 +12,7 @@ interface LoadImageProps {
 export default function LoadImage({ src, size }: LoadImageProps) {
     const [imageLoaded, setImagesLoaded] = useState(false);
     const [imgError, setImgError] = useState(false);
-    
+
     const handleLoad = () => {
         setImagesLoaded(true);
     };
@@ -28,7 +28,7 @@ export default function LoadImage({ src, size }: LoadImageProps) {
             <img
                 onLoad={handleLoad}
                 onError={handleError}
-                src={!imgError ? src : NotFoundImg}
+                src={src && !imgError ? src : NotFoundImg}
             />
         </>
     );

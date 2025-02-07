@@ -1,0 +1,16 @@
+@use '../../constants/theme.module.scss' as *;
+
+.errorComponent {
+    padding-left: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    max-width: 40vw;
+    height: 150px;
+    border-radius: 16px;
+    background-color: rgb(255, 57, 57, 0.7);
+    font-family: $secondaryFont;
+
+    h3 {
+        @include text-small(rgba(255,255,255));
+    }
+}
