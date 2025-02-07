@@ -16,7 +16,7 @@
             "@utils/*": ["./src/utils/*"],
             "@api/*": ["./src/api/*"]
         },
-        "lib": ["dom", "esnext"],
+        "lib": ["ES2023", "DOM", "ES2023.Array"],
         "jsx": "react-jsx",
         "strict": true
     }
