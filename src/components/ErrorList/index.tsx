@@ -7,7 +7,6 @@ interface ErrorListProps {
 }
 
 export default function ErrorList({ errors }: ErrorListProps) {
-    console.log(errors);
 
     return (
         <ul className={style.errorList}>
