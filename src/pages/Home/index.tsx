@@ -1,5 +1,5 @@
 import CardGrid from '@src/components/CardGrid';
-import { useGetArtsFromQuery } from '@src/utils/useGetArtsFromQuery';
+import { useGetArtsFromQuery } from '@src/hooks/useGetArtsFromQuery';
 
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ErrorText from '@components/ErrorText';

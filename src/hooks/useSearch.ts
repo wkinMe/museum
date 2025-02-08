@@ -1,6 +1,6 @@
 import { ARTS_IN_GALLERY } from '@src/constants/constants';
+import { useGetArtsFromQuery } from '@src/hooks/useGetArtsFromQuery';
 import { IArtItem } from '@src/types/IArtItem';
-import { useGetArtsFromQuery } from '@src/utils/useGetArtsFromQuery';
 
 import { getArtsCount } from '@api/getImagesCount';
 import { getRandomArts } from '@api/getRandomArts';
