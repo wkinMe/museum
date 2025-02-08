@@ -13,7 +13,7 @@ import { getArtsFromQuery } from '@utils/getArtsFromQuery';
 
 import { getRandomArts } from '@api/getRandomArts';
 
-import { Suspense } from 'react';
+import { Suspense, useCallback } from 'react';
 
 import style from './style.module.scss';
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import style from './style.module.scss';
 
 interface ErrorComponentProps {
@@ -5,9 +6,16 @@ interface ErrorComponentProps {
 }
 
 export default function ErrorComponent({ text }: ErrorComponentProps) {
-    return (
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setVisible(false), 5000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    return visible ? (
         <div className={style.errorComponent}>
             <h3>{text}</h3>
         </div>
-    );
+    ) : null;
 }
