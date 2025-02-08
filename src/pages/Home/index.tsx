@@ -1,4 +1,5 @@
 import CardGrid from '@src/components/CardGrid';
+import { useGetArtsFromQuery } from '@src/utils/useGetArtsFromQuery';
 
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ErrorText from '@components/ErrorText';
@@ -9,8 +10,6 @@ import Title from '@components/Title';
 
 import { ARTS_IN_HOME_CARD_GRID } from '@constants/constants';
 
-import { getArtsFromQuery } from '@utils/getArtsFromQuery';
-
 import { getRandomArts } from '@api/getRandomArts';
 
 import { Suspense, useCallback } from 'react';
@@ -18,6 +17,8 @@ import { Suspense, useCallback } from 'react';
 import style from './style.module.scss';
 
 export default function Home() {
+    const getArtsFromQuery = useGetArtsFromQuery();
+
     return (
         <section className={style.container}>
             <Title>

@@ -1,4 +1,5 @@
 import { IArtItem } from '@src/types/IArtItem';
+import { useGetArtsFromQuery } from '@src/utils/useGetArtsFromQuery';
 
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ErrorText from '@components/ErrorText';
@@ -12,8 +13,6 @@ import { ARTS_IN_GALLERY, GALLERY_SIZES } from '@constants/constants';
 
 import { useResize } from '@hooks/useResize';
 
-import { getArtsFromQuery } from '@utils/getArtsFromQuery';
-
 import { getArtsCount } from '@api/getImagesCount';
 import { getRandomArts } from '@api/getRandomArts';
 import { serachByParams } from '@api/searchByParams';
@@ -23,6 +22,7 @@ import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import style from './style.module.scss';
 
 export default function GalleryContainer() {
+    const getArtsFromQuery = useGetArtsFromQuery();
     const width = useResize();
 
     const searchString = useRef('');

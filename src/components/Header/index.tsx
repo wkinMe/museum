@@ -8,22 +8,27 @@ import NavLinks from '@components/NavLinks';
 
 import { useResize } from '@hooks/useResize';
 
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import style from './style.module.scss';
 
 export default function Header() {
     const width = useResize();
-    const { isModalOpen } = useContext(MenuContext);
+    const { isModalOpen, toggleMenu } = useContext(MenuContext);
     const { pathname } = useLocation();
+
+    useEffect(() => {
+        if (isModalOpen && width > BURGER_MENU_APPEAR_WIDTH) {
+            toggleMenu();
+        }
+    }, [width, isModalOpen, toggleMenu]);
 
     return (
         <header className={style.header}>
             <div className={style.container}>
                 {pathname !== '/' ? (
                     <Link to='/'>
-                        {' '}
                         <img src={museumLogo} alt='Museum of Art' />
                     </Link>
                 ) : (
@@ -33,7 +38,13 @@ export default function Header() {
                 {width < BURGER_MENU_APPEAR_WIDTH ? (
                     <BurgerMenu />
                 ) : (
-                    <NavLinks isBurger={isModalOpen} />
+                    <NavLinks
+                        isBurger={
+                            width < BURGER_MENU_APPEAR_WIDTH
+                                ? isModalOpen
+                                : false
+                        }
+                    />
                 )}
             </div>
         </header>
