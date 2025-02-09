@@ -17,7 +17,7 @@ import style from './style.module.scss';
 
 export default function DetailsWrapper() {
     const { id } = useParams() as { id: string };
-
+    
     return (
         <Suspense fallback={<Loader size='large' />}>
             <Details promise={getArtById(Number(id))} />

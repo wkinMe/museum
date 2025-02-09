@@ -31,7 +31,8 @@
             "@pages/*": ["./src/pages/*"],
             "@utils/*": ["./src/utils/*"],
             "@api/*": ["./src/api/*"]
-        }
+        },
+        "types": ["@testing-library/jest-dom", "vitest"]
     },
     "include": ["src"]
 }

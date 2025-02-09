@@ -31,6 +31,7 @@ export default function FavoriteButton({
         <div
             onClick={handleClick}
             className={`${style.favorite} ${isFavorite ? style.favoriteActive : ''} ${isUp ? style.up : ''}`}
+            data-testid='favoriteBtn'
         >
             <img src={favoriteIcon} alt='' />
         </div>

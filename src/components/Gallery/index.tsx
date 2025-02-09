@@ -14,7 +14,7 @@ export default function Gallery({ cardPromise }: ArtCollection) {
     const cards: IArtItem[] = use(cardPromise);
 
     return (
-        <div className={style.gallery}>
+        <div className={style.gallery} data-testid='gallery'>
             {cards.map(
                 ({ id, artist_title, is_public_domain, image_url, title }) => {
                     return (

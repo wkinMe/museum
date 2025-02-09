@@ -12,13 +12,13 @@ import { ARTS_IN_HOME_CARD_GRID } from '@constants/constants';
 
 import { getRandomArts } from '@api/getRandomArts';
 
-import { Suspense, useCallback } from 'react';
+import { Suspense} from 'react';
 
 import style from './style.module.scss';
 
 export default function Home() {
     const getArtsFromQuery = useGetArtsFromQuery();
-
+    
     return (
         <section className={style.container}>
             <Title>
