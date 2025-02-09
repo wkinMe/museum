@@ -8,7 +8,6 @@ export const useBurgerMenu = () => {
     const { isModalOpen, toggleMenu } = useContext(MenuContext);
     const node = useRef<HTMLDivElement>(null);
 
-    // Предотвращение прокрутки страницы при открытом меню
     useEffect(() => {
         const preventScroll = (e: Event) => {
             e.preventDefault();
@@ -30,14 +29,12 @@ export const useBurgerMenu = () => {
         };
     }, [isModalOpen]);
 
-    // Закрытие меню при клике вне его области
     useOnClickOutside(node, () => {
         if (isModalOpen) {
             toggleMenu();
         }
     });
 
-    // Обработка клика по кнопке бургер-меню
     const handleClick = () => {
         toggleMenu();
     };

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
-import { usePagination } from './usePagination';
+import { usePageCount } from './usePageCount';
 import { useSearch } from './useSearch';
 
 export const useGalleryLogic = (imgCount: number) => {
     const [page, setPage] = useState(1);
     const [searchString, setSearchString] = useState('');
-
+    
     const { searchPromise, artsCount, handleSearch, updateSearchPromise } =
         useSearch(imgCount, page);
-    const { pageCount } = usePagination(imgCount, artsCount);
+    const { pageCount } = usePageCount(imgCount, artsCount);
 
     const handlePaginate = (newPage: number) => {
         setPage(newPage);

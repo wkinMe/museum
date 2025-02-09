@@ -18,7 +18,7 @@ export const useHeader = () => {
         if (isModalOpen && isBurger) {
             toggleMenu();
         }
-    }, [width]);
+    }, [isBurger]);
 
     return { isBurger, isHome };
 };

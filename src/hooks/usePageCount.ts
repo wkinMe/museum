@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export const usePagination = (imgCount: number, artsCount: number) => {
+export const usePageCount = (imgCount: number, artsCount: number) => {
     const [pageCount, setPageCount] = useState(0);
 
-    useEffect(() => {
+    if (pageCount !== Math.ceil(artsCount / imgCount)) {
         if (imgCount > 0 && artsCount > 0) {
             setPageCount(Math.ceil(artsCount / imgCount));
         } else {
             setPageCount(0);
         }
-    }, [imgCount, artsCount]);
+    }
 
     return { pageCount };
 };
