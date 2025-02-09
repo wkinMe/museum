@@ -1,16 +1,10 @@
-import { BURGER_MENU_APPEAR_WIDTH } from '@src/constants/constants';
 import { useHeader } from '@src/hooks/useHeader';
 
 import museumLogo from '@assets/museum_ligth_logo.svg';
 
 import BurgerMenu from '@components/BurgerMenu';
-import { MenuContext } from '@components/Layout';
 import NavLinks from '@components/NavLinks';
-
-import { useResize } from '@hooks/useResize';
-
-import { useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import style from './style.module.scss';
 

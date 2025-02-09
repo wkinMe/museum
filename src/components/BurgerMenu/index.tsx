@@ -12,6 +12,7 @@ export default function BurgerMenu() {
             <div
                 className={`${style.button} ${isModalOpen ? style.active : ''}`}
                 onClick={handleClick}
+                data-testid='burgerButton'
             >
                 <span></span>
                 <span></span>

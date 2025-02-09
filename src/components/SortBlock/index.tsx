@@ -19,7 +19,11 @@ export default function SortBlock({ onChange, options }: SortBlockProps) {
         <div className={style.sortBlock}>
             <h1>Sorting</h1>
             <div className={style.selectWrapper}>
-                <select value={selected} onChange={handleChange}>
+                <select
+                    value={selected}
+                    onChange={handleChange}
+                    data-testid='sortBlock'
+                >
                     {options.map((i, ind) => (
                         <option key={ind} value={i}>
                             {i}

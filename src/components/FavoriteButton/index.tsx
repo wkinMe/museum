@@ -20,6 +20,7 @@ export default function FavoriteButton({
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         onClick();
         e.preventDefault();
+
         if (isFavorite) {
             favoriteHelper.removeFromFavorites({ id: artId });
         } else {
