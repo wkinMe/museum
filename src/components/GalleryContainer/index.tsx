@@ -28,9 +28,13 @@ export default function GalleryContainer() {
                 <ErrorBoundary
                     fallback={<ErrorText text='Gallery render error' />}
                 >
-                    <Suspense fallback={<Loader size={CARDS_SIZES.LARGE} />}>
-                        <Gallery cardPromise={searchPromise} />
-                    </Suspense>
+                    <div className={style.galleryWrapper}>
+                        <Suspense
+                            fallback={<Loader size={CARDS_SIZES.LARGE} />}
+                        >
+                            <Gallery cardPromise={searchPromise} />
+                        </Suspense>
+                    </div>
                 </ErrorBoundary>
             ) : (
                 <span className={style.noImages}>
