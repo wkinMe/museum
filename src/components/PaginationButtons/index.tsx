@@ -17,6 +17,10 @@ export default function PaginationButtons({
     const { page, pages, handlePageClick, handleSideBtn } =
         usePaginationButtons({ onPageChange: onClick, pageCount });
 
+    if (pageCount < 2) {
+        return null;
+    }
+
     return (
         <div className={style.pagination}>
             <div className={style.paginationButtons}>

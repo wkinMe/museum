@@ -39,7 +39,7 @@ export default function Card({
 
     return (
         <div className={style.wrapper}>
-            <Link to={`..${urls.details(id)}`} className={`${styleName}`}>
+            <Link to={`/${urls.details(id)}`} className={`${styleName}`}>
                 <LoadImage src={image_url} size={size} />
                 <div className={style.info}>
                     <div className={style.infoMain}>
