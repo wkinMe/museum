@@ -1,5 +1,4 @@
 import { urls } from '@src/constants/constants';
-
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
