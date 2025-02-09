@@ -9,7 +9,6 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Мокаем API
 vi.mock('@api/getArtById', () => ({
     getArtById: vi.fn((id: number) => {
         const mockFavorites: IArtItem[] = [
@@ -90,7 +89,6 @@ describe('Favorite Component', () => {
 
         render(<Favorite />);
 
-        // Ждем, пока данные загрузятся
         await waitFor(() => {
             expect(
                 screen.getByText("You haven't added to favorites yet"),

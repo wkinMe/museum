@@ -11,11 +11,6 @@
     @include text-medium($primary);
 }
 
-.container {
-    display: grid;
-    min-height: 73vh;
-}
-
 .favorite {
     margin-right: 10px;
     height: 40px;

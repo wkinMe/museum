@@ -47,7 +47,6 @@ describe('Home Component', () => {
         const cardGrid = await screen.findByTestId('cardGrid');
         expect(cardGrid).toBeInTheDocument();
 
-        // Проверка, что элементы из мока рендерятся
         expect(await within(cardGrid).findByText('Art 1')).toBeInTheDocument();
         expect(
             await within(cardGrid).findByText('Artist 1'),
@@ -62,7 +61,6 @@ describe('Home Component', () => {
         const gallery = await screen.findByTestId('gallery');
         expect(gallery).toBeInTheDocument();
 
-        // Проверка, что элементы из мока рендерятся
         expect(await within(gallery).findByText('Art 1')).toBeInTheDocument();
         expect(
             await within(gallery).findByText('Artist 1'),

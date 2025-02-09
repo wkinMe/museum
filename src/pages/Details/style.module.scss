@@ -4,7 +4,6 @@
 
 .container {
     display: grid;
-    min-height: 72vw;
 }
 
 .details {
@@ -66,17 +65,11 @@
         }
 
         &Info {
-            // max-width: 100%;
             margin-top: 32px;
         }
 
         .artYears {
             margin-bottom: 32px;
         }
-    }
-}
-
-@media (max-width: $small) {
-    .details {
     }
 }

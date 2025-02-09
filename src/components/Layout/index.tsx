@@ -33,13 +33,13 @@ export default function Layout() {
                 }}
             >
                 {' '}
-                <>
+                <div className={style.layout}>
                     {errors.length ? <ErrorList errors={errors} /> : null}
                     <Header />
                     <Outlet />
                     <Footer />
                     {isModalOpen && <div className={style.modal}></div>}
-                </>
+                </div>
             </MenuContext.Provider>
         </ErrorContext.Provider>
     );
