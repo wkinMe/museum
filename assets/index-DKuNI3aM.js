@@ -1,0 +1,1 @@
+import{j as n,L as t}from"./index-CgIH0Nue.js";const e="_container_3dm68_1",s="_notFound_3dm68_21",i="_homeLink_3dm68_35",o={container:e,notFound:s,homeLink:i};function d(){return n.jsxs("section",{className:o.notFound,children:[n.jsx("h1",{children:"Page not found"}),n.jsx(t,{to:"/",className:o.homeLink,children:"Home"})]})}export{d as default};
