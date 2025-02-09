@@ -35,3 +35,5 @@ export const urls = {
     notFound: '*',
     details: (id: number | null) => `details/${id ? id : ':id'}`,
 };
+
+export const RANDOM_HOME_CARD_GRID_PAGE = 52;
