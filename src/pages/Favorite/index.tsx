@@ -2,7 +2,7 @@ import CardGrid from '@src/components/CardGrid';
 import ErrorBoundary from '@src/components/ErrorBoundary/ErrorBoundary';
 import Loader from '@src/components/Loader';
 import SortBlock from '@src/components/SortBlock';
-import { SORTING_FAVORITE_TYPES } from '@src/constants/constants';
+import { CARDS_SIZES, SORTING_FAVORITE_TYPES } from '@src/constants/constants';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 import { IArtItem } from '@src/types/IArtItem';
 
@@ -55,7 +55,7 @@ export default function Favorite() {
     return (
         <section className={style.container}>
             {isLoading ? (
-                <Loader size='large' />
+                <Loader size={CARDS_SIZES.LARGE} />
             ) : favorites.length ? (
                 <>
                     <Title>

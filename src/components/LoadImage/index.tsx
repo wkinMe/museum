@@ -1,12 +1,13 @@
 import NotFoundImg from '@assets/NotFoundImg.svg';
 
 import Loader from '@components/Loader';
+import { CARDS_SIZES } from '@src/constants/constants';
 
 import { useState } from 'react';
 
 interface LoadImageProps {
     src: string;
-    size: 'large' | 'small';
+    size: CARDS_SIZES;
 }
 
 export default function LoadImage({ src, size }: LoadImageProps) {
@@ -28,7 +29,7 @@ export default function LoadImage({ src, size }: LoadImageProps) {
             <img
                 onLoad={handleLoad}
                 onError={handleError}
-                src={!imgError ? src : NotFoundImg}
+                src={src && !imgError ? src : NotFoundImg}
             />
         </>
     );

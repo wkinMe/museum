@@ -18,6 +18,7 @@
         },
         "lib": ["ES2023", "DOM", "ES2023.Array"],
         "jsx": "react-jsx",
-        "strict": true
+        "strict": true,
+        "types": ["@testing-library/jest-dom"]
     }
 }

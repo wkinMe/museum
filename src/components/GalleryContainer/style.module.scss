@@ -1,4 +1,5 @@
 @use '../../constants/theme.module.scss' as *;
+@use '../../constants/deviceSizes.module.scss' as *;
 
 .galleryContainer {
     position: relative;
@@ -11,5 +12,23 @@
         position: absolute;
         font-family: $primaryFont;
         @include text-large($primary);
+    }
+}
+
+.galleryWrapper {
+    display: grid;
+    min-height: 640px;
+}
+
+@media (max-width: $large) {
+    .galleryWrapper {
+        min-height: auto;
+        height: 60vw;
+    }
+}
+
+@media (max-width: $small) {
+    .galleryWrapper {
+        height: 100vw;
     }
 }

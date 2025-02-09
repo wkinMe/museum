@@ -2,6 +2,10 @@
 @use '../../constants/mixins.module.scss' as *;
 @use '../../constants/deviceSizes.module.scss' as *;
 
+.container {
+    display: grid;
+}
+
 .details {
     margin-top: 120px;
     margin-bottom: 120px;
@@ -61,17 +65,11 @@
         }
 
         &Info {
-            // max-width: 100%;
             margin-top: 32px;
         }
 
         .artYears {
             margin-bottom: 32px;
         }
-    }
-}
-
-@media (max-width: $small) {
-    .details {
     }
 }

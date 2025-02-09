@@ -1,0 +1,9 @@
+.errorList {
+    position: fixed;
+    top: 35px;
+    right: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}

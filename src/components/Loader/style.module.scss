@@ -1,6 +1,7 @@
 @use '../../constants/theme.module.scss' as *;
 
 .spinner {
+    align-self: center;
     border-radius: 50%;
     border: dashed 5px $primary;
     position: absolute;

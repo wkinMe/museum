@@ -1,0 +1,43 @@
+@use '../../constants/theme.module.scss' as *;
+
+.errorComponent {
+    padding-left: 10px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    max-width: 40vw;
+    height: 150px;
+    border-radius: 16px;
+    background-color: rgba(255, 57, 57, 0.7);
+    font-family: $secondaryFont;
+    animation: fadeIn 0.3s ease-in-out;
+
+    h3 {
+        @include text-small(rgba(255, 255, 255));
+    }
+}
+
+.hidden {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

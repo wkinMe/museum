@@ -1,19 +1,19 @@
-import '@testing-library/jest-dom/vitest';
-import { screen, render, fireEvent } from '@testing-library/react';
+import App from '@pages/App/App';
+
+import { screen, render } from '@testing-library/react';
 import { describe } from 'node:test';
 import { MemoryRouter } from 'react-router-dom';
 import { expect, test } from 'vitest';
 
-import App from '../pages/App/App';
-
 describe('App', () => {
-    test('renders Loader while CardGrid is loading', async () => {
+    test('App component render', async () => {
         render(
             <MemoryRouter>
                 <App />
             </MemoryRouter>,
         );
 
-        screen.debug();
+        const welcomeText = await screen.findByText(/let's find some/i);
+        expect(welcomeText).toBeInTheDocument();
     });
 });

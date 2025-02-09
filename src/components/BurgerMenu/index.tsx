@@ -1,52 +1,18 @@
-import { MenuContext } from '@components/Layout';
 import NavLinks from '@components/NavLinks';
 
-import { useOnClickOutside } from '@hooks/useOnClickOutside';
-
-import { useContext, useEffect, useRef } from 'react';
+import { useBurgerMenu } from '@hooks/useBurgerMenu';
 
 import style from './style.module.scss';
 
 export default function BurgerMenu() {
-    const { isModalOpen, toggleMenu } = useContext(MenuContext);
-    const node = useRef<HTMLDivElement>(null);
-
-    const preventScroll = (e: Event) => {
-        e.preventDefault();
-    };
-
-    useEffect(() => {
-        if (isModalOpen) {
-            window.addEventListener('wheel', preventScroll, { passive: false });
-            window.addEventListener('touchmove', preventScroll, {
-                passive: false,
-            });
-        } else {
-            window.removeEventListener('wheel', preventScroll);
-            window.removeEventListener('touchmove', preventScroll);
-        }
-
-        return () => {
-            window.removeEventListener('wheel', preventScroll);
-            window.removeEventListener('touchmove', preventScroll);
-        };
-    }, [isModalOpen]);
-
-    useOnClickOutside(node, () => {
-        if (isModalOpen) {
-            toggleMenu();
-        }
-    });
-
-    const handleClick = () => {
-        toggleMenu();
-    };
-
+    const { isModalOpen, node, handleClick } = useBurgerMenu();
+    
     return (
         <aside className={style.burger} ref={node}>
             <div
                 className={`${style.button} ${isModalOpen ? style.active : ''}`}
                 onClick={handleClick}
+                data-testid='burgerButton'
             >
                 <span></span>
                 <span></span>

@@ -1,6 +1,8 @@
 import favoriteIcon from '@assets/favorite.svg';
 import homeIcon from '@assets/home.svg';
 
+import { urls } from '@constants/constants';
+
 import { Link, useLocation } from 'react-router-dom';
 
 import style from './style.module.scss';
@@ -19,11 +21,11 @@ export default function NavLinks({ isBurger, isOpen, onClick }: NavLinksProps) {
             className={`${style.nav} ${isBurger ? style.burger : ''} ${isOpen ? style.active : ''}`}
         >
             <ul className={style.menu}>
-                {pathname !== '/' && (
+                {pathname !== urls.home && (
                     <li className={style.menuItem}>
                         <img src={homeIcon} alt='' />
                         <Link
-                            to='/'
+                            to={urls.home}
                             className={style.menuItemLink}
                             onClick={onClick}
                         >
@@ -35,7 +37,7 @@ export default function NavLinks({ isBurger, isOpen, onClick }: NavLinksProps) {
                 <li className={style.menuItem}>
                     <img src={favoriteIcon} alt='' />
                     <Link
-                        to='/favorite'
+                        to={urls.favorite}
                         className={style.menuItemLink}
                         onClick={onClick}
                         data-testid='favoriteLink'

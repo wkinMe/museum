@@ -2,6 +2,7 @@
 @use '../../constants/deviceSizes.module.scss' as *;
 
 .footer {
+    align-self: end;
     width: 100%;
     height: 127px;
     background-color: #fff;

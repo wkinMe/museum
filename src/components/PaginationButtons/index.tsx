@@ -1,6 +1,7 @@
-import arrow from '@assets/arrow.svg';
+import PaginationSideButton from '@src/components/PaginationSideButton';
+import { usePaginationButtons } from '@src/hooks/usePaginationButtons';
 
-import { useState } from 'react';
+import arrow from '@assets/arrow.svg';
 
 import style from './style.module.scss';
 
@@ -13,62 +14,36 @@ export default function PaginationButtons({
     onClick,
     pageCount,
 }: PaginationButtonsProps) {
-    const [page, setPage] = useState(1);
-    const [prevPage, setPrevPage] = useState(page);
+    const { page, pages, handlePageClick, handleSideBtn } =
+        usePaginationButtons({ onPageChange: onClick, pageCount });
 
-    if (prevPage !== page) {
-        onClick(page);
-        setPrevPage(page);
+    if (pageCount < 2) {
+        return null;
     }
 
-    const pages = new Array(pageCount).fill(null);
-
-    const handlePageClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setPage(Number(e.currentTarget.textContent));
-    };
-
-    const handleSideBtn = (inc: boolean) => {
-        let count = inc ? 1 : -1;
-        setPage((prev) => prev + count);
-    };
-
     return (
-        pageCount > 1 && (
-            <div className={style.pagination}>
-                <div className={style.paginationButtons}>
-                    {page > 1 && (
-                        <button
-                            className={style.paginationButtonAddition}
-                            onClick={() => handleSideBtn(true)}
-                        >
-                            <img
-                                src={arrow}
-                                className={style.rotated}
-                                alt='Prev'
-                            />
-                        </button>
-                    )}
-                    {pages.map((_, ind) => {
-                        return (
-                            <button
-                                className={`${style.paginationButton} ${page == ind + 1 ? style.active : ''}`}
-                                onClick={handlePageClick}
-                                key={ind}
-                            >
-                                {ind + 1}
-                            </button>
-                        );
-                    })}
-                    {page < pages.length && (
-                        <button
-                            className={style.paginationButtonAddition}
-                            onClick={() => handleSideBtn(false)}
-                        >
-                            <img src={arrow} alt='Next' />
-                        </button>
-                    )}
-                </div>
+        <div className={style.pagination}>
+            <div className={style.paginationButtons}>
+                <PaginationSideButton
+                    prev={true}
+                    onClick={() => handleSideBtn(-1)}
+                    isShow={page > 1}
+                />
+                {pages.map((_, ind) => (
+                    <button
+                        className={`${style.paginationButton} ${page === ind + 1 ? style.active : ''}`}
+                        onClick={() => handlePageClick(ind + 1)}
+                        key={ind}
+                    >
+                        {ind + 1}
+                    </button>
+                ))}
+                <PaginationSideButton
+                    prev={false}
+                    onClick={() => handleSideBtn(1)}
+                    isShow={page < pages.length}
+                />
             </div>
-        )
+        </div>
     );
 }

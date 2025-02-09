@@ -33,12 +33,12 @@
     }
 }
 
-.rotated {
-    transform: rotate(180deg);
-}
-
 @media (max-width: 550px) {
     .pagination {
         justify-content: center;
+
+        &Buttons {
+            grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
+        }
     }
 }

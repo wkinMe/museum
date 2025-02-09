@@ -18,3 +18,20 @@ export const SORTING_FAVORITE_TYPES = {
     START_DATE: 'Start date',
     END_DATE: 'End date',
 };
+
+export enum CARDS_SIZES {
+    LARGE,
+    SMALL,
+}
+
+export const PUBLIC_DOMAIN = {
+    PUBLIC: 'Public',
+    PRIVATE: 'Private',
+};
+
+export const urls = {
+    home: '/',
+    favorite: 'favorite',
+    notFound: '*',
+    details: (id: number | null) => `details/${id ? id : ':id'}`,
+};
