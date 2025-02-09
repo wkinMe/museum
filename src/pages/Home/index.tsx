@@ -8,7 +8,7 @@ import Loader from '@components/Loader';
 import Subtitle from '@components/Subtitle';
 import Title from '@components/Title';
 
-import { ARTS_IN_HOME_CARD_GRID } from '@constants/constants';
+import { ARTS_IN_HOME_CARD_GRID, CARDS_SIZES } from '@constants/constants';
 
 import { getRandomArts } from '@api/getRandomArts';
 
@@ -29,7 +29,7 @@ export default function Home() {
             <ErrorBoundary
                 fallback={<ErrorText text='Card grid render error' />}
             >
-                <Suspense fallback={<Loader size='large' />}>
+                <Suspense fallback={<Loader size={CARDS_SIZES.LARGE} />}>
                     <CardGrid
                         cardPromise={getArtsFromQuery(
                             getRandomArts(ARTS_IN_HOME_CARD_GRID),

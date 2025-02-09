@@ -16,6 +16,7 @@ export const MenuContext = createContext({
 
 export const ErrorContext = createContext({
     errors: [] as string[],
+    // @ts-ignore тут просто задаётся тип функции, message нигде не используется
     setErrors: (message: string) => {},
 });
 

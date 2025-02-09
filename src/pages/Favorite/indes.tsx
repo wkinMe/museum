@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
-import favoriteIcon from '../../assets/favorite.svg';
-import CardGrid from '../../components/CardGrid';
-import Subtitle from '../../components/Subtitle';
-import Title from '../../components/Title';
-import { ArtItem } from '../../constants/interfaces';
-import { sortByAlphabet } from '../../utils/sortByAlphabet';
-import { sortByEndDate } from '../../utils/sortByEndDate';
-import { sortByStartDate } from '../../utils/sortByStartDates';
+import favoriteIcon from '@assets/favorite.svg';
+import CardGrid from '@components/CardGrid';
+import Subtitle from '@components/Subtitle';
+import Title from '@components/Title';
+import { IArtItem } from '@src/types/IArtItem';
+import { sortByAlphabet } from '@utils/sortByAlphabet';
+import { sortByEndDate } from '@utils/sortByEndDate';
+import { sortByStartDate } from '@utils/sortByStartDates';
 import style from './style.module.scss';
 
 export default function Favorite() {
     const [sortType, setSortType] = useState('');
 
-    let sortFunction = (arts: ArtItem[]) => arts;
+    let sortFunction = (arts: IArtItem[]) => arts;
 
     switch (sortType) {
         case 'alphabet': {
@@ -30,7 +30,7 @@ export default function Favorite() {
         }
     }
 
-    const favorites: ArtItem[] = sortFunction(
+    const favorites: IArtItem[] = sortFunction(
         JSON.parse(sessionStorage.getItem('favorite')!),
     );
     console.log(favorites);

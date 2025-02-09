@@ -1,8 +1,6 @@
 import PaginationSideButton from '@src/components/PaginationSideButton';
 import { usePaginationButtons } from '@src/hooks/usePaginationButtons';
 
-import arrow from '@assets/arrow.svg';
-
 import style from './style.module.scss';
 
 interface PaginationButtonsProps {

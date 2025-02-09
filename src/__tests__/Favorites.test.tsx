@@ -1,11 +1,9 @@
-import { SORTING_FAVORITE_TYPES } from '@src/constants/constants';
 import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 import { IArtItem } from '@src/types/IArtItem';
 
 import Favorite from '@pages/Favorite';
 
 import { act, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
