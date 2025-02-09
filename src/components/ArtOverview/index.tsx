@@ -1,3 +1,5 @@
+import { PUBLIC_DOMAIN } from '@src/constants/constants';
+
 import ArtOverviewItem from '@components/ArtOverviewItem';
 
 import style from './style.module.scss';
@@ -26,7 +28,11 @@ export default function ArtOverview({
             <ArtOverviewItem prop='Credit line' value={credit_line} />
             <ArtOverviewItem
                 prop=''
-                value={is_public_domain ? 'Public' : 'Not public'}
+                value={
+                    is_public_domain
+                        ? PUBLIC_DOMAIN.PUBLIC
+                        : PUBLIC_DOMAIN.PRIVATE
+                }
             />
         </div>
     );

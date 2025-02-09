@@ -6,7 +6,7 @@ import style from './style.module.scss';
 
 export default function BurgerMenu() {
     const { isModalOpen, node, handleClick } = useBurgerMenu();
-
+    
     return (
         <aside className={style.burger} ref={node}>
             <div

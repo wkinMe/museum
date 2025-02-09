@@ -2,8 +2,9 @@ import { IArtItem } from '@src/types/IArtItem';
 
 import { use } from 'react';
 
-import Card from '../Card';
+import Card from '@components/Card';
 import style from './style.module.scss';
+import { CARDS_SIZES } from '@src/constants/constants';
 
 interface CardGridProps {
     cardPromise?: Promise<IArtItem[]>;
@@ -24,7 +25,7 @@ export default function CardGrid({ cardPromise, items }: CardGridProps) {
                 ({ id, artist_title, is_public_domain, image_url, title }) => (
                     <Card
                         key={id}
-                        size='small'
+                        size={CARDS_SIZES.SMALL}
                         id={id}
                         artist_title={artist_title}
                         is_public_domain={is_public_domain}

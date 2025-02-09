@@ -3,6 +3,8 @@ import { favoriteHelper } from '@src/helpers/FavoriteHelper';
 import FavoriteButton from '@components/FavoriteButton';
 import LoadImage from '@components/LoadImage';
 
+import { CARDS_SIZES, PUBLIC_DOMAIN, urls } from '@constants/constants';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +16,7 @@ interface CardProps {
     image_url: string;
     id: number;
     title: string;
-    size: 'large' | 'small';
+    size: CARDS_SIZES;
 }
 
 export default function Card({
@@ -29,7 +31,7 @@ export default function Card({
         favoriteHelper.isFavorite({ id }),
     );
 
-    const styleName = size === 'large' ? style.card : style.miniCard;
+    const styleName = size === CARDS_SIZES.LARGE ? style.card : style.miniCard;
 
     const handleFavoriteBtnClick = () => {
         setIsFavorite((prev) => !prev);
@@ -37,14 +39,16 @@ export default function Card({
 
     return (
         <div className={style.wrapper}>
-            <Link to={`../details/${id}`} className={`${styleName}`}>
+            <Link to={`..${urls.details(id)}`} className={`${styleName}`}>
                 <LoadImage src={image_url} size={size} />
                 <div className={style.info}>
                     <div className={style.infoMain}>
                         <span className={style.artName}>{title}</span>
                         <span className={style.artistName}>{artist_title}</span>
                         <span className={style.public}>
-                            {is_public_domain && 'Public'}
+                            {is_public_domain
+                                ? PUBLIC_DOMAIN.PUBLIC
+                                : PUBLIC_DOMAIN.PRIVATE}
                         </span>
                     </div>
                     <FavoriteButton

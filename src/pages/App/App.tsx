@@ -1,3 +1,5 @@
+import { urls } from '@src/constants/constants';
+
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,11 +11,11 @@ const Favorite = lazy(() => import('@pages/Favorite'));
 const Details = lazy(() => import('@pages/Details'));
 const NotFound = lazy(() => import('@pages/NotFound'));
 
-const routes = [
-    { path: '/', element: <Home />, index: true },
-    { path: 'favorite', element: <Favorite /> },
-    { path: 'details/:id', element: <Details /> },
-    { path: '*', element: <NotFound /> },
+export const routes = [
+    { path: urls.home, element: <Home />, index: true },
+    { path: urls.favorite, element: <Favorite /> },
+    { path: urls.details(null), element: <Details /> },
+    { path: urls.notFound, element: <NotFound /> },
 ];
 
 function App() {

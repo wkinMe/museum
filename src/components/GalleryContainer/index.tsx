@@ -1,3 +1,5 @@
+import { CARDS_SIZES } from '@src/constants/constants';
+
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ErrorText from '@components/ErrorText';
 import Gallery from '@components/Gallery';
@@ -26,7 +28,7 @@ export default function GalleryContainer() {
                 <ErrorBoundary
                     fallback={<ErrorText text='Gallery render error' />}
                 >
-                    <Suspense fallback={<Loader size='large' />}>
+                    <Suspense fallback={<Loader size={CARDS_SIZES.LARGE} />}>
                         <Gallery cardPromise={searchPromise} />
                     </Suspense>
                 </ErrorBoundary>

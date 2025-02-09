@@ -1,4 +1,4 @@
-import ErrorComponent from '@src/components/ErrorComponent';
+import ErrorComponent from '@components/ErrorComponent';
 
 import style from './style.module.scss';
 
@@ -7,7 +7,6 @@ interface ErrorListProps {
 }
 
 export default function ErrorList({ errors }: ErrorListProps) {
-
     return (
         <ul className={style.errorList}>
             {errors.map((i, ind) => (

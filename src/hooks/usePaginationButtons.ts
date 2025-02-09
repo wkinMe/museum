@@ -20,7 +20,7 @@ export function usePaginationButtons({
     const handlePageClick = (newPage: number) => {
         if (newPage !== page) setPage(newPage);
     };
-
+    
     const handleSideBtn = (count: number) => {
         setPage((prev) => Math.min(Math.max(prev + count, 1), pageCount));
     };

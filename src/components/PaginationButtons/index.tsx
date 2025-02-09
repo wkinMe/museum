@@ -1,3 +1,4 @@
+import PaginationSideButton from '@src/components/PaginationSideButton';
 import { usePaginationButtons } from '@src/hooks/usePaginationButtons';
 
 import arrow from '@assets/arrow.svg';
@@ -19,14 +20,11 @@ export default function PaginationButtons({
     return (
         <div className={style.pagination}>
             <div className={style.paginationButtons}>
-                {page > 1 && (
-                    <button
-                        className={style.paginationButtonAddition}
-                        onClick={() => handleSideBtn(-1)}
-                    >
-                        <img src={arrow} className={style.rotated} alt='Prev' />
-                    </button>
-                )}
+                <PaginationSideButton
+                    prev={true}
+                    onClick={() => handleSideBtn(-1)}
+                    isShow={page > 1}
+                />
                 {pages.map((_, ind) => (
                     <button
                         className={`${style.paginationButton} ${page === ind + 1 ? style.active : ''}`}
@@ -36,14 +34,11 @@ export default function PaginationButtons({
                         {ind + 1}
                     </button>
                 ))}
-                {page < pages.length && (
-                    <button
-                        className={style.paginationButtonAddition}
-                        onClick={() => handleSideBtn(1)}
-                    >
-                        <img src={arrow} alt='Next' />
-                    </button>
-                )}
+                <PaginationSideButton
+                    prev={false}
+                    onClick={() => handleSideBtn(1)}
+                    isShow={page < pages.length}
+                />
             </div>
         </div>
     );

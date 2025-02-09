@@ -1,9 +1,10 @@
 import ErrorList from '@src/components/ErrorList';
+import { useErrorContext } from '@src/hooks/useErrorContext';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 
-import { createContext, useCallback, useState, useMemo } from 'react';
+import { createContext, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import style from './style.module.scss';
@@ -20,24 +21,8 @@ export const ErrorContext = createContext({
 
 export default function Layout() {
     const [isModalOpen, toggleMenu] = useState(false);
-    const [errors, setErrors] = useState<string[]>([]);
-
-    const addError = useCallback(
-        (message: string) => {
-            if (!errors.includes(message)) {
-                setErrors((prevErrors) => [...prevErrors, message]);
-            }
-        },
-        [errors],
-    );
-
-    const errorContextValue = useMemo(
-        () => ({
-            errors,
-            setErrors: addError,
-        }),
-        [errors, addError],
-    );
+    const { errorContextValue } = useErrorContext();
+    const { errors } = errorContextValue;
 
     return (
         <ErrorContext.Provider value={errorContextValue}>

@@ -1,3 +1,4 @@
+import { CARDS_SIZES } from '@src/constants/constants';
 import { IArtItem } from '@src/types/IArtItem';
 
 import Card from '@components/Card';
@@ -20,7 +21,7 @@ export default function Gallery({ cardPromise }: ArtCollection) {
                     return (
                         <Card
                             key={id}
-                            size='large'
+                            size={CARDS_SIZES.LARGE}
                             id={id}
                             artist_title={artist_title}
                             is_public_domain={is_public_domain}
